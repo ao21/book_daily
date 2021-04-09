@@ -1,0 +1,12 @@
+<%= link_to 'トップへ戻る', root_path %>
+
+<%= form_with url: books_path, method: :get, local: true do |f| %>
+  <%= f.text_field :keyword %>
+  <%= f.submit '本の題名を検索' %>
+<% end %>
+<% if @books.present? %>
+  <% @books.each do |book| %>
+    <p><%= book.title %></p>
+    <%= link_to (image_tag(book.medium_image_url)), book.item_url %>
+  <% end %>
+<% end %>
