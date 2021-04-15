@@ -5,8 +5,10 @@
   <%= f.submit '本の題名を検索' %>
 <% end %>
 <% if @books.present? %>
-  <% @books.each do |book| %>
-    <p><%= book.title %></p>
-    <%= link_to (image_tag(book.medium_image_url)), book.item_url %>
+  <% @books["items"].each do |item| %>
+    <p>---------------</p>
+    <p><%= item["volumeInfo"]["title"] %></p>
+    <p><%= item["volumeInfo"]["pageCount"] %></p>
+    <p><%= image_tag item["volumeInfo"]["imageLinks"]["smallThumbnail"] %></p>
   <% end %>
 <% end %>
