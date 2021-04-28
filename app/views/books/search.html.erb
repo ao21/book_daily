@@ -7,11 +7,10 @@
 <% if @results_data %>
   <% @results_data.each_with_index do |result, i| %>
     <p>--------------</p>
-    <p><%= result[:isbn] %></p>
     <p><%= result[:title] %></p>
     <p><%= result[:author] %></p>
     <p><%= result[:page_count] %></p>
     <p><%= image_tag result[:image_link] if result[:image_link].present? %></p>
-    <%= link_to "登録", controller: "books", action: "new", class: "btn btn-primary", isbn: result[:isbn], title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
+    <%= link_to "登録", controller: "books", action: "new", class: "btn btn-primary", title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
   <% end %>
 <% end %>

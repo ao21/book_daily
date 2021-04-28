@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.find_or_initialize_by(isbn: params[:isbn])
+    @book = Book.find_or_initialize_by(title: params[:title])
 
     unless @book.persisted?
       @book = Book.new(book_data)
@@ -33,7 +33,6 @@ class BooksController < ApplicationController
 
   def book_data
     {
-      isbn: params[:isbn],
       title: params[:title],
       author: params[:author],
       image_link: params[:image_link],
@@ -42,6 +41,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.permit(:isbn, :title, :author, :image_link, :page_count)
+    params.permit(:title, :author, :image_link, :page_count)
   end
 end

@@ -6,7 +6,6 @@ class Book < ApplicationRecord
     results_data = []
 
     results["items"].each do |result|
-      isbn = result.dig("volumeInfo", "industryIdentifiers", 0, "identifier")
       title = result.dig("volumeInfo", "title")
       authors = result.dig("volumeInfo", "authors")
       image_link = result.dig("volumeInfo", "imageLinks", "smallThumbnail")
@@ -18,7 +17,6 @@ class Book < ApplicationRecord
 
       results_data.push(
         {
-          isbn: isbn,
           title: title,
           author: author,
           image_link: image_link,

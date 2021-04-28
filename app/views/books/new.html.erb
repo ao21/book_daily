@@ -1,7 +1,4 @@
 <%= form_with url: books_path, local: true do |f| %>
-  <p>isbn: <%= @book.isbn %></p>
-  <%= hidden_field_tag :isbn, @book.isbn %>
-
   <p>title: <%= @book.title %></p>
   <%= hidden_field_tag :title, @book.title %>
 
