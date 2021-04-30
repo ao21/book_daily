@@ -2,5 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
 
-  get 'books', to: 'books#search'
+  resources :books, only: [:new, :create]
+  get '/books', to: 'books#search'
 end

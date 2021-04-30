@@ -1,0 +1,26 @@
+<%= form_with url: books_path, local: true do |f| %>
+  <p>title: <%= @book.title %></p>
+  <%= hidden_field_tag :title, @book.title %>
+
+  <p>author: <%= @book.author %></p>
+  <%= hidden_field_tag :author, @book.author %>
+
+  <p><%= image_tag @book.image_link if @book.image_link.present? %></p>
+  <%= hidden_field_tag :image_link, @book.image_link %>
+
+  <% if @book.page_count %>
+    <p>page_count: <%= @book.page_count %></p>
+    <%= hidden_field_tag :page_count, @book.page_count %>
+  <% else %>
+    <%= f.label :page_start %>
+    <%= f.text_field :page_start, id: "page_start" %>
+    <%= f.label :page_end %>
+    <%= f.text_field :page_end, id: "page_end" %>
+    <%= f.label :page_count %>
+    <p><%= f.text_field :result, id: "result" %></p>
+  <% end %>
+
+  <%= f.submit "登録", class: "btn btn-primary" %>
+<% end %>
+<%= javascript_pack_tag 'book/application' %>
+<%= link_to "戻る", :back %>
