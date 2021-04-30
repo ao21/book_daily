@@ -5,7 +5,7 @@
   <p>author: <%= @book.author %></p>
   <%= hidden_field_tag :author, @book.author %>
 
-  <p><%= image_tag @book.image_link %></p>
+  <p><%= image_tag @book.image_link if @book.image_link.present? %></p>
   <%= hidden_field_tag :image_link, @book.image_link %>
 
   <% if @book.page_count %>
