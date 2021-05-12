@@ -6,6 +6,8 @@ class TasksController < ApplicationController
   end
 
   def new
+    book_id = params[:book_id]
+    @book = Book.find_by(id: book_id)
   end
 
   def create

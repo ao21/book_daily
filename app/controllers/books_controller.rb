@@ -22,7 +22,7 @@ class BooksController < ApplicationController
 
     if @book.save
       flash[:success] = "本を登録しました"
-      redirect_to books_url
+      redirect_to new_task_path(book_id: @book.id)
     else
       flash[:danger] = "本の登録に失敗しました"
       render :new
