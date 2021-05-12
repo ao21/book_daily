@@ -1,26 +1,30 @@
-<%= form_with url: books_path, local: true do |f| %>
-  <p>title: <%= @book.title %></p>
-  <%= hidden_field_tag :title, @book.title %>
+<p>title: <%= @book.title %></p>
+<p>author: <%= @book.author %></p>
+<p><%= image_tag @book.image_link if @book.image_link.present? %></p>
+<p>page_count: <%= @book.page_count if @book.page_count.present? %></p>
 
-  <p>author: <%= @book.author %></p>
-  <%= hidden_field_tag :author, @book.author %>
 
-  <p><%= image_tag @book.image_link if @book.image_link.present? %></p>
-  <%= hidden_field_tag :image_link, @book.image_link %>
+<% if @book.persisted? %>
+  <%= link_to "登録", controller: "tasks", action: "new", class: "btn btn-primary", book_id: @book.id %>
+<% else %>
+  <%= form_with url: books_path, local: true do |f| %>
+    <%= hidden_field_tag :title, @book.title %>
+    <%= hidden_field_tag :author, @book.author %>
+    <%= hidden_field_tag :image_link, @book.image_link %>
 
-  <% if @book.page_count %>
-    <p>page_count: <%= @book.page_count %></p>
-    <%= hidden_field_tag :page_count, @book.page_count %>
-  <% else %>
-    <%= f.label :page_start %>
-    <%= f.text_field :page_start, id: "page_start" %>
-    <%= f.label :page_end %>
-    <%= f.text_field :page_end, id: "page_end" %>
-    <%= f.label :page_count %>
-    <p><%= f.text_field :result, id: "result" %></p>
+    <% if @book.page_count %>
+      <%= hidden_field_tag :page_count, @book.page_count %>
+    <% else %>
+      <%= f.label :page_start %>
+      <%= f.text_field :page_start, id: "page_start" %>
+      <%= f.label :page_end %>
+      <%= f.text_field :page_end, id: "page_end" %>
+      <%= f.label :page_count %>
+      <p><%= f.text_field :result, id: "result" %></p>
+    <% end %>
+
+    <%= f.submit "登録", class: "btn btn-primary" %>
   <% end %>
-
-  <%= f.submit "登録", class: "btn btn-primary" %>
 <% end %>
 <%= javascript_pack_tag 'book/application' %>
 <%= link_to "戻る", :back %>
