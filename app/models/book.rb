@@ -1,5 +1,7 @@
 class Book < ApplicationRecord
 
+  has_many :tasks
+
   validates :title, presence: true
   validates :image_link, format: /\A#{URI::regexp(%w(http https))}\z/
   validates :page_count, presence: true, numericality: true
