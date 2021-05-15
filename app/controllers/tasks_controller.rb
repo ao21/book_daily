@@ -16,11 +16,9 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build(task_params)
 
     if @task.save
-      flash[:success] = "目標を登録しました"
-      redirect_to root_path
+      redirect_to root_path, notice: "目標を登録しました"
     else
-      flash[:danger] = "目標の登録に失敗しました"
-      render :new
+      render :new, alert: "目標の登録に失敗しました"
     end
   end
 
