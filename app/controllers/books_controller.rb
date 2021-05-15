@@ -18,9 +18,9 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.create(book_params)
+    book = Book.create(book_params)
 
-    if @book.save
+    if book.save
       flash[:success] = "本を登録しました"
       redirect_to new_task_path(book_id: @book.id)
     else
