@@ -1,5 +1,16 @@
 <h1>Tasks#new</h1>
 
 <p><%= @book.title %></p>
-<p>開始日：<%= date_field "tasks", :started_on %></p>
-<p>終了日：<%= date_field "tasks", :finished_on %></p>
+
+<%= form_with model: @task, local: true do |f| %>
+  <%= hidden_field_tag :book_id, @book.id %>
+  <div>
+    <%= f.label :started_on, "開始日" %>
+    <%= f.date_field :started_on %>
+  </div>
+  <div>
+    <%= f.label :finished_on, "終了日" %>
+    <%= f.date_field :finished_on %>
+  </div>
+  <%= f.submit "登録" %>
+<% end %>
