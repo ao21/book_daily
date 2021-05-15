@@ -21,11 +21,9 @@ class BooksController < ApplicationController
     book = Book.create(book_params)
 
     if book.save
-      flash[:success] = "本を登録しました"
-      redirect_to new_task_path(book_id: @book.id)
+      redirect_to new_task_path(book_id: @book.id), notice: "本を登録しました"
     else
-      flash[:danger] = "本の登録に失敗しました"
-      render :new
+      render :new, alert: "本の登録に失敗しました"
     end
   end
 
