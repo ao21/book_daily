@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @tasks = current_user.tasks.order(id: :asc)
   end
 
   def show
@@ -16,7 +17,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build(task_params)
 
     if @task.save
-      redirect_to root_path, notice: "目標を登録しました"
+      redirect_to tasks_path, notice: "目標を登録しました"
     else
       render :new, alert: "目標の登録に失敗しました"
     end
