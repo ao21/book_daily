@@ -1,2 +1,17 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<h1>編集</h1>
+<p><%= @task.book.title %></p>
+<%= form_with model: @task, local: true do |f| %>
+  <%= hidden_field_tag :book_id, @task.book_id %>
+  <div>
+    <%= f.label :started_on, "開始日" %>
+    <%= f.date_field :started_on %>
+  </div>
+  <div>
+    <%= f.label :finished_on, "終了日" %>
+    <%= f.date_field :finished_on %>
+  </div>
+  <div>
+  <%= f.submit "更新" %>
+  </div>
+<% end %>
+<%= link_to "戻る", tasks_path %>
