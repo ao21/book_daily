@@ -10,7 +10,10 @@
   </div>
   <div>
     <%= f.label :finished_on, "終了日" %>
-    <%= f.date_field :finished_on, id: "finished_on %>
+    <%= f.date_field :finished_on, id: "finished_on" %>
+  </div>
+  <div>
+    1日あたりのページ数：<span class="result"></span>
   </div>
   <%= f.submit "登録" %>
   <%= javascript_pack_tag 'task/application' %>
