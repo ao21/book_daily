@@ -15,16 +15,22 @@
     <% if @book.page_count %>
       <%= hidden_field_tag :page_count, @book.page_count %>
     <% else %>
-      <%= f.label :page_start %>
-      <%= f.text_field :page_start, id: "page_start" %>
-      <%= f.label :page_end %>
-      <%= f.text_field :page_end, id: "page_end" %>
-      <p><%= f.label :page_count %>
-      <%= f.text_field :result, id: "result" %></p>
+      <div>
+        <%= f.label :page_start %>
+        <%= f.text_field :page_start, id: "page_start" %>
+      </div>
+      <div>
+        <%= f.label :page_end %>
+        <%= f.text_field :page_end, id: "page_end" %>
+      </div>
+      <div>
+        <%= f.label :page_count %>
+        <%= f.text_field :result, id: "result" %>
+      </div>
     <% end %>
-
-    <%= f.submit "登録", class: "btn btn-primary" %>
+    <div>
+      <%= f.submit "登録", class: "btn btn-primary" %>
+    </div>
   <% end %>
 <% end %>
-<%= javascript_pack_tag 'book/application' %>
 <%= link_to "戻る", :back %>
