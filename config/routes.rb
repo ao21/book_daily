@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :books, only: [:new, :create]
   get '/books', to: 'books#search'
 
-  resources :tasks
+  resources :tasks do
+    resources :reads
+  end
 end
