@@ -9,4 +9,4 @@
 <%= link_to "編集", edit_task_path(@task) %>
 <%= link_to "削除", @task, method: :delete, data: { confirm: "削除しますか?" } %>
 
-<%= render partial: "reads/index", locals: { task: @task }, collection: @reads, as: "read" %>
+<%= render partial: "reads/index", locals: { task: @task, reads: @reads } %>

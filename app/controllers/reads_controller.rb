@@ -8,7 +8,7 @@ class ReadsController < ApplicationController
   end
 
   def create
-    task = Task.find_by(id: params[:task_id])
+    task = Task.find(params[:task_id])
     read = task.reads.build(read_params)
 
     if read.save
