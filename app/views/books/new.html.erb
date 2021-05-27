@@ -1,7 +1,7 @@
 <p>title: <%= @book.title %></p>
 <p>author: <%= @book.author %></p>
-<p><%= image_tag @book.image_link if @book.image_link.present? %></p>
-<p>page_count: <%= @book.page_count if @book.page_count.present? %></p>
+<p><%= image_tag @book.image_link if @book.image_link? %></p>
+<p>page_count: <%= @book.page_count if @book.page_count? %></p>
 
 
 <% if @book.persisted? %>
