@@ -1,4 +1,4 @@
-<%= form_with model: [@task, @read], local: true do |f| %>
+<%= form_with model: [task, read], local: true do |f| %>
   <div>
     <%= f.label :read_on, "読んだ日" %>
     <%= f.date_field :read_on, id: "read_on" %>
