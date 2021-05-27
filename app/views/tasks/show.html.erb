@@ -6,3 +6,7 @@
 <p>目標日数： </p>
 <p>1日の目標ページ数： </p>
 <p>進捗率： </p>
+<%= link_to "編集", edit_task_path(@task) %>
+<%= link_to "削除", @task, method: :delete, data: { confirm: "削除しますか?" } %>
+
+<%= render partial: "reads/index", locals: { task: @task, reads: @reads } %>
