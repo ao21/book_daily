@@ -1,1 +1,21 @@
-<h3>Reads#index</h3>
+<h1>進捗一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">読んだ日</th>
+      <th scope="col">読んだページ数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= read_counter + 1 %></th>
+      <td><%= read.read_on %></td>
+      <td><%= read.read_page %></td>
+      <td>
+        <%= link_to "編集", edit_task_read_path(task, read) %>
+        <%= link_to "削除", task_read_path(task, read), method: :delete, data: { confirm: "削除しますか?" } %>
+      </td>
+    </tr>
+  </tbody>
+</table>

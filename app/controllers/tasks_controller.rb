@@ -7,6 +7,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @reads = @task.reads.all.order(id: :desc)
   end
 
   def new
