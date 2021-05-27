@@ -25,6 +25,10 @@ class ReadsController < ApplicationController
   end
 
   def destroy
+    task = Task.find(params[:task_id])
+    read = task.reads.find(params[:id])
+    read.destroy!
+    redirect_to task_path(task.id)
   end
 
   private
