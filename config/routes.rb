@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get '/books', to: 'books#search'
 
   resources :tasks do
-    resources :reads
+    resources :reads, except: [:index, :show]
   end
 end
