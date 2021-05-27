@@ -9,7 +9,7 @@ class ReadsController < ApplicationController
   def create
     read = @task.reads.build(read_params)
     if read.save
-      redirect_to task_path(@task.id)
+      redirect_to task_path(@task.id), notice: "登録しました"
     else
       render "tasks/show"
     end
@@ -20,12 +20,12 @@ class ReadsController < ApplicationController
 
   def update
     @read.update!(read_params)
-    redirect_to task_path(@task.id)
+    redirect_to task_path(@task.id), notice: "更新しました"
   end
 
   def destroy
     @read.destroy!
-    redirect_to task_path(@task.id)
+    redirect_to task_path(@task.id), alert: "削除しました"
   end
 
   private
