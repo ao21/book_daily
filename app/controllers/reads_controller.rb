@@ -19,9 +19,15 @@ class ReadsController < ApplicationController
   end
 
   def edit
+    @task = Task.find(params[:task_id])
+    @read = @task.reads.find(params[:id])
   end
 
   def update
+    task = Task.find(params[:task_id])
+    read = task.reads.find(params[:id])
+    read.update!(read_params)
+    redirect_to task_path(task.id)
   end
 
   def destroy
