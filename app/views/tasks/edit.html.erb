@@ -3,11 +3,11 @@
 <%= form_with model: @task, local: true do |f| %>
   <%= hidden_field_tag :book_id, @task.book_id %>
   <div>
-    <%= f.label :started_on, "開始日" %>
+    <%= f.label :started_on %>
     <%= f.date_field :started_on %>
   </div>
   <div>
-    <%= f.label :finished_on, "終了日" %>
+    <%= f.label :finished_on %>
     <%= f.date_field :finished_on %>
   </div>
   <div>

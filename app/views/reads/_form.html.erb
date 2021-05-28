@@ -1,11 +1,11 @@
 <%= form_with model: [task, read], local: true do |f| %>
   <div>
-    <%= f.label :read_on, "読んだ日" %>
-    <%= f.date_field :read_on, id: "read_on" %>
+    <%= f.label :read_on %>
+    <%= f.date_field :read_on %>
   </div>
   <div>
-    <%= f.label :read_page, "読み終えたページ番号" %>
-    <%= f.text_field :read_page, id: "read_page" %>
+    <%= f.label :read_page %>
+    <%= f.text_field :read_page %>
   </div>
   <%= f.submit button_value %>
 <% end %>
