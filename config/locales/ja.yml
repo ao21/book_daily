@@ -9,6 +9,18 @@ ja:
         author: 著者
         image_link: 画像リンク
         page_count: ページ数
+    models:
+      read:
+    attributes:
+      read:
+        read_on: 読書日
+        read_page: 読み終わったページ番号
+    models:
+      task: タスク
+    attributes:
+      task:
+        started_on: 開始日
+        finished_on: 終了日
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
