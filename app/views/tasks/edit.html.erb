@@ -1,6 +1,7 @@
 <h1>編集</h1>
 <p><%= @task.book.title %></p>
 <%= form_with model: @task, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <%= hidden_field_tag :book_id, @task.book_id %>
   <div>
     <%= f.label :started_on %>

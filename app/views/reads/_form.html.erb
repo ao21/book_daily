@@ -1,4 +1,5 @@
 <%= form_with model: [task, read], local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div>
     <%= f.label :read_on %>
     <%= f.date_field :read_on %>
