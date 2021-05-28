@@ -14,16 +14,18 @@ class BooksController < ApplicationController
 
     unless @book.persisted?
       @book = Book.new(book_data)
+    else
+      redirect_to controller: :tasks, action: :new, book_id: @book.id
     end
   end
 
   def create
-    book = Book.create(book_params)
-
-    if book.save
+    @book = Book.new(book_params)
+    if @book.save
       redirect_to new_task_path(book_id: @book.id), notice: "本を登録しました"
     else
-      render :new, alert: "本の登録に失敗しました"
+      flash[:alert] = "本の登録に失敗しました"
+      render :new
     end
   end
 
@@ -39,6 +41,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.permit(:title, :author, :image_link, :page_count)
+    params.require(:book).permit(:title, :author, :image_link, :page_count)
   end
 end

@@ -7,11 +7,12 @@ class ReadsController < ApplicationController
   end
 
   def create
-    read = @task.reads.build(read_params)
-    if read.save
+    @read = @task.reads.build(read_params)
+    if @read.save
       redirect_to task_path(@task.id), notice: "登録しました"
     else
-      render "tasks/show"
+      flash.now[:alert] = "登録に失敗しました"
+      render :new
     end
   end
 
@@ -19,8 +20,12 @@ class ReadsController < ApplicationController
   end
 
   def update
-    @read.update!(read_params)
-    redirect_to task_path(@task.id), notice: "更新しました"
+    if @read.update(read_params)
+      redirect_to task_path(@task.id), notice: "更新しました"
+    else
+      flash.now[:alert] = "更新に失敗しました"
+      render :edit
+    end
   end
 
   def destroy

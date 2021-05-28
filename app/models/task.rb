@@ -6,8 +6,6 @@ class Task < ApplicationRecord
   with_options presence: true do
     validates :started_on
     validates :finished_on
-    validates :book_id
-    validates :user_id
   end
   validate :finished_on_cannot_be_before_started_on
 

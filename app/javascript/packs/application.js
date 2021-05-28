@@ -9,7 +9,6 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap/dist/js/bootstrap"
 import "jquery"
-import "./page_count" //総ページ数自動計算
 import "./daily_goal.js" // 1日あたりのページ数計算
 
 Rails.start()
