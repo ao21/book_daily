@@ -29,12 +29,8 @@ class ReadsController < ApplicationController
   end
 
   def destroy
-    if @read.destroy
-      redirect_to task_path(@task.id), alert: "削除しました"
-    else
-      flash.now[:alert] = "削除に失敗しました"
-       render "task/show"
-    end
+    @read.destroy!
+    redirect_to task_path(@task.id), alert: "削除しました"
   end
 
   private
