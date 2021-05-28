@@ -46,3 +46,13 @@
 .alert-alert {
   @extend .alert-danger;
 }
+
+/* エラーメッセージ */
+
+div.field_with_errors {
+  display: contents;
+
+  input {
+    border: 2px solid red;
+  }
+}
