@@ -1,24 +1,20 @@
 <p>title: <%= @book.title %></p>
 <p>author: <%= @book.author %></p>
 <p><%= image_tag @book.image_link if @book.image_link? %></p>
-<p>page_count: <%= @book.page_count if @book.page_count? %></p>
+<p>page_count: <%= @book.page_count %></p>
 
-<%= form_with model: @book, local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <%= f.hidden_field :title, value:@book.title %>
-  <%= f.hidden_field :author, value:@book.author %>
-  <%= f.hidden_field :image_link, value:@book.image_link %>
-
-  <% if @book.page_count %>
+<% if @book.persisted? %>
+  <%= link_to "登録", controller: :tasks, action: :new, book_id: @book.id, class: "btn btn-primary" %>
+<% else %>
+  <%= form_with model: @book, local: true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <%= f.hidden_field :title, value:@book.title %>
+    <%= f.hidden_field :author, value:@book.author %>
+    <%= f.hidden_field :image_link, value:@book.image_link %>
     <%= f.hidden_field :page_count, value:@book.page_count %>
-  <% else %>
     <div>
-      <%= f.label :page_count %>
-      <%= f.text_field :page_count %>
+      <%= f.submit "登録", class: "btn btn-primary" %>
     </div>
   <% end %>
-  <div>
-    <%= f.submit "登録", class: "btn btn-primary" %>
-  </div>
 <% end %>
 <%= link_to "戻る", :back %>

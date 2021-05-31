@@ -1,6 +1,5 @@
 class Book < ApplicationRecord
-
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
   validates :title, presence: true
   validates :page_count, presence: true, numericality: true
@@ -15,6 +14,12 @@ class Book < ApplicationRecord
       image_link = result.dig("volumeInfo", "imageLinks", "smallThumbnail")
       page_count = result.dig("volumeInfo", "pageCount")
 
+      # ページ数のデータがない場合は検索結果に表示しない
+      if page_count.blank?
+        next 
+      end
+
+      # 著者が複数名の場合の表記
       if authors
         author = authors.join(', ')
       end

@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :book
   belongs_to :user
-  has_many :reads
+  has_many :reads, dependent: :destroy
 
   with_options presence: true do
     validates :started_on

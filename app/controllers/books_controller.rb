@@ -14,8 +14,6 @@ class BooksController < ApplicationController
 
     unless @book.persisted?
       @book = Book.new(book_data)
-    else
-      redirect_to controller: :tasks, action: :new, book_id: @book.id
     end
   end
 
