@@ -2,6 +2,7 @@
   <%= f.text_field :keyword %>
   <%= f.submit '本の題名を検索' %>
 <% end %>
+
 <% if @results_data %>
   <% @results_data.each_with_index do |result, i| %>
     <p>--------------</p>
