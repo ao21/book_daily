@@ -7,7 +7,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    @reads = @task.reads.all.order(id: :desc)
+    @reads = @task.reads.all.order(read_on: :desc)
+    @progress_data = Task.progress_data(@task)
   end
 
   def new
