@@ -14,9 +14,9 @@
  *= require_self
  */
 
- @import "bootstrap/scss/bootstrap";
+@import 'bootstrap/scss/bootstrap';
 
- /* 全体 */
+/* 全体 */
 
 .base-container {
   margin: 0 auto;
@@ -55,4 +55,15 @@ div.field_with_errors {
   input {
     border: 2px solid red;
   }
+}
+
+/* トップページ */
+
+.logout_header {
+  width: 100%;
+  background-color: skyblue;
+}
+
+.login_right {
+  float: right;
 }
