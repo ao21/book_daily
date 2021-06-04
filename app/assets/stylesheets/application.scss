@@ -57,13 +57,34 @@ div.field_with_errors {
   }
 }
 
-/* トップページ */
+/* ヘッダー */
 
-.logout_header {
+.logout-header {
   width: 100%;
+  height: 35px;
   background-color: skyblue;
+  line-height: 35px;
 }
 
-.login_right {
+.login-right {
   float: right;
+}
+
+.title-header {
+  margin: 0 auto;
+  float: left;
+}
+
+.title {
+  display: inline-block;
+  margin: 10px 0 0 10px;
+  float: left;
+  position: relative;
+}
+
+.search-form {
+  display: inline-block;
+  margin: 20px 0 0 30px;
+  float: left;
+  position: relative;
 }
