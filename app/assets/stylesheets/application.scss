@@ -76,8 +76,12 @@ div.field_with_errors {
 .logout-header {
   width: 100%;
   height: 35px;
-  background-color: skyblue;
+  background-color: #4756ca;
   line-height: 35px;
+}
+
+.link {
+  color: #fff;
 }
 
 .login-right {
@@ -85,6 +89,8 @@ div.field_with_errors {
 }
 
 .title-header {
+  background-color: #fff;
+  border-bottom: 1px solid #bdbdbd;
   margin: 0 auto;
 }
 
@@ -100,3 +106,5 @@ div.field_with_errors {
   margin: 20px 0 0 30px;
   position: relative;
 }
+
+/* トップページ */
