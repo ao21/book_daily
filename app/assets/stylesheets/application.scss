@@ -18,9 +18,23 @@
 
 /* 全体 */
 
+body {
+  background-color: #fcfcfc;
+  color: #212121;
+}
+
 .base-container {
-  margin: 0 auto;
+  margin: 5px auto 0;
   padding: 1rem;
+}
+
+.main-wrapper {
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 10px;
 }
 
 /* max-width */
