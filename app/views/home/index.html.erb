@@ -1,1 +1,19 @@
+<section class="main-wrapper">
+  <div class="introduction-block">
+    <div>
+      <p>毎日の目標ページ数を決めて、<br/>
+      読書を習慣にする。</p>
+    </div>
+  </div>
+</section>
 
+<section class="main-wrapper">
+  <h3>新着</h3>
+  <% @reads.each do |read| %>
+    <div>
+      <%= read.task.user.name %>さんが
+      <%= read.task.book.title %> を
+      <%= read.read_page %> ページ読みました！
+    </div>
+  <% end %>
+</section>
