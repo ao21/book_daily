@@ -37,6 +37,35 @@ body {
   margin-bottom: 10px;
 }
 
+.content-with-header {
+  font-size: 16px;
+}
+
+.content-header {
+  height: 40px;
+  position: relative;
+  border-bottom: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  line-height: 40px;
+}
+
+.header-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 40px;
+  position: absolute;
+  padding: 0 15px;
+  border-bottom: 4px solid #4756ca;
+  box-sizing: border-box;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+.content-body {
+  padding: 15px;
+}
+
 /* max-width */
 
 .mw-md {
@@ -78,6 +107,7 @@ div.field_with_errors {
   height: 35px;
   background-color: #4756ca;
   line-height: 35px;
+  padding: 0 5px 0 5px;
 }
 
 .link {
