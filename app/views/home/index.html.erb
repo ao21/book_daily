@@ -1,6 +1,21 @@
-<% if user_signed_in?%>
-  <%= current_user.name.present? ? "#{current_user.name}さん" : "ユーザーNo.#{current_user.id}さん" %>
-<% end %>
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<%= link_to "本の検索", books_path %>
+<div class="introduction-block mb-2">
+  <div><%= image_tag 'top.png' %></div>
+</div>
+
+<div class="main-wrapper">
+  <div class="content-with-header">
+    <div class="content-header">
+      <div class="header-title">新着</div>
+    </div>
+    <div class="content-body">
+      <% @reads.each do |read| %>
+        <div>
+          <%= read.read_on %>
+          <%= read.task.user.name %>さんが
+          <%= read.task.book.title %> を
+          <%= read.read_page %> ページ読みました！
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

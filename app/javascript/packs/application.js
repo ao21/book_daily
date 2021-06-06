@@ -3,14 +3,15 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
-import "bootstrap/dist/js/bootstrap"
-import "jquery"
-import "./daily_goal.js" // 1日あたりのページ数計算
+import Rails from '@rails/ujs';
+import Turbolinks from 'turbolinks';
+import * as ActiveStorage from '@rails/activestorage';
+import 'channels';
+import 'bootstrap/dist/js/bootstrap';
+import 'jquery';
+import './daily_goal.js'; // 1日あたりのページ数計算
+import './search_form.js'; //書籍検索を空白時に無効化
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();

@@ -1,3 +1,4 @@
+<%= current_user.name.present? ? "#{current_user.name}さん" : "ユーザーNo.#{current_user.id}さん" %>
 <h1>タスク一覧</h1>
 <table>
   <thead>

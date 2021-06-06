@@ -14,13 +14,57 @@
  *= require_self
  */
 
- @import "bootstrap/scss/bootstrap";
+@import 'bootstrap/scss/bootstrap';
 
- /* 全体 */
+/* 全体 */
+
+body {
+  background-color: #fcfcfc;
+  color: #212121;
+}
 
 .base-container {
-  margin: 0 auto;
+  margin: 5px auto 0;
   padding: 1rem;
+}
+
+.main-wrapper {
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 10px;
+  width: 720px;
+}
+
+.content-with-header {
+  font-size: 16px;
+}
+
+.content-header {
+  height: 50px;
+  position: relative;
+  border-bottom: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  line-height: 50px;
+}
+
+.header-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 50px;
+  position: absolute;
+  padding: 0 15px;
+  border-bottom: 4px solid #4756ca;
+  box-sizing: border-box;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+.content-body {
+  padding: 15px;
 }
 
 /* max-width */
@@ -55,4 +99,48 @@ div.field_with_errors {
   input {
     border: 2px solid red;
   }
+}
+
+/* ヘッダー */
+
+.logout-header {
+  width: 100%;
+  height: 35px;
+  background-color: #4756ca;
+  line-height: 35px;
+  padding: 0 5px 0 5px;
+}
+
+.link {
+  color: #fff;
+}
+
+.login-right {
+  float: right;
+}
+
+.title-header {
+  background-color: #fff;
+  border-bottom: 1px solid #bdbdbd;
+  margin: 0 auto;
+}
+
+.title {
+  display: inline-block;
+  margin: 10px 0 0 10px;
+  position: relative;
+}
+
+.search-form {
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px 0 0 30px;
+  position: relative;
+}
+
+/* トップページ */
+
+img {
+  border-radius: 4px;
+  border: 1px solid #bdbdbd;
 }
