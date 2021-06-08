@@ -12,6 +12,8 @@
                 <li class="group-book">
                   <% if result[:image_link].present? %>
                     <%= image_tag result[:image_link], class: "book-image" %>
+                  <% else %>
+                    <%= image_tag 'book.png', class: "book-image" %>
                   <% end %>
                   <div class="book-detail">
                     <div class="detail-title">
