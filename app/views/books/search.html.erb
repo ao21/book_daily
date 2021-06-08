@@ -1,10 +1,36 @@
-<% if @results_data %>
-  <% @results_data.each_with_index do |result, i| %>
-    <p>--------------</p>
-    <p><%= result[:title] %></p>
-    <p><%= result[:author] %></p>
-    <p><%= result[:page_count] %></p>
-    <p><%= image_tag result[:image_link] if result[:image_link].present? %></p>
-    <%= link_to "登録", controller: :books, action: :new, class: "btn btn-primary", title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
-  <% end %>
-<% end %>
+<div class="main-wrapper">
+  <div class="content-with-header">
+    <div class="content-header">
+      <div class="header-title"><%= params[:keyword] %>の検索結果</div>
+    </div>
+    <div class="content-body">
+      <div class="book-list">
+        <% if @results_data %>
+          <% @results_data.each_slice(4) do |results| %>
+            <ul class="book-list-group">
+              <% results.each do |result| %>
+                <li class="group-book">
+                  <% if result[:image_link].present? %>
+                    <%= image_tag result[:image_link], class: "book-image" %>
+                  <% end %>
+                  <div class="book-detail">
+                    <div class="detail-title">
+                      <%= link_to result[:title], controller: :books, action: :new, class: "btn btn-primary", title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
+                    </div>
+                    <div class="detail-author"><%= result[:author] %></div>
+                    <dl class="detail-page-count">
+                      <dt class="count-title">ページ数</dt>
+                      <dd class="count-item"><%= result[:page_count] %></dd>
+                    </dl>
+                  </div>
+                  <div class="book-submit">
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
