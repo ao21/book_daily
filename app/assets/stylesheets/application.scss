@@ -238,3 +238,100 @@ img.book-image {
   line-height: 18px;
   padding: 0 5px;
 }
+
+/* ログイン、サインインページ */
+
+.field-title {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.field-field {
+  appearance: none;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #bdbdbd;
+  border-radius: 0;
+  outline: none;
+  background: none;
+  font-size: 16px;
+}
+
+.actions {
+  width: 100%;
+  max-width: 420px;
+  min-width: 120px;
+  margin: 0 auto 16px;
+}
+
+.actions-signup {
+  width: 100%;
+  max-width: 420px;
+  min-width: 120px;
+  margin: 16px auto 16px;
+}
+
+.login-submit-btn {
+  appearance: none;
+  outline: none;
+  width: 100%;
+  display: block;
+  background: #4756ca;
+  border-radius: 100px;
+  border: 1px solid #4756ca;
+  box-sizing: border-box;
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.login-render {
+  text-align: center;
+}
+
+.login-guide-wrap {
+  text-align: center;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+.login-border-wrap {
+  border-top: 1px solid #999;
+  box-sizing: border-box;
+  height: 30px;
+}
+
+.login-guide-text {
+  font-size: 14px;
+  color: #999;
+  height: 30px;
+  line-height: 30px;
+  margin: -15px auto 0;
+  background: #fff;
+  width: 17em;
+}
+
+.login-btn-wrap {
+  width: 100%;
+  max-width: 420px;
+  min-width: 120px;
+  margin: 0 auto 16px;
+}
+
+.login-btn-link {
+  width: 100%;
+  display: block;
+  background: #bdbdbd;
+  border-radius: 100px;
+  border: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  color: #313f52 !important;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+}
