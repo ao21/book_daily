@@ -7,19 +7,19 @@
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-          <%= f.label :email, "メールアドレスを入力してください", class: "field-title" %><br />
+          <%= f.label :email, "メールアドレスを入力してください", class: "field-title" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "半角のみ", class: "field-field" %>
         </div>
 
-        <div class="field">
-          <%= f.label :password, "パスワードを入力してください", class: "field-title" %><br />
+        <div class="field mt-1">
+          <%= f.label :password, "パスワードを入力してください", class: "field-title" %>
           <%= f.password_field :password, autocomplete: "current-password", placeholder: "半角英数のみ", class: "field-field" %>
         </div>
 
         <% if devise_mapping.rememberable? %>
           <div class="field">
             <%= f.check_box :remember_me %>
-            <%= f.label :remember_me, "次回から自動的にログイン", class: "field-title" %>
+            <%= f.label :remember_me, "ログインを記憶する", class: "field-title" %>
           </div>
         <% end %>
 
