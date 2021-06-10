@@ -17,7 +17,7 @@
           <%= f.label :email, "メールアドレスを入力してください", class: "field-title" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "半角のみ", class: "field-field" %>
         </div>
-
+        
         <div class="field">
           <%= f.label :password, "パスワードを入力してください", class: "field-title" %>
           <% if @minimum_password_length %>
@@ -30,7 +30,7 @@
           <%= f.label :password_confirmation, class: "field-title" %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "半角英数のみ", class: "field-field" %>
         </div>
-
+        
         <div class="actions-signup">
           <%= f.submit t('.sign_up'), class: "login-submit-btn" %>
         </div>
