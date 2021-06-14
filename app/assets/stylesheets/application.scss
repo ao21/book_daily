@@ -112,58 +112,55 @@ div.field_with_errors {
   height: 35px;
   background-color: #4756ca;
 
-  .menu-inner {
-    margin: 0 auto;
+  .personal-account {
+    text-align: right;
+    line-height: 35px;
 
-    .personal-account {
-      text-align: right;
+    .account-task {
+      margin-right: 5px;
+      display: inline-block;
+      position: relative;
 
-      .account-task {
-        margin-right: 5px;
-        display: inline-block;
+      .account-task-link {
+        color: #fff;
+        padding: 5px;
+        align-items: center;
+      }
+    }
+
+    .account-menu {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+
+      .menu-item {
+        color: #fff;
+        display: block;
+        margin-bottom: 1px;
         position: relative;
 
-        .account-task-link {
+        .menu-item-link {
+          margin-right: 5px;
           color: #fff;
-          padding: 5px;
-          align-items: center;
+          display: block;
+          text-decoration: none;
         }
       }
 
-      .account-menu {
-        display: inline-block;
-        position: relative;
-        cursor: pointer;
+      .submenu {
+        background: #fff;
+        position: absolute;
+        top: 35px;
+        right: 0;
+        left: -55px;
+        text-align: center;
+        border-radius: 0 0 4px 4px;
+        border: 1px solid #798469;
+        border-top: none;
+        padding: 0 0 0 5px;
 
-        .menu-item {
-          color: #fff;
-          display: block;
-          margin-bottom: 1px;
-          position: relative;
-
-          .menu-item-link {
-            margin-right: 5px;
-            color: #fff;
-            display: block;
-            text-decoration: none;
-          }
-        }
-
-        .submenu {
-          background: #fff;
-          position: absolute;
-          top: 25px;
-          right: 0;
-          left: -55px;
-          text-align: center;
-          border-radius: 0 0 4px 4px;
-          border: 1px solid #798469;
-          border-top: none;
-          padding: 0 0 0 5px;
-
-          .submenu-item {
-            border-bottom: 1px solid #f0f0f0;
-          }
+        .submenu-item {
+          border-bottom: 1px solid #f0f0f0;
         }
       }
     }

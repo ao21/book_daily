@@ -1,25 +1,33 @@
-<%= current_user.name.present? ? "#{current_user.name}さん" : "ユーザーNo.#{current_user.id}さん" %>
-<h1>タスク一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">タイトル</th>
-      <th scope="col">目標日</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each.with_index(1) do |task, i| %>
-      <tr>
-        <th scope="row"><%= i %></th>
-        <td><%= task.book.title %></td>
-        <td><%= task.finished_on %></td>
-        <td>
-          <%= link_to "詳細", task %>
-          <%= link_to "進捗登録", new_task_read_path(task) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="main-wrapper">
+  <div class="content-with-header">
+    <div class="content-header">
+      <div class="header-title">タスク一覧</div>
+    </div>
+    <div class="content-body">
+      <%= current_user.name.present? ? "#{current_user.name}さん" : "ユーザーNo.#{current_user.id}さん" %>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">タイトル</th>
+            <th scope="col">目標日</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tasks.each.with_index(1) do |task, i| %>
+            <tr>
+              <th scope="row"><%= i %></th>
+              <td><%= task.book.title %></td>
+              <td><%= task.finished_on %></td>
+              <td>
+                <%= link_to "詳細", task %>
+                <%= link_to "進捗登録", new_task_read_path(task) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
