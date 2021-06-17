@@ -15,19 +15,46 @@ class Task < ApplicationRecord
     end
   end
 
+  def self.percentage(max_read_page, total_pages)
+    if max_read_page
+       100 * max_read_page / total_pages
+    else
+      0
+    end
+  end
+
+  def self.daily_goal_pages(max_read_page, total_pages, left_days)
+    if max_read_page
+      ( total_pages - max_read_page ) / left_days
+    else
+      0
+    end
+  end
+
   # 進捗のデータをハッシュに整形
-  def self.progress_data(task)
-    max_read_page = task.reads.select(:read_page).maximum(:read_page)
-    total_pages = task.book.page_count
+  def self.progress_data(user)
+    tasks = user.tasks.all.order(finished_on: :desc)
+    progress_data = {}
 
-    left_days = (task.finished_on - Date.today).to_i
-    daily_goal_pages = ( total_pages - max_read_page ) / left_days
-    percentage = 100 * max_read_page / total_pages
+    tasks.each do |task|
+      max_read_page = task.reads.select(:read_page).maximum(:read_page)
+      total_pages = task.book.page_count
 
-    progress_data = {
-      left_days: left_days,
-      daily_goal_pages: daily_goal_pages,
-      percentage: percentage,
-    }
+      left_days = (task.finished_on - Date.today).to_i
+      percentage = self.percentage(max_read_page, total_pages) || 0
+      daily_goal_pages = self.daily_goal_pages(max_read_page, total_pages,left_days) || 0
+
+      progress_data.store(
+        task.id,
+        {
+          title: task.book.title,
+          finished_on: task.finished_on,
+          left_days: left_days,
+          daily_goal_pages: daily_goal_pages,
+          percentage: percentage,
+        }
+      )
+    end
+    return progress_data
   end
 end

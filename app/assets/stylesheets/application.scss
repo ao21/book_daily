@@ -148,6 +148,7 @@ div.field_with_errors {
       }
 
       .submenu {
+        display: none;
         background: #fff;
         position: absolute;
         top: 35px;
@@ -155,7 +156,7 @@ div.field_with_errors {
         left: -55px;
         text-align: center;
         border-radius: 0 0 4px 4px;
-        border: 1px solid #798469;
+        border: 1px solid #bdbdbd;
         border-top: none;
         padding: 0 0 0 5px;
 
