@@ -390,3 +390,20 @@ img.book-image {
   text-align: center;
   padding: 12px;
 }
+
+/* タスク一覧ページ */
+
+.task {
+  border-bottom: 1px solid #bdbdbd;
+  margin-top: 5px;
+
+  .task-image {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .task-detail {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
