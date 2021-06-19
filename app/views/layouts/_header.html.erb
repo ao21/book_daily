@@ -1,19 +1,33 @@
-<div class="logout-header">
-  <%= link_to 'トップへ戻る', root_path, class: "link" %>
-  <% if user_signed_in?%>
-    <%= link_to "タスク一覧", tasks_path %>
-    <%= link_to "アカウント編集", edit_user_registration_path %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
-  <% else %>
-    <span class="login-right">
-      <%= link_to "新規登録", new_user_registration_path, class: "link" %>
-      <%= link_to "ログイン", new_user_session_path, class: "link" %>
-    </span>
-  <% end %>
+<div class="header-menu">
+  <div class="menu-inner">
+    <div class="personal-account">
+      <% if user_signed_in? %>
+        <div class="account-task">
+          <%= link_to "#{current_user.name}さんのタスク一覧", tasks_path, class: "link account-task-link" %>
+        </div>
+        <div class="account-menu">
+          <div class="menu-item">
+            <a class="menu-item-link js-menu-item-link" href="">メニュー</a>
+            <ul class="submenu">
+              <li class="submenu-item">
+                <%= link_to "アカウント編集", edit_user_registration_path %>
+              </li>
+              <li class="submenu-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path, class: "link" %>
+        <%= link_to "ログイン", new_user_session_path, class: "link" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="title-header">
   <span class="title">
-    <h2>読書の習慣</h2>
+    <h2><%= link_to "読書の習慣", root_path %></h2>
     <p>日々の読書目標を達成しよう！</p>
   </span>
   <span class="search-form">

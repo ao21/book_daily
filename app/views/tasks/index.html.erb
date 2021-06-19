@@ -1,25 +1,30 @@
-<%= current_user.name.present? ? "#{current_user.name}さん" : "ユーザーNo.#{current_user.id}さん" %>
-<h1>タスク一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">タイトル</th>
-      <th scope="col">目標日</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each.with_index(1) do |task, i| %>
-      <tr>
-        <th scope="row"><%= i %></th>
-        <td><%= task.book.title %></td>
-        <td><%= task.finished_on %></td>
-        <td>
-          <%= link_to "詳細", task %>
-          <%= link_to "進捗登録", new_task_read_path(task) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="main-wrapper">
+  <div class="content-with-header">
+    <div class="content-header">
+      <div class="header-title">タスク一覧</div>
+    </div>
+    <div class="content-body">
+      <% @tasks.zip(@progress_data) do |task, data| %>
+        <div class="task">
+          <div class="task-image">
+            <%= render partial: 'books/image_link', locals: { image_link: task.book.image_link } %>
+          </div>
+          <div class="task-detail">
+            <div class="task-detail-title"><%= task.book.title %></div>
+            <div>今日の目標ページ数：<%= data[:daily_goal_pages] %>ページ </div>
+            <div>目標日：<%= task.finished_on %></div>
+            <div>
+              <%= link_to "詳細", task %>
+              <%= link_to "進捗登録", new_task_read_path(task) %>
+            </div>
+            <div class="progress mt-2 mb-3" style="height: 26px; width: 500px">
+              <div class="progress-bar progress-bar-striped" role="progressbar" style="width:<%= data[:percentage] %>%; background-color:blue" aria-valuenow="<%= data[:percentage] %>" aria-valuemin="0" aria-valuemax="100">
+                <%= data[:percentage] %>%
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

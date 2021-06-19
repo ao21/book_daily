@@ -10,11 +10,7 @@
             <ul class="book-list-group">
               <% results.each do |result| %>
                 <li class="group-book">
-                  <% if result[:image_link].present? %>
-                    <%= image_tag result[:image_link], class: "book-image" %>
-                  <% else %>
-                    <%= image_tag 'book.png', class: "book-image" %>
-                  <% end %>
+                  <%= render partial: 'image_link', locals: { image_link: result[:image_link] } %>
                   <div class="book-detail">
                     <div class="detail-title">
                       <%= link_to result[:title], controller: :books, action: :new, class: "btn btn-primary", title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
