@@ -3,7 +3,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    @tasks = current_user.tasks.order(id: :asc)
+    @tasks = current_user.tasks.all.order(finished_on: :desc)
+    @progress_data = Task.progress_data(@tasks)
   end
 
   def show

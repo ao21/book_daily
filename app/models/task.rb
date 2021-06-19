@@ -32,9 +32,8 @@ class Task < ApplicationRecord
   end
 
   # 進捗のデータをハッシュに整形
-  def self.progress_data(user)
-    tasks = user.tasks.all.order(finished_on: :desc)
-    progress_data = {}
+  def self.progress_data(tasks)
+    progress_data = []
 
     tasks.each do |task|
       max_read_page = task.reads.select(:read_page).maximum(:read_page)
@@ -44,11 +43,8 @@ class Task < ApplicationRecord
       percentage = self.percentage(max_read_page, total_pages) || 0
       daily_goal_pages = self.daily_goal_pages(max_read_page, total_pages,left_days) || 0
 
-      progress_data.store(
-        task.id,
+      progress_data.push(
         {
-          title: task.book.title,
-          finished_on: task.finished_on,
           left_days: left_days,
           daily_goal_pages: daily_goal_pages,
           percentage: percentage,

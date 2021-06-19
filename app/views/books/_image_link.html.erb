@@ -1,5 +1,5 @@
-<% if result[:image_link].present? %>
-  <%= image_tag result[:image_link], class: "book-image" %>
+<% if image_link.present? %>
+  <%= image_tag image_link, class: "book-image" %>
 <% else %>
   <%= image_tag 'book.png', class: "book-image" %>
 <% end %>
