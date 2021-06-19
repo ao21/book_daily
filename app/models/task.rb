@@ -27,7 +27,7 @@ class Task < ApplicationRecord
     if max_read_page
       ( total_pages - max_read_page ) / left_days
     else
-      0
+      total_pages / left_days
     end
   end
 

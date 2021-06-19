@@ -4,20 +4,20 @@
       <div class="header-title">タスク一覧</div>
     </div>
     <div class="content-body">
-      <%= current_user.name.present? ? "#{current_user.name}さん" : "ユーザーNo.#{current_user.id}さん" %>
       <% @tasks.zip(@progress_data) do |task, data| %>
         <div class="task">
           <div class="task-image">
             <%= render partial: 'books/image_link', locals: { image_link: task.book.image_link } %>
           </div>
           <div class="task-detail">
-            <div><%= task.book.title %></div>
+            <div class="task-detail-title"><%= task.book.title %></div>
+            <div>今日の目標ページ数：<%= data[:daily_goal_pages] %>ページ </div>
             <div>目標日：<%= task.finished_on %></div>
             <div>
               <%= link_to "詳細", task %>
               <%= link_to "進捗登録", new_task_read_path(task) %>
             </div>
-            <div class="progress mt-3 mb-3" style="height: 26px; width: 500px">
+            <div class="progress mt-2 mb-3" style="height: 26px; width: 500px">
               <div class="progress-bar progress-bar-striped" role="progressbar" style="width:<%= data[:percentage] %>%; background-color:blue" aria-valuenow="<%= data[:percentage] %>" aria-valuemin="0" aria-valuemax="100">
                 <%= data[:percentage] %>%
               </div>
