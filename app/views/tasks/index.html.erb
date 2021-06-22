@@ -20,11 +20,7 @@
               <% end %>
               <%= link_to "進捗登録", new_task_read_path(task) %>
             </div>
-            <div class="progress mt-2 mb-3" style="height: 26px; width: 500px">
-              <div class="progress-bar progress-bar-striped" role="progressbar" style="width:<%= data[:percentage] %>%; background-color:blue" aria-valuenow="<%= data[:percentage] %>" aria-valuemin="0" aria-valuemax="100">
-                <%= data[:percentage] %>%
-              </div>
-            </div>
+            <%= render 'percentage', percentage: data[:percentage] %>
           </div>
         </div>
       <% end %>

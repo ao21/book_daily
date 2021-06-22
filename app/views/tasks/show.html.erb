@@ -4,18 +4,39 @@
       <div class="header-title">タスク詳細</div>
     </div>
     <div class="content-body">
-      <p>本のタイトル： <%= @task.book.title %></p>
-      <p>ページ数： <%= @task.book.page_count %></p>
-      <p>開始日： <%= @task.started_on %></p>
-      <p>終了日： <%= @task.finished_on %></p>
-      <p>目標日数：あと<%= @progress_data["left_days"] %>日</p>
-      <p>1日の目標ページ数： <%= @progress_data["daily_goal_pages"] %></p>
-      <p>進捗率：<%= @progress_data["percentage"] %>％ </p>
-      <div class="progress mb-3" style="height: 26px;">
-        <div class="progress-bar progress-bar-striped" role="progressbar" style="width:<%= @progress_data["percentage"] %>%; background-color:blue %>" aria-valuenow="<%= @progress_data["percentage"] %>" aria-valuemin="0" aria-valuemax="100">
-        <%= @progress_data["percentage"] %>%
-        </div>
-      </div>
+      <table class="table table-bordered table-sm">
+        <tr>
+          <th>本のタイトル</th>
+          <td><%= @task.book.title %></td>
+        </tr>
+        <tr>
+          <th>ページ数</th>
+          <td><%= @task.book.page_count %></td>
+        </tr>
+        <tr>
+          <th>開始日</th>
+          <td><%= @task.started_on %></td>
+        </tr>
+        <tr>
+          <th>目標日</th>
+          <td><%= @task.finished_on %></td>
+        </tr>
+        <tr>
+          <th>目標日まで</th>
+          <td>あと<%= @progress_data["left_days"] %>日</td>
+        </tr>
+        <tr>
+          <th>1日の目標ページ数</th>
+          <td><%= @progress_data["daily_goal_pages"] %></td>
+        </tr>
+        <tr>
+          <th>進捗率</th>
+          <td>
+            <%= @progress_data["percentage"] %>％
+            <%= render 'percentage', percentage: @progress_data["percentage"] %>
+          </td>
+        </tr>
+      </table>
       <%= link_to "編集", edit_task_path(@task) %>
       <%= link_to "削除", @task, method: :delete, data: { confirm: "削除しますか?" } %>
     </div>
