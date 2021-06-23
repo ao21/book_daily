@@ -424,7 +424,7 @@ img.book-image {
 .btn-read-new-submit {
   width: 100%;
   width: 120px;
-  margin: 0 0 auto 16px;
+  margin: 0 auto 10px 0;
   display: block;
   background: #d6e4f0;
   border-radius: 100px;
@@ -433,5 +433,9 @@ img.book-image {
   color: #163172 !important;
   font-size: 16px;
   font-weight: bold;
-  padding: 10px;
+  padding: 5px;
+}
+
+.table-read {
+  width: 500px;
 }
