@@ -9,7 +9,7 @@ class ReadsController < ApplicationController
   def create
     @read = @task.reads.build(read_params)
     if @read.save
-      redirect_to task_path(@task.id), notice: "登録しました"
+      redirect_to tasks_path(@task.id), notice: "登録しました"
     else
       flash.now[:alert] = "登録に失敗しました"
       render :new

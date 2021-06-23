@@ -14,10 +14,7 @@
             <div>今日の目標ページ数：<%= data[:daily_goal_pages] %>ページ </div>
             <div>目標日：<%= task.finished_on %></div>
             <div>
-              <%= form_with(url: task_path(task.id), method: :get, local: true) do |f| %>
-                <%= hidden_field_tag :data, data.to_json %>
-                <%= f.submit "詳細" %>
-              <% end %>
+              <%= link_to "詳細", task %>
               <%= link_to "進捗登録", new_task_read_path(task) %>
             </div>
             <%= render 'percentage', percentage: data[:percentage] %>

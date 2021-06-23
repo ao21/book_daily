@@ -23,17 +23,17 @@
         </tr>
         <tr>
           <th>目標日まで</th>
-          <td>あと<%= @progress_data["left_days"] %>日</td>
+          <td>あと<%= @progress_data[0][:left_days] %>日</td>
         </tr>
         <tr>
           <th>1日の目標ページ数</th>
-          <td><%= @progress_data["daily_goal_pages"] %></td>
+          <td><%= @progress_data[0][:daily_goal_pages] %></td>
         </tr>
         <tr>
           <th>進捗率</th>
           <td>
-            <%= @progress_data["percentage"] %>％
-            <%= render 'percentage', percentage: @progress_data["percentage"] %>
+            <%= @progress_data[0][:percentage] %>％
+            <%= render 'percentage', percentage: @progress_data[0][:percentage] %>
           </td>
         </tr>
       </table>

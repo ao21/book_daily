@@ -9,7 +9,7 @@ class TasksController < ApplicationController
 
   def show
     @reads = @task.reads.all.order(read_on: :desc)
-    @progress_data = JSON.parse params[:data]
+    @progress_data = Task.task_progress_data(@task)
   end
 
   def new
