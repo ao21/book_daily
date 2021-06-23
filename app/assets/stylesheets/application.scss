@@ -27,6 +27,10 @@ ul li {
   list-style: none;
 }
 
+th {
+  color: #163172;
+}
+
 .base-container {
   margin: 5px auto 0;
   padding: 1rem;
@@ -413,4 +417,25 @@ img.book-image {
       margin-bottom: 5px;
     }
   }
+}
+
+/* タスク詳細ページ */
+
+.btn-read-new-submit {
+  width: 100%;
+  width: 120px;
+  margin: 0 auto 10px 0;
+  display: block;
+  background: #d6e4f0;
+  border-radius: 100px;
+  border: 1px solid #1e56a0;
+  box-sizing: border-box;
+  color: #163172 !important;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.table-read {
+  width: 500px;
 }
