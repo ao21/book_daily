@@ -1,12 +1,22 @@
 <%= form_with model: [task, read], local: true do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
-  <div>
-    <%= f.label :read_on %>
-    <%= f.date_field :read_on %>
+  <div class="form-field">
+    <div class="field-caption">
+      <%= f.label :read_on %>
+    </div>
+    <div class="field-input">
+      <%= f.date_field :read_on %>
+    </div>
   </div>
-  <div>
-    <%= f.label :read_page %>
-    <%= f.text_field :read_page %>
+  <div class="form-field">
+    <div class="field-caption">
+      <%= f.label :read_page %>
+    </div>
+    <div class="field-input">
+      <%= f.text_field :read_page %>
+    </div>
   </div>
-  <%= f.submit button_value %>
+  <div class="btn-read-new">
+    <%= f.submit button_value %>
+  </div>
 <% end %>

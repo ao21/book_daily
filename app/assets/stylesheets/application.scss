@@ -439,3 +439,56 @@ img.book-image {
 .table-read {
   width: 500px;
 }
+
+/* 進捗新規登録ページ */
+
+.form-field {
+  padding: 10px 0 10px;
+  border-bottom: 1px solid #f0f0f0;
+
+  .field-caption {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    padding: 4px 15px 6px 0;
+    margin: 0;
+    text-align: left;
+   
+    label {
+      line-height: 24px;
+    }
+  }
+
+  .field-input {
+    width: 250px;
+    text-align: left;
+    display: inline-block;
+    position: relative;
+
+    input[type="date"], input[type="text"] {
+      border-radius: 5px;
+      font-size: 13px;
+      line-height: 1;
+      padding: 10px 30px 10px 10px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+    }
+  }
+}
+
+.btn-read-new {
+  input[type="submit"] {
+    width: 120px;
+    margin: 10px auto 13px 200px;
+    display: block;
+    background: #d6e4f0;
+    border-radius: 100px;
+    border: 1px solid #1e56a0;
+    box-sizing: border-box;
+    color: #163172 !important;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
+  }
+}
