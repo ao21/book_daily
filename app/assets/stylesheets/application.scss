@@ -513,3 +513,25 @@ img.book-image {
     padding: 5px;
   }
 }
+
+/* タスク新規登録ページ */
+
+.caption-task-new {
+  width: 70px !important;
+}
+
+.table-task-new {
+  table-layout: fixed;
+  width: 500px;
+  overflow: hidden;
+
+  th {
+    width: 160px;
+  }
+}
+
+.btn-task-new {
+  input[type="submit"]{
+    margin-left: 50px;
+  }
+}
