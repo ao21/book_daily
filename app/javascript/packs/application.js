@@ -16,3 +16,5 @@ import './toggle_menu.js'; //ヘッダーのトグルメニュー
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
+
+window.$ = $;

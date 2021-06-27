@@ -13,7 +13,7 @@
                   <%= render partial: 'image_link', locals: { image_link: result[:image_link] } %>
                   <div class="book-detail">
                     <div class="detail-title">
-                      <%= link_to result[:title], controller: :books, action: :new, class: "btn btn-primary", title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
+                      <%= link_to result[:title], controller: :books, action: :new, remote: true, title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
                     </div>
                     <div class="detail-author"><%= result[:author] %></div>
                     <dl class="detail-page-count">
@@ -32,3 +32,5 @@
     </div>
   </div>
 </div>
+
+<div id="book-new-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
