@@ -1,23 +1,47 @@
-<h1>Tasks#new</h1>
+<div class="main-wrapper">
+  <div class="content-with-header">
+    <div class="content-header">
+      <div class="header-title">タスク新規登録</div>
+    </div>
+    <div class="content-body">
+      <table class="table table-bordered table-sm table-task-new">
+        <tr>
+          <th scope="row">タイトル</th>
+          <td><%= @book.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">日数</th>
+          <td><span id="days"></span></td>
+        </tr>
+        <tr>
+          <th scope="row">1日の目標ページ数</th>
+          <td><span id="page", data-page-id="<%= @book.page_count %>"></span></td>
+        </tr>
+      </table>
 
-<p><%= @book.title %></p>
-
-<%= form_with model: @task, local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <%= hidden_field_tag :book_id, @book.id %>
-  <div>
-    <%= f.label :started_on %>
-    <%= f.date_field :started_on, id: "started_on" %>
+      <%= form_with model: @task, local: true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <%= hidden_field_tag :book_id, @book.id %>
+        <div class="form-field">
+          <div class="field-caption caption-task-new">
+            <%= f.label :started_on %>
+          </div>
+          <div class="field-input">
+            <%= f.date_field :started_on, id: "started_on" %>
+          </div>
+        </div>
+        <div class="form-field">
+          <div class="field-caption caption-task-new">
+            <%= f.label :finished_on %>
+          </div>
+          <div class="field-input">
+            <%= f.date_field :finished_on, id: "finished_on" %>
+          </div>
+        </div>
+        <div class="btn-read-new btn-task-new">
+          <%= f.submit "登録" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <%= f.label :finished_on %>
-    <%= f.date_field :finished_on, id: "finished_on" %>
-  </div>
-  <%= f.submit "登録" %>
-<% end %>
-<div>
-  日数：<span id="days"></span>
-</div>
-<div>
-  1日あたりのページ数：<span id="page", data-page-id="<%= @book.page_count %>"</span>
 </div>
