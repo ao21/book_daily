@@ -535,3 +535,71 @@ img.book-image {
     margin-left: 50px;
   }
 }
+
+/* アカウント編集ページ */
+
+.field-account-edit {
+  padding: 10px 0 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.edit-submit-btn {
+  appearance: none;
+  outline: none;
+  width: 100%;
+  display: block;
+  background: #4756ca;
+  border-radius: 100px;
+  border: 1px solid #4756ca;
+  box-sizing: border-box;
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cancel-guide-wrap {
+  text-align: center;
+  padding-top: 15px;
+  margin-top: 15px;
+
+  .cancel-border-wrap {
+    border-top: 1px solid #999;
+    box-sizing: border-box;
+    height: 30px;
+  }
+
+  .cancel-guide-text {
+    font-size: 14px;
+    color: #999;
+    height: 30px;
+    line-height: 30px;
+    margin: -15px auto 0;
+    background: #fff;
+    width: 17em;
+  }
+}
+
+.cancel-btn-wrap {
+  width: 100%;
+  max-width: 420px;
+  min-width: 120px;
+  margin: 0 auto 16px;
+
+  .cancel-submit-btn {
+    width: 100%;
+    display: block;
+    background: #bdbdbd;
+    border-radius: 100px;
+    border: 1px solid #bdbdbd;
+    box-sizing: border-box;
+    color: #313f52 !important;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px;
+  }
+}
