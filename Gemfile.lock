@@ -204,6 +204,8 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     sexp_processor (4.15.2)
+    simple_calendar (2.4.2)
+      rails (>= 3.0)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -265,6 +267,7 @@ DEPENDENCIES
   rails_best_practices
   sass-rails (>= 6)
   selenium-webdriver
+  simple_calendar (~> 2.0)
   spring
   turbolinks (~> 5)
   tzinfo-data
