@@ -15,6 +15,7 @@
  */
 
 @import 'bootstrap/scss/bootstrap';
+@import 'simple_calendar';
 
 /* 全体 */
 
@@ -459,7 +460,7 @@ img.book-image {
   .user-data {
     border-top: 1px solid #bdbdbd;
 
-    .calender-title {
+    .calendar-title {
       background-color: #e6e9ec;
       border-bottom: 1px solid #fff;
       border-right: 1px solid #e6e9ec;

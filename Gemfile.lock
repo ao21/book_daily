@@ -267,7 +267,7 @@ DEPENDENCIES
   rails_best_practices
   sass-rails (>= 6)
   selenium-webdriver
-  simple_calendar (~> 2.0)
+  simple_calendar (~> 2.4)
   spring
   turbolinks (~> 5)
   tzinfo-data
