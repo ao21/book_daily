@@ -460,15 +460,18 @@ img.book-image {
   .user-data {
     border-top: 1px solid #bdbdbd;
 
-    .calendar-title {
-      background-color: #e6e9ec;
-      border-bottom: 1px solid #fff;
-      border-right: 1px solid #e6e9ec;
-      font-size: 12px;
-      font-weight: bold;
-      line-height: 31px;
-      color: #333;
-      text-align: center;
+    .data-reading{
+      .reading-title {
+        background-color: #e6e9ec;
+        border-bottom: 1px solid #fff;
+        border-right: 1px solid #e6e9ec;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 31px;
+        color: #333;
+        text-align: center;
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -491,6 +494,54 @@ img.book-image {
     .task-detail-title {
       font-weight: bold;
       margin-bottom: 5px;
+    }
+  }
+}
+
+/* カレンダー */
+.simple-calendar {
+  color: #212121;
+
+  .calendar-title {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 31px;
+    }
+
+  .table {
+    margin-bottom: 0;
+  }
+
+  .day {
+    height: 30px;
+  }
+
+  .today {
+    background-color: #0fc9e7;
+  }
+
+  .prev-month {
+    font-size: 12px;
+    text-align: center;
+  }
+  .next-month {
+    font-size: 12px;
+    text-align: center;
+   }
+  .current-month {
+    text-align: center;
+  }
+
+  .calendar-footer {
+    .calendar-previous {
+      text-align: left;
+      float: left;
+      margin-left: 5px;
+    }
+
+    .calendar-next {
+      text-align: right;
+      margin-right: 5px;
     }
   }
 }
