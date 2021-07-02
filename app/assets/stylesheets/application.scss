@@ -501,6 +501,7 @@ img.book-image {
 /* カレンダー */
 .simple-calendar {
   color: #212121;
+  width: 100%;
 
   .calendar-title {
     font-size: 12px;
@@ -517,17 +518,24 @@ img.book-image {
   }
 
   .today {
-    background-color: #0fc9e7;
+    background-color: transparent;
+  }
+
+  .has-events {
+    background-color: #bde4f4;
   }
 
   .prev-month {
+    background-color: #e6e9ec !important;
     font-size: 12px;
     text-align: center;
   }
   .next-month {
+    background-color: #e6e9ec !important;
     font-size: 12px;
     text-align: center;
    }
+
   .current-month {
     text-align: center;
   }

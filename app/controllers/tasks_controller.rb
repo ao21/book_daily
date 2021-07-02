@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks.all.order(finished_on: :desc)
     @progress_data = Task.progress_data(@tasks)
+    @reads = current_user.reads
   end
 
   def show

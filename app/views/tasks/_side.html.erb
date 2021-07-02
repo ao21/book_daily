@@ -6,8 +6,12 @@
     <div class="data-reading">
       <h2 class="reading-title">今月の読書日</h2>
       <div class="reading-item">
-        <%= month_calendar do |date| %>
+        <%= month_calendar(events: @reads) do |date, reads| %>
           <%= date.day %>
+
+          <% reads.each do |read| %>
+            <div class="itme-read"></div>
+          <% end %>
         <% end %>
       </div>
     </div>
