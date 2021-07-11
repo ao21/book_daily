@@ -15,6 +15,7 @@
  */
 
 @import 'bootstrap/scss/bootstrap';
+@import 'simple_calendar';
 
 /* 全体 */
 
@@ -32,8 +33,12 @@ th {
 }
 
 .base-container {
-  margin: 5px auto 0;
-  padding: 1rem;
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 1004px;
+  text-align: left;
+  padding-left: 15px;
 }
 
 .main-wrapper {
@@ -41,38 +46,38 @@ th {
   background-color: #fff;
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
-  position: relative;
   margin-bottom: 10px;
-  width: 720px;
-}
+  width: 719px;
+  text-align: left;
 
-.content-with-header {
+  .content-with-header {
   font-size: 16px;
-}
+  }
 
-.content-header {
-  height: 50px;
-  position: relative;
-  border-bottom: 1px solid #bdbdbd;
-  box-sizing: border-box;
-  line-height: 50px;
-}
+  .content-header {
+    height: 50px;
+    position: relative;
+    border-bottom: 1px solid #bdbdbd;
+    box-sizing: border-box;
+    line-height: 50px;
+  }
 
-.header-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  height: 50px;
-  position: absolute;
-  padding: 0 15px;
-  border-bottom: 4px solid #4756ca;
-  box-sizing: border-box;
-  font-weight: bold;
-  line-height: 50px;
-}
+  .header-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 50px;
+    position: absolute;
+    padding: 0 15px;
+    border-bottom: 4px solid #4756ca;
+    box-sizing: border-box;
+    font-weight: bold;
+    line-height: 50px;
+  }
 
-.content-body {
-  padding: 15px;
+  .content-body {
+    padding: 15px;
+  }
 }
 
 /* max-width */
@@ -422,6 +427,63 @@ img.book-image {
 
 /* タスク一覧ページ */
 
+.main-wrapper-task {
+  @extend .main-wrapper;
+  float: right;
+  width: 694px;
+}
+
+/* タスク一覧ページ、サイドバー */
+
+.side-wrapper {
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  box-sizing: border-box;
+  float: left;
+  text-align: left;
+  margin-bottom: 10px;
+  width: 285px;
+
+  .side-title {
+    padding: 10px;
+
+    .user-icon {
+      border: 0px none;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      text-align: left;
+      margin-right: 10px;
+    }
+
+    .user-name {
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+  }
+
+  .user-data {
+    border-top: 1px solid #bdbdbd;
+
+    .reading-title {
+      background-color: #e6e9ec;
+      border-bottom: 1px solid #fff;
+      border-right: 1px solid #e6e9ec;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 35px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 0;
+    }
+  }
+}
+
 .task {
   border-bottom: 1px solid #bdbdbd;
   margin-top: 5px;
@@ -440,6 +502,108 @@ img.book-image {
     .task-detail-title {
       font-weight: bold;
       margin-bottom: 5px;
+    }
+  }
+}
+
+.month-reading {
+  margin-top: 10px;
+  border-top: 1px solid #bdbdbd;
+  display: flex;
+
+  .reading-this-month, .reading-last-month {
+    box-sizing: border-box;
+    width: 50%;
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .reading-list {
+      border-right: 1px solid #f0f0f0;
+
+      .list-item:not(:last-child) {
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .list-item {
+        height: 40px;
+        padding: 10px 5px 10px 10px;
+
+        .item-number {
+          font-size: 16px;
+          font-weight: bold;
+          color: #555;
+        }
+
+        .item-unit {
+          font-size: 12px;
+          color: #555;
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+}
+
+/* カレンダー */
+.simple-calendar {
+  color: #212121;
+  width: 100%;
+
+  .calendar-heading {
+    margin-left: 10px;
+
+    .calendar-title {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 31px;
+    }
+  }
+
+  .table {
+    margin-bottom: 0;
+  }
+
+  .day {
+    height: 30px;
+  }
+
+  .today {
+    background-color: transparent;
+  }
+
+  .has-events {
+    background-color: #bde4f4;
+  }
+
+  .prev-month {
+    background-color: #e6e9ec !important;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .next-month {
+    background-color: #e6e9ec !important;
+    font-size: 12px;
+    text-align: center;
+   }
+
+   .current_month {
+     text-align: center;
+   }
+
+  .calendar-footer {
+    .calendar-previous {
+      text-align: left;
+      float: left;
+      margin-left: 8px;
+    }
+
+    .calendar-next {
+      text-align: right;
+      margin-right: 8px;
     }
   }
 }

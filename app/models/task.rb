@@ -26,7 +26,9 @@ class Task < ApplicationRecord
 
   # 目標日と総ページ数から1日の目標ページ数を計算
   def self.daily_goal_pages(max_read_page, total_pages, left_days)
-    if max_read_page
+    if left_days == 0
+      total_pages - max_read_page
+    elsif max_read_page
       ( total_pages - max_read_page ) / left_days
     else
       total_pages / left_days
