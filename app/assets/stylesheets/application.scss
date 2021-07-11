@@ -448,30 +448,38 @@ img.book-image {
   .side-title {
     padding: 10px;
 
+    .user-icon {
+      border: 0px none;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      text-align: left;
+      margin-right: 10px;
+    }
+
     .user-name {
+      display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      margin-top: 6px;
       font-weight: bold;
+      vertical-align: middle;
     }
   }
 
   .user-data {
     border-top: 1px solid #bdbdbd;
 
-    .data-reading{
-      .reading-title {
-        background-color: #e6e9ec;
-        border-bottom: 1px solid #fff;
-        border-right: 1px solid #e6e9ec;
-        font-size: 12px;
-        font-weight: bold;
-        line-height: 31px;
-        color: #333;
-        text-align: center;
-        margin-bottom: 0;
-      }
+    .reading-title {
+      background-color: #e6e9ec;
+      border-bottom: 1px solid #fff;
+      border-right: 1px solid #e6e9ec;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 35px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 0;
     }
   }
 }
@@ -498,16 +506,61 @@ img.book-image {
   }
 }
 
+.month-reading {
+  margin-top: 10px;
+  border-top: 1px solid #bdbdbd;
+  display: flex;
+
+  .reading-this-month, .reading-last-month {
+    box-sizing: border-box;
+    width: 50%;
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .reading-list {
+      border-right: 1px solid #f0f0f0;
+
+      .list-item:not(:last-child) {
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .list-item {
+        height: 40px;
+        padding: 10px 5px 10px 10px;
+
+        .item-number {
+          font-size: 16px;
+          font-weight: bold;
+          color: #555;
+        }
+
+        .item-unit {
+          font-size: 12px;
+          color: #555;
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+}
+
 /* カレンダー */
 .simple-calendar {
   color: #212121;
   width: 100%;
 
-  .calendar-title {
+  .calendar-heading {
+    margin-left: 10px;
+
+    .calendar-title {
     font-size: 12px;
     font-weight: bold;
     line-height: 31px;
     }
+  }
 
   .table {
     margin-bottom: 0;
@@ -530,26 +583,27 @@ img.book-image {
     font-size: 12px;
     text-align: center;
   }
+
   .next-month {
     background-color: #e6e9ec !important;
     font-size: 12px;
     text-align: center;
    }
 
-  .current-month {
-    text-align: center;
-  }
+   .current_month {
+     text-align: center;
+   }
 
   .calendar-footer {
     .calendar-previous {
       text-align: left;
       float: left;
-      margin-left: 5px;
+      margin-left: 8px;
     }
 
     .calendar-next {
       text-align: right;
-      margin-right: 5px;
+      margin-right: 8px;
     }
   }
 }
