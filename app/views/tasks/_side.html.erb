@@ -1,9 +1,10 @@
 <div class="side-title">
+  <%= image_tag 'user-icon.png', class: "user-icon" %>
   <div class="user-name"><%= current_user.name %></div>
 </div>
 <div class="side-content">
   <div class="user-data">
-    <div class="data-reading">
+    <div class="user-reading">
       <h2 class="reading-title">今月の読書日</h2>
       <div class="reading-item">
         <%= month_calendar(events: @reads) do |date, reads| %>
@@ -13,6 +14,42 @@
             <div class="itme-read"></div>
           <% end %>
         <% end %>
+      </div>
+    </div>
+    <div class="month-reading">
+      <div class="reading-this-month">
+        <h2 class="reading-title">今月の読書量</h2>
+        <ul class="reading-list">
+          <li class="list-item">
+            <span class="item-number"><%= @month_data[:this_month][:month_page] %></span>
+            <span class="item-unit">ページ</span>
+          </li>
+          <li class="list-item">
+            <span class="item-number"><%= @month_data[:this_month][:month_book] %></span>
+            <span class="item-unit">冊</span>
+          </li>
+          <li class="list-item">
+            <span class="item-number"><%= @month_data[:this_month][:day_page] %></span>
+            <span class="item-unit">ページ/日</span>
+          </li>
+        </ul>
+      </div>
+      <div class="reading-last-month">
+        <h2 class="reading-title">先月の読書量</h2>
+        <ul class="reading-list">
+          <li class="list-item">
+            <span class="item-number"><%= @month_data[:last_month][:month_page] %></span>
+            <span class="item-unit">ページ</span>
+          </li>
+          <li class="list-item">
+            <span class="item-number"><%= @month_data[:last_month][:month_book] %></span>
+            <span class="item-unit">冊</span>
+          </li>
+          <li class="list-item">
+            <span class="item-number"><%= @month_data[:last_month][:day_page] %></span>
+            <span class="item-unit">ページ/日</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
