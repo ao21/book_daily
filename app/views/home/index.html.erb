@@ -7,15 +7,32 @@
     <div class="content-header">
       <div class="header-title">新着</div>
     </div>
+
     <div class="content-body">
-      <% @reads.each do |read| %>
-        <div>
-          <%= read.read_on %>
-          <%= read.task.user.name %>さんが
-          <%= read.task.book.title %> を
-          <%= read.read_page %> ページ読みました！
-        </div>
-      <% end %>
+      <div class="read-new-list">
+        <ul class="read-list-group">
+          <% @reads_new.each_slice(5) do |reads| %>
+            <% reads.each do |read| %>
+              <li class="group-new">
+                <div class="book-image-cover">
+                  <%= render partial: 'books/image_link', locals: { image_link: read.task.book.image_link } %>
+                </div>
+                <div class="new-detail">
+                  <div class="detail-title">
+                    <%= read.task.book.title %>
+                  </div>
+                  <div class="detail-content">
+                    <div class="detail-read-date"><%= read.read_on.strftime('%-m月%-d日') %></div>
+                    <div class="detail-user-name"><%= read.task.user.name %>さんが</div>
+                    <div class="detail-read-page"><%= read.read_page %>ページまで</div>
+                    <div>読みました！</div>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
