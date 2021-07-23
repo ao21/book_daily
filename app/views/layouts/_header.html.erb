@@ -3,7 +3,7 @@
     <div class="personal-account">
       <% if user_signed_in? %>
         <div class="account-task">
-          <%= link_to "#{current_user.name}さんのタスク一覧", tasks_path, class: "link account-task-link" %>
+          <%= link_to "#{current_user.name}さんのタスク一覧", task_path(first_task.id), class: "link account-task-link" %>
         </div>
         <div class="account-menu">
           <div class="menu-item">
