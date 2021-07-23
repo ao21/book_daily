@@ -513,6 +513,28 @@ img.book-image {
   width: 694px;
 }
 
+.header-title-task-tab {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 50px;
+  position: relative;
+  display: inline-block;
+  padding: 0 15px;
+  box-sizing: border-box;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+a.header-title-task-tab {
+  text-decoration: none;
+  color: #212121;
+}
+
+a.selected {
+  border-bottom: 4px solid #4756ca;
+}
+
 /* タスク一覧ページ、サイドバー */
 
 .side-wrapper {
@@ -582,6 +604,47 @@ img.book-image {
     .task-detail-title {
       font-weight: bold;
       margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .task-detail-today-page-number {
+      display: flex;
+      margin-bottom: 5px;
+      margin-left: 10px;
+      height: 30px;
+      line-height: 30px;
+
+      .number-title {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border-top: 1px solid #bdbdbd;
+        border-bottom: 1px solid #bdbdbd;
+        border-left: 1px solid #bdbdbd;
+        box-sizing: border-box;
+        background-color: #bde4f4;
+        font-size: 15px;
+        padding: 0 5px 0 5px;
+      }
+
+      .number-item {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-top: 1px solid #bdbdbd;
+        border-bottom: 1px solid #bdbdbd;
+        border-right: 1px solid #bdbdbd;
+        box-sizing: border-box;
+        color: #4756ca;
+        font-size: 13px;
+        padding: 0 5px;
+      }
+    }
+
+    .task-detail-today-page {
+      font-size: 13px;
+    }
+
+    .task-detail-finish-date {
+      font-size: 13px;
     }
   }
 }

@@ -2,10 +2,12 @@
   <div class="side-wrapper">
     <%= render 'side' %>
   </div>
+
   <div class="main-wrapper-task">
     <div class="content-with-header">
       <div class="content-header">
-        <div class="header-title">タスク一覧</div>
+        <%= link_to 'タスク', task_path(@first_task.id), class: "header-title-task-tab" %>
+        <%= link_to 'タスク一覧', tasks_path, class: "header-title-task-tab selected" %>
       </div>
       <div class="content-body">
         <% @tasks.zip(@progress_data) do |task, data| %>
