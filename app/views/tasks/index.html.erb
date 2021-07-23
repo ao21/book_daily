@@ -15,8 +15,12 @@
             </div>
             <div class="task-detail">
               <div class="task-detail-title"><%= task.book.title %></div>
-              <div>今日の目標ページ数：<%= data[:daily_goal_pages] %>ページ </div>
-              <div>目標日：<%= task.finished_on %></div>
+              <div class="task-detail-today-page-number">
+                <div class="number-title"><i class="fa fa-book" aria-hidden="true"></i>今日の目標</div>
+                <div class="number-item"><%= data[:today_page_number] %>頁まで</div>
+              </div>
+              <div class="task-detail-today-page">今日読むページ数：<%= data[:daily_goal_pages] %>ページ</div>
+              <div class="task-detail-finish-date">目標日：<%= task.finished_on.strftime("%-m月%-d日") %></div>
               <div>
                 <%= link_to "詳細", task %>
                 <%= link_to "進捗登録", new_task_read_path(task) %>
