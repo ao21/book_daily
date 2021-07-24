@@ -1,23 +1,21 @@
-<div class="main-wrapper">
-  <div class="content-with-header">
-    <div class="content-header">
-      <div class="header-title">進捗一覧</div>
-    </div>
-    <div class="content-body">
-      <%= link_to "進捗登録", new_task_read_path(task), class: "btn btn-read-new-submit" %>
-      <table class="table table-sm table-read">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">読んだ日</th>
-            <th scope="col">読んだページ数</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render partial: "reads/read_data", locals: { task: task }, collection: reads, as: "read" %>
-        </tbody>
-      </table>
-    </div>
+<div class="reads-index">
+  <div class="content-header">
+    <div class="header-title">進捗一覧</div>
+  </div>
+  <div class="content-body">
+    <%= link_to "進捗登録", new_task_read_path(task), class: "btn btn-read-new-submit" %>
+    <table class="table table-sm table-read">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">読んだ日</th>
+          <th scope="col">読んだページ数</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "reads/read_data", locals: { task: task }, collection: reads, as: "read" %>
+      </tbody>
+    </table>
   </div>
 </div>
