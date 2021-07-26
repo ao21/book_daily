@@ -9,6 +9,7 @@
         <%= link_to 'タスク一覧', tasks_path, class: "header-title-task-tab" %>
       </div>
       <div class="content-body">
+        <%= pie_chart @progress_percentage, class: "percentage-graph", library: {title: {text: "#{@progress_percentage[:read]}%" }} %>
         <table class="table table-bordered table-sm">
           <tr>
             <th scope="row">本のタイトル</th>
