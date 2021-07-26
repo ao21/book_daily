@@ -1,17 +1,26 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: %i[show edit update destroy]
-
-  def index
-    @tasks = current_user.tasks.all.order(finished_on: :desc)
-    @progress_data = Task.progress_data(@tasks)
+  before_action :side_bar, only: %i[index show]
+  
+  def side_bar
     @reads = current_user.reads
     @month_data = Read.month_data(current_user)
   end
 
+  def index
+    @tasks = current_user.tasks.all.order(finished_on: :desc)
+    @progress_data = Task.progress_data(@tasks)
+  end
+
   def show
+    if params
+      @task = Task.find(params[:id])
+    end
+
     @reads = @task.reads.all.order(read_on: :desc)
-    @progress_data = Task.task_progress_data(@task)
+    @task_progress_data = Task.task_progress_data(@task)
+    @progress_percentage = { read: @task_progress_data[0][:percentage], unread: 100 - @task_progress_data[0][:percentage] }
   end
 
   def new

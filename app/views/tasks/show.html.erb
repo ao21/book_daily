@@ -1,45 +1,52 @@
-<div class="main-wrapper">
-  <div class="content-with-header">
-    <div class="content-header">
-      <div class="header-title">タスク詳細</div>
-    </div>
-    <div class="content-body">
-      <table class="table table-bordered table-sm">
-        <tr>
-          <th scope="row">本のタイトル</th>
-          <td><%= @task.book.title %></td>
-        </tr>
-        <tr>
-          <th scope="row">ページ数</th>
-          <td><%= @task.book.page_count %></td>
-        </tr>
-        <tr>
-          <th scope="row">開始日</th>
-          <td><%= @task.started_on %></td>
-        </tr>
-        <tr>
-          <th scope="row">目標日</th>
-          <td><%= @task.finished_on %></td>
-        </tr>
-        <tr>
-          <th scope="row">目標日まで</th>
-          <td>あと<%= @progress_data[0][:left_days] %>日</td>
-        </tr>
-        <tr>
-          <th scope="row">1日の目標ページ数</th>
-          <td><%= @progress_data[0][:daily_goal_pages] %></td>
-        </tr>
-        <tr>
-          <th scope="row">進捗率</th>
-          <td>
-            <%= render 'percentage', percentage: @progress_data[0][:percentage] %>
-          </td>
-        </tr>
-      </table>
-      <%= link_to "編集", edit_task_path(@task) %>
-      <%= link_to "削除", @task, method: :delete, data: { confirm: "削除しますか?" } %>
+<div class="task-wrapper">
+  <div class="side-wrapper">
+    <%= render 'side' %>
+  </div>
+  <div class="main-wrapper-task">
+    <div class="content-with-header">
+      <div class="content-header">
+        <%= link_to 'タスク', task_path(@first_task.id), class: "header-title-task-tab selected" %>
+        <%= link_to 'タスク一覧', tasks_path, class: "header-title-task-tab" %>
+      </div>
+      <div class="content-body">
+        <%= pie_chart @progress_percentage, class: "percentage-graph", library: {title: {text: "#{@progress_percentage[:read]}%" }} %>
+        <table class="table table-bordered table-sm">
+          <tr>
+            <th scope="row">本のタイトル</th>
+            <td><%= @task.book.title %></td>
+          </tr>
+          <tr>
+            <th scope="row">ページ数</th>
+            <td><%= @task.book.page_count %></td>
+          </tr>
+          <tr>
+            <th scope="row">開始日</th>
+            <td><%= @task.started_on %></td>
+          </tr>
+          <tr>
+            <th scope="row">目標日</th>
+            <td><%= @task.finished_on %></td>
+          </tr>
+          <tr>
+            <th scope="row">目標日まで</th>
+            <td>あと<%= @task_progress_data[0][:left_days] %>日</td>
+          </tr>
+          <tr>
+            <th scope="row">1日の目標ページ数</th>
+            <td><%= @task_progress_data[0][:daily_goal_pages] %></td>
+          </tr>
+          <tr>
+            <th scope="row">進捗率</th>
+            <td>
+              <%= render 'percentage', percentage: @task_progress_data[0][:percentage] %>
+            </td>
+          </tr>
+        </table>
+        <%= link_to "編集", edit_task_path(@task) %>
+        <%= link_to "削除", @task, method: :delete, data: { confirm: "削除しますか?" } %>
+
+        <%= render partial: "reads/index", locals: { task: @task, reads: @reads } %>
+      </div>
     </div>
   </div>
 </div>
-
-<%= render partial: "reads/index", locals: { task: @task, reads: @reads } %>
