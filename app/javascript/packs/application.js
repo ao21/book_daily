@@ -12,6 +12,7 @@ import 'jquery';
 import './daily_goal.js'; // 1日あたりのページ数計算
 import './search_form.js'; //書籍検索を空白時に無効化
 import './toggle_menu.js'; //ヘッダーのトグルメニュー
+import "chartkick/highcharts"
 
 Rails.start();
 Turbolinks.start();
