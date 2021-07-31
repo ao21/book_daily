@@ -1,0 +1,146 @@
+$main-color: #41a9a5;
+
+/* 全体 */
+
+body {
+  font: 13px/1.231 arial, helvetica, clean, sans-serif;
+  background: #fff;
+  color: #444;
+  font-family: '游ゴシック', 'YuGothic', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
+    sans-serif;
+  font-size: calc(0.2449vw + 1.20816rem);
+  letter-spacing: 0.05em;
+  text-indent: calc(0vw + 0rem);
+}
+
+a:link {
+  text-decoration: none;
+}
+
+/* ヘッダー */
+
+.header {
+  padding-left: 0;
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: calc(4.89796vw + 41.63265px);
+
+  &__logo {
+    width: 100%;
+    max-width: 325px;
+    float: left;
+
+    a {
+      display: block;
+      width: 100%;
+
+      img {
+        border: none;
+        height: calc(4.89796vw + 41.63265px);
+      }
+    }
+  }
+
+  &__container {
+    position: relative;
+    margin: 0 0 0 40vw;
+    background: $main-color;
+    border-radius: 0 0 0 40px;
+    height: 100%;
+
+    .container__list {
+      display: flex;
+      justify-content: flex-end;
+      vertical-align: top;
+      position: relative;
+      height: 100%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      .list__mypage {
+        width: calc(4.89796vw + 41.63265px);
+        border-left: 1px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+        font-weight: bold;
+        color: #fff;
+
+        .icon {
+          height: calc(1.63265vw + 23.87755px);
+        }
+
+        .text {
+          font-family: 'URWDIN-Demi', sans-serif;
+          font-size: 1vw;
+          color: #fff;
+          overflow: hidden;
+
+          .for-margin {
+            margin-right: 3px;
+          }
+        }
+      }
+
+      .list__menu {
+        @extend .list__mypage;
+      }
+
+      .submenu {
+        display: none;
+        position: absolute;
+        top: calc(4.89796vw + 41.63265px);
+        background-color: $main-color;
+        border-radius: 0 0 50% 50%;
+        color: #fff;
+        right: 0;
+        margin: 0;
+        padding: 0 3vw 3vw 1vw;
+
+        &__content {
+          .head {
+            color: #fec800;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            padding: 0.5em;
+            font-size: calc(-0.4vw + 1.12245rem);
+            font-weight: 700;
+
+            .text {
+              font-family: 'URWDIN-Demi', sans-serif;
+              -webkit-transform: translateY(0.2em);
+              transform: translateY(0.2em);
+            }
+          }
+
+          .item {
+            @extend .head;
+            border: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 1em;
+
+            a {
+              color: #fff;
+            }
+          }
+
+          .last {
+            margin-bottom: 2em;
+          }
+        }
+      }
+    }
+  }
+}
