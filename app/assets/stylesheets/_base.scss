@@ -41,8 +41,8 @@ div.field_with_errors {
 
 .header {
   padding-left: 0;
+  margin-bottom: 20px;
   background-color: #fff;
-  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
@@ -66,17 +66,20 @@ div.field_with_errors {
   }
 
   &__container {
-    position: relative;
-    margin: 0 0 0 40vw;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: calc(100% - 40vw);
     background: $main-color;
     border-radius: 0 0 0 40px;
-    height: 100%;
+    height: calc(4.89796vw + 41.63265px);
 
     .container__list {
+      position: relative;
       display: flex;
       justify-content: flex-end;
       vertical-align: top;
-      position: relative;
       height: 100%;
       padding-top: 5px;
       padding-bottom: 5px;
