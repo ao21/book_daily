@@ -1,9 +1,21 @@
-<div class="home__img">
-  <p class="img">
-    <%= image_tag 'top' %>
-  </p>
-</div>
+<div class="home">
+  <div class="firstview">
+    <div class="firstview__form">
+      <h1 class="firstview__form__head">
+        読書を習慣に。
+      </h1>
+      <div class="firstview__form__search">
+        <p class="firstview__form__search__sentence">
+          新しいタスクを登録する
+        </p>
+        <%= render 'books/form' %>
+      </div>
 
+    <div class="firstview__img">
+        <%= image_tag 'top' %>
+    </div>
+  </div>
+</div>
 
 <div class="main-wrapper">
   <div class="content-with-header">
