@@ -13,22 +13,13 @@ th {
   color: #163172;
 }
 
-.base-container {
-  margin-top: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 1004px;
-  text-align: left;
-  padding-left: 15px;
-}
-
 .main-wrapper {
   border-radius: 4px;
   background-color: #fff;
   border: 1px solid #bdbdbd;
   box-sizing: border-box;
   margin-bottom: 10px;
-  width: 719px;
+  width: 100%;
   text-align: left;
 
   .content-with-header {
@@ -80,7 +71,7 @@ th {
 
 .read-new-list {
   overflow: hidden;
-  width: 680px;
+  width: 100%;
   margin: 0 auto -15px auto;
   padding: 0;
 

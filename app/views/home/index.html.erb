@@ -1,4 +1,4 @@
-<div class="home">
+<div class="top">
   <div class="firstview">
     <div class="firstview__form">
       <h1 class="firstview__form__head">
@@ -17,36 +17,56 @@
   </div>
 </div>
 
-<div class="main-wrapper">
-  <div class="content-with-header">
-    <div class="content-header">
-      <div class="header-title">新着</div>
+<div class="container">
+  <div class="textarea">
+    <div class="textarea__title">
+      <h2 class="textarea__title__main">
+        読みたい本に
+        <br>
+        <span class="orange">毎日の目標</span>を設定する。
+      </h2>
     </div>
 
-    <div class="content-body">
-      <div class="read-new-list">
-        <ul class="read-list-group">
-          <% @reads_new.each_slice(5) do |reads| %>
-            <% reads.each do |read| %>
-              <li class="group-new">
-                <div class="book-image-cover">
-                  <%= render partial: 'books/image_link', locals: { image_link: read.task.book.image_link } %>
-                </div>
-                <div class="new-detail">
-                  <div class="detail-title">
-                    <%= read.task.book.title %>
+    <p class="textarea__text">
+      読み終わりたい日を設定すると、毎日の何ページ読むか目標を決められます。
+      <br>
+      1冊読み終わるごとに、読書が習慣になっていきます。
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="main-wrapper">
+    <div class="content-with-header">
+      <div class="content-header">
+        <div class="header-title">新着</div>
+      </div>
+
+      <div class="content-body">
+        <div class="read-new-list">
+          <ul class="read-list-group">
+            <% @reads_new.each_slice(5) do |reads| %>
+              <% reads.each do |read| %>
+                <li class="group-new">
+                  <div class="book-image-cover">
+                    <%= render partial: 'books/image_link', locals: { image_link: read.task.book.image_link } %>
                   </div>
-                  <div class="detail-content">
-                    <div class="detail-read-date"><%= read.read_on.strftime('%-m月%-d日') %></div>
-                    <div class="detail-user-name"><%= read.task.user.name %>さんが</div>
-                    <div class="detail-read-page"><%= read.read_page %>ページまで</div>
-                    <div>読みました！</div>
+                  <div class="new-detail">
+                    <div class="detail-title">
+                      <%= read.task.book.title %>
+                    </div>
+                    <div class="detail-content">
+                      <div class="detail-read-date"><%= read.read_on.strftime('%-m月%-d日') %></div>
+                      <div class="detail-user-name"><%= read.task.user.name %>さんが</div>
+                      <div class="detail-read-page"><%= read.read_page %>ページまで</div>
+                      <div>読みました！</div>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
