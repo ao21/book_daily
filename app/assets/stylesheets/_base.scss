@@ -61,6 +61,9 @@ div.field_with_errors {
       img {
         border: none;
         height: calc(4.89796vw + 41.63265px);
+        width: auto;
+        max-width: 40vw;
+        padding: 20px 10px 0 10px;
       }
     }
   }
