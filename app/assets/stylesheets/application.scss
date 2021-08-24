@@ -1,6 +1,12 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
 @import 'bootstrap/scss/bootstrap';
 @import 'simple_calendar';
-@import 'base';
+@import 'mixin/*';
+@import 'base/*';
 @import 'home';
 
 /* 全体 */
