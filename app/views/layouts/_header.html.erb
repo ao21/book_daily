@@ -1,39 +1,39 @@
-<div class="header">
-  <div class="header__logo">
+<div class="Header">
+  <div class="Header__logo">
    <%= link_to image_tag('title.png'), "/" %>
   </div>
-  <div class="header__container">
-    <div class="container__list">
+  <div class="Header__container">
+    <div class="Header__list">
       <% if user_signed_in? %>
-        <%= link_to task_path(first_task.id), class: "list__mypage" do %>
-          <div class="icon"><i class="far fa-bookmark"></i></div>
-          <div class="text"><span class="for-margin">MY</span>PAGE</div>
+        <%= link_to task_path(first_task.id), class: "Header__list--mypage" do %>
+          <div class="Header__icon"><i class="far fa-bookmark"></i></div>
+          <div class="Header__text"><span class="Header__for-margin">MY</span>PAGE</div>
         <% end %>
-        <a class="list__menu js-link-menu" href="">
-          <div class="icon"><i class="fas fa-grip-lines"></i></div>
-          <div class="text">MENU</div>
+        <a class="Header__list--menu js-link-menu" href="">
+          <div class="Header__icon"><i class="fas fa-grip-lines"></i></div>
+          <div class="Header__text">MENU</div>
         </a>
-        <ul class="submenu">
-          <div class="submenu__content">
-            <div class="head">
-              <span class="text">ACCOUNT</span>
+        <ul class="Header__list--submenu">
+          <div class="Header__content">
+            <div class="Header__head">
+              <span class="Header__text">ACCOUNT</span>
             </div>
-            <li class="item">
+            <li class="Header__item">
               <%= link_to "編集", edit_user_registration_path %>
             </li>
-            <li class="item last">
+            <li class="Header__item--last">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
             </li>
           </div>
         </ul>
       <% else %>
-        <%= link_to users_guest_sign_in_path, method: :post, class: "list__guest" do %>
-          <div class="icon"><i class="fas fa-sign-in-alt"></i></div>
-          <div class="text">GUEST</div>
+        <%= link_to users_guest_sign_in_path, method: :post, class: "Header__list--guest" do %>
+          <div class="Header__icon"><i class="fas fa-sign-in-alt"></i></div>
+          <div class="Header__text">GUEST</div>
         <% end %>
-        <%= link_to new_user_session_path, class: "list__login" do %>
-          <div class="icon"><i class="fas fa-grip-lines"></i></div>
-          <div class="text">LOGIN</div>
+        <%= link_to new_user_session_path, class: "Header__list--login" do %>
+          <div class="Header__icon"><i class="fas fa-grip-lines"></i></div>
+          <div class="Header__text">LOGIN</div>
         <% end %>
       <% end %>
     </div>
