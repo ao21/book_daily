@@ -14,59 +14,55 @@
             <i class="fas fa-search"></i>
           <% end %>
         <% end %>
-        <%= render 'books/form' %>
       </div>
     </div>
 
     <div class="Firstview__img">
-        <%= image_tag 'top' %>
+      <%= image_tag 'top' %>
     </div>
   </section>
-</div>
 
-<div class="container">
-  <div class="description">
-    <div class="description__title">
-      <h2 class="description__title__main">
-        読みたい本に
+  <div class="c-container">
+    <section class="Description">
+      <div class="Description__title">
+        <h2 class="Description__title-sentence">
+          読みたい本に
+          <br>
+          <span class="orange">毎日の目標</span>を設定する。
+        </h2>
+      </div>
+      <p class="Description__text">
+        読み終わりたい日を設定すると、毎日の何ページ読むか目標を決められます。
         <br>
-        <span class="orange">毎日の目標</span>を設定する。
-      </h2>
-    </div>
-    <p class="description__text">
-      読み終わりたい日を設定すると、毎日の何ページ読むか目標を決められます。
-      <br>
-      1冊読み終わるごとに、読書が習慣になっていきます。
-    </p>
+        1冊読み終わるごとに、読書が習慣になっていきます。
+      </p>
+    </section>
   </div>
 </div>
 
-<div class="news">
-  <div class="news__top">
-    <h3 class="news__title">
-      <span class="news__main">NEWS</span>
-      <small class="news__sub">新着</small>
-    </h3>
-  </div>
-  <div class="news__content">
-    <div class="news__container">
-      <div class="news__wrapper">
-        <div class="body">
-          <div class="body__list">
-            <ul class="group">
+  <section class="News">
+    <div class="News__top">
+      <h3 class="News__title">
+        <span class="News__title--main">NEWS</span>
+        <small class="News__title--sub">新着</small>
+      </h3>
+    </div>
+    <div class="News__content">
+      <div class="News__container">
+        <div class="News__wrapper">
+          <div class="News__list">
+            <ul class="News__group">
               <% @reads_new.each do |read| %>
-                <li class="item">
-                  <div class="book-image-cover">
-                    <%= render partial: 'books/image_link', locals: { image_link: read.task.book.image_link } %>
-                  </div>
-                  <div class="detail">
-                    <div class="item__detail__title">
+                <li class="News__item">
+                  <%= render partial: 'books/image_link', locals: { image_link: read.task.book.image_link } %>
+                  <div class="News__detail">
+                    <div class="News__detail-title">
                       <%= read.task.book.title %>
                     </div>
-                    <div class="item__decontent">
-                      <div class="content__date"><%= read.read_on.strftime('%-m月%-d日') %></div>
-                      <div class="detail-user-name"><%= read.task.user.name %>さんが</div>
-                      <div class="detail-read-page"><%= read.read_page %>ページまで</div>
+                    <div class="News__detail-content">
+                      <div class="News__detail-content--date"><%= read.read_on.strftime('%-m月%-d日') %></div>
+                      <div class="News__detail-content--name"><%= read.task.user.name %>さんが</div>
+                      <div class="News__detail-content--page"><%= read.read_page %>ページまで</div>
                       <div>読みました！</div>
                     </div>
                   </div>
@@ -77,5 +73,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
