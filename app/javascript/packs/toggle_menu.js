@@ -1,7 +1,7 @@
 document.addEventListener('turbolinks:load', function () {
-  $('.js-link-menu').each(function () {
+  $('.js-list-menu').each(function () {
     $(this).on('click', function () {
-      $('+.submenu', this).slideToggle();
+      $('+.js-list-submenu', this).slideToggle();
       return false;
     });
   });

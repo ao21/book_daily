@@ -5,14 +5,6 @@
 
 /* 全体 */
 
-ul li {
-  list-style: none;
-}
-
-th {
-  color: #163172;
-}
-
 .main-wrapper {
   border-radius: 4px;
   background-color: #fff;
@@ -51,20 +43,6 @@ th {
     padding: 15px;
     overflow: hidden;
   }
-}
-
-/* max-width */
-
-.mw-md {
-  max-width: 720px;
-}
-
-.mw-lg {
-  max-width: 960px;
-}
-
-.mw-xl {
-  max-width: 1200px;
 }
 
 /* 新着欄 */

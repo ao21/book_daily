@@ -1,0 +1,142 @@
+/* ヘッダー */
+
+%header-height {
+  height: calc(5vw + 40px);
+}
+
+.Header {
+  @extend %header-height;
+  padding-left: 0;
+  margin-bottom: 20px;
+  background-color: #fff;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  .Header__logo {
+    width: 100%;
+    max-width: 325px;
+    float: left;
+
+    a {
+      display: block;
+      width: 100%;
+
+      img {
+        @extend %header-height;
+        border: none;
+        width: auto;
+        max-width: 40vw;
+        @include mq($md) {
+          max-width: calc(50vw);
+        }
+        padding: 20px 10px 0 10px;
+      }
+    }
+  }
+
+  .Header__container {
+    @extend %header-height;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: calc(100% - 40vw);
+    @include mq($md) {
+      width: calc(100% - 50vw);
+    }
+    background: $main-color;
+    border-radius: 0 0 0 40px;
+
+    .Header__list {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      vertical-align: top;
+      height: 100%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      &--mypage,
+      &--menu,
+      &--guest,
+      &--login {
+        width: calc(5vw + 40px);
+        border-left: 1px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+        font-weight: bold;
+        color: #fff;
+
+        .Header__icon {
+          height: calc(1.6vw + 23px);
+        }
+
+        .Header__text {
+          font-family: 'URWDIN-Demi', sans-serif;
+          font-size: 1vw;
+          color: #fff;
+          overflow: hidden;
+
+          .Header__for-margin {
+            margin-right: 3px;
+          }
+        }
+      }
+
+      &--submenu {
+        display: none;
+        position: absolute;
+        top: calc(5vw + 40px);
+        background-color: $main-color;
+        border-radius: 0 0 50% 50%;
+        color: #fff;
+        right: 0;
+        margin: 0;
+        padding: 0 3vw 3vw 1vw;
+
+        .Header__content {
+          .Header__head {
+            color: #fec800;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            padding: 0.5em;
+            font-size: calc(-0.4vw + 1rem);
+            font-weight: 700;
+
+            .Header__text {
+              font-family: 'URWDIN-Demi', sans-serif;
+              -webkit-transform: translateY(0.2em);
+              transform: translateY(0.2em);
+            }
+          }
+
+          .Header__item {
+            @extend .Header__head;
+            border: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 1em;
+
+            a {
+              color: #fff;
+            }
+          }
+
+          .Header__item--last {
+            @extend .Header__item;
+            margin-bottom: 2em;
+          }
+        }
+      }
+    }
+  }
+}
