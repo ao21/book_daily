@@ -14,17 +14,15 @@
           <div class="Header__text">MENU</div>
         </a>
         <ul class="Header__list--submenu js-list-submenu">
-          <div class="Header__content">
-            <div class="Header__head">
-              <span class="Header__text">ACCOUNT</span>
-            </div>
-            <li class="Header__item">
-              <%= link_to "編集", edit_user_registration_path %>
-            </li>
-            <li class="Header__item--last">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
-            </li>
+          <div class="Header__head">
+            <span class="Header__text--account">ACCOUNT</span>
           </div>
+          <li class="Header__item">
+            <%= link_to "編集", edit_user_registration_path %>
+          </li>
+          <li class="Header__item--last">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+          </li>
         </ul>
       <% else %>
         <%= link_to users_guest_sign_in_path, method: :post, class: "Header__list--guest" do %>
