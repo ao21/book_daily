@@ -1,3 +1,15 @@
+/* 画面サイズ */
+
+$sm: 400px;
+$md: 768px;
+$xl: 1023px;
+
+@mixin mq($breakpoint: $sm) {
+  @media screen and (max-width: #{$breakpoint} ) {
+    @content;
+  }
+}
+
 /* カラー */
 
 $main-color: #219ebc;
@@ -44,11 +56,11 @@ a:link {
 /* フラッシュ*/
 
 .alert-notice {
-  @extend .alert-success;
+  @extend .alert-success !optional;
 }
 
 .alert-alert {
-  @extend .alert-danger;
+  @extend .alert-danger !optional;
 }
 
 /* エラーメッセージ */
@@ -67,16 +79,16 @@ div.field_with_errors {
   height: calc(5vw + 40px);
 }
 
-.header {
+.Header {
+  @extend %header-height;
   padding-left: 0;
   margin-bottom: 20px;
   background-color: #fff;
   width: 100%;
   top: 0;
   left: 0;
-  @extend %header-height;
 
-  &__logo {
+  .Header__logo {
     width: 100%;
     max-width: 325px;
     float: left;
@@ -86,8 +98,8 @@ div.field_with_errors {
       width: 100%;
 
       img {
-        border: none;
         @extend %header-height;
+        border: none;
         width: auto;
         max-width: 40vw;
         @include mq($md) {
@@ -98,7 +110,8 @@ div.field_with_errors {
     }
   }
 
-  &__container {
+  .Header__container {
+    @extend %header-height;
     position: fixed;
     top: 0;
     right: 0;
@@ -107,11 +120,10 @@ div.field_with_errors {
     @include mq($md) {
       width: calc(100% - 50vw);
     }
-    @extend %header-height;
     background: $main-color;
     border-radius: 0 0 0 40px;
 
-    .container__list {
+    .Header__list {
       position: relative;
       display: flex;
       justify-content: flex-end;
@@ -120,10 +132,10 @@ div.field_with_errors {
       padding-top: 5px;
       padding-bottom: 5px;
 
-      .list__mypage,
-      .list__menu,
-      .list__guest,
-      .list__login {
+      &.--mypage,
+      &.--menu,
+      &.--guest,
+      &.--login {
         width: calc(5vw + 40px);
         border-left: 1px solid #fff;
         display: flex;
@@ -133,23 +145,23 @@ div.field_with_errors {
         font-weight: bold;
         color: #fff;
 
-        .icon {
+        .Header__icon {
           height: calc(1.6vw + 23px);
         }
 
-        .text {
+        .Header__text {
           font-family: 'URWDIN-Demi', sans-serif;
           font-size: 1vw;
           color: #fff;
           overflow: hidden;
 
-          .for-margin {
+          .Header__for-margin {
             margin-right: 3px;
           }
         }
       }
 
-      .submenu {
+      &.--submenu {
         display: none;
         position: absolute;
         top: calc(5vw + 40px);
@@ -160,8 +172,8 @@ div.field_with_errors {
         margin: 0;
         padding: 0 3vw 3vw 1vw;
 
-        &__content {
-          .head {
+        .Header__content {
+          .Header__head {
             color: #fec800;
             display: -webkit-box;
             display: -ms-flexbox;
@@ -175,19 +187,23 @@ div.field_with_errors {
             font-size: calc(-0.4vw + 1rem);
             font-weight: 700;
 
-            .text {
+            .Header__text {
               font-family: 'URWDIN-Demi', sans-serif;
               -webkit-transform: translateY(0.2em);
               transform: translateY(0.2em);
             }
           }
 
-          .item {
-            @extend .head;
+          .Header__item {
+            @extend .Header__head;
             border: 0;
             padding-bottom: 0;
             margin-top: 0;
             margin-bottom: 1em;
+
+            &.--last {
+              margin-bottom: 2em;
+            }
 
             a {
               color: #fff;
