@@ -1,0 +1,20 @@
+.BookImage {
+  .BookImage__cover {
+    position: relative;
+    text-align: center;
+    width: 122px;
+    height: 145px;
+    margin-bottom: 3px;
+  }
+
+  .BookImage__image {
+    position: absolute;
+    width: 100px;
+    max-height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
