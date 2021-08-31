@@ -4,8 +4,8 @@
   .BookImage__cover {
     position: relative;
     text-align: center;
-    width: 122px;
-    height: 145px;
+    width: calc(1vw + 122px);
+    height: calc(1vw + 145px);
     margin-bottom: 3px;
   }
 
