@@ -10,7 +10,7 @@
             <ul class="book-list-group">
               <% results.each do |result| %>
                 <li class="group-book">
-                  <%= render partial: 'image_link', locals: { image_link: result[:image_link] } %>
+                  <%= render partial: 'book_image', locals: { image_link: result[:image_link] } %>
                   <div class="book-detail">
                     <div class="detail-title">
                       <%= link_to result[:title], controller: :books, action: :new, remote: true, title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
