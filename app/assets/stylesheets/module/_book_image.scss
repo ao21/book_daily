@@ -3,20 +3,20 @@
 .BookImage {
   .BookImage__cover {
     position: relative;
-    text-align: center;
     width: 100%;
     height: calc(1vw + 145px);
     margin-bottom: 3px;
+    text-align: center;
   }
 
   .BookImage__image {
     position: absolute;
-    width: auto;
-    height: 100%;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    width: auto;
+    height: 100%;
     margin: auto;
   }
 }

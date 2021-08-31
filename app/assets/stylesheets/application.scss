@@ -9,8 +9,8 @@
 
 .main-wrapper {
   border-radius: 4px;
-  background-color: #fff;
-  border: 1px solid #bdbdbd;
+  background-color: $color-white;
+  border: 1px solid $color-gray;
   box-sizing: border-box;
   margin-bottom: 10px;
   width: 100%;
@@ -23,7 +23,7 @@
   .content-header {
     height: 50px;
     position: relative;
-    border-bottom: 1px solid #bdbdbd;
+    border-bottom: 1px solid $color-gray;
     box-sizing: border-box;
     line-height: 50px;
   }
@@ -98,7 +98,7 @@
           margin-bottom: 2px;
           box-sizing: border-box;
           overflow: hidden;
-          background: #fff;
+          background: $color-white;
           line-height: 15px;
           font-size: 11px;
           color: #4756ca;
@@ -108,14 +108,14 @@
           font-size: 14px;
 
           .detail-read-date {
-            background-color: #bdbdbd;
+            background-color: $color-gray;
             height: 20px;
             width: 50px;
             border-radius: 4px;
-            border: 1px solid #bdbdbd;
+            border: 1px solid $color-gray;
             box-sizing: border-box;
-            background-color: #bdbdbd;
-            color: #fff;
+            background-color: $color-gray;
+            color: $color-white;
             font-size: 10px;
             line-height: 18px;
             text-align: center;
@@ -191,12 +191,12 @@ img.book-image {
   height: 20px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  border-top: 1px solid #bdbdbd;
-  border-bottom: 1px solid #bdbdbd;
-  border-left: 1px solid #bdbdbd;
+  border-top: 1px solid $color-gray;
+  border-bottom: 1px solid $color-gray;
+  border-left: 1px solid $color-gray;
   box-sizing: border-box;
-  background-color: #bdbdbd;
-  color: #fff;
+  background-color: $color-gray;
+  color: $color-white;
   font-size: 10px;
   line-height: 18px;
   padding: 0 5px;
@@ -228,7 +228,7 @@ img.book-image {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
-  border: 1px solid #bdbdbd;
+  border: 1px solid $color-gray;
   border-radius: 0;
   outline: none;
   background: none;
@@ -258,7 +258,7 @@ img.book-image {
   border-radius: 100px;
   border: 1px solid #4756ca;
   box-sizing: border-box;
-  color: #fff !important;
+  color: $color-white !important;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
@@ -288,7 +288,7 @@ img.book-image {
   height: 30px;
   line-height: 30px;
   margin: -15px auto 0;
-  background: #fff;
+  background: $color-white;
   width: 17em;
 }
 
@@ -302,9 +302,9 @@ img.book-image {
 .login-btn-link {
   width: 100%;
   display: block;
-  background: #bdbdbd;
+  background: $color-gray;
   border-radius: 100px;
-  border: 1px solid #bdbdbd;
+  border: 1px solid $color-gray;
   box-sizing: border-box;
   color: #313f52 !important;
   font-size: 16px;
@@ -347,8 +347,8 @@ a.selected {
 
 .side-wrapper {
   border-radius: 4px;
-  background-color: #fff;
-  border: 1px solid #bdbdbd;
+  background-color: $color-white;
+  border: 1px solid $color-gray;
   box-sizing: border-box;
   float: left;
   text-align: left;
@@ -378,11 +378,11 @@ a.selected {
   }
 
   .user-data {
-    border-top: 1px solid #bdbdbd;
+    border-top: 1px solid $color-gray;
 
     .reading-title {
       background-color: #e6e9ec;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1px solid $color-white;
       border-right: 1px solid #e6e9ec;
       font-size: 12px;
       font-weight: bold;
@@ -395,7 +395,7 @@ a.selected {
 }
 
 .task {
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid $color-gray;
   margin-top: 5px;
 
   .task-image {
@@ -425,9 +425,9 @@ a.selected {
       .number-title {
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
-        border-top: 1px solid #bdbdbd;
-        border-bottom: 1px solid #bdbdbd;
-        border-left: 1px solid #bdbdbd;
+        border-top: 1px solid $color-gray;
+        border-bottom: 1px solid $color-gray;
+        border-left: 1px solid $color-gray;
         box-sizing: border-box;
         background-color: #bde4f4;
         font-size: 15px;
@@ -437,9 +437,9 @@ a.selected {
       .number-item {
         border-top-right-radius: 4px;
         border-bottom-right-radius: 4px;
-        border-top: 1px solid #bdbdbd;
-        border-bottom: 1px solid #bdbdbd;
-        border-right: 1px solid #bdbdbd;
+        border-top: 1px solid $color-gray;
+        border-bottom: 1px solid $color-gray;
+        border-right: 1px solid $color-gray;
         box-sizing: border-box;
         color: #4756ca;
         font-size: 13px;
@@ -459,7 +459,7 @@ a.selected {
 
 .month-reading {
   margin-top: 10px;
-  border-top: 1px solid #bdbdbd;
+  border-top: 1px solid $color-gray;
   display: flex;
 
   .reading-this-month,
@@ -698,7 +698,7 @@ a.selected {
   border-radius: 100px;
   border: 1px solid #4756ca;
   box-sizing: border-box;
-  color: #fff !important;
+  color: $color-white !important;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
@@ -724,7 +724,7 @@ a.selected {
     height: 30px;
     line-height: 30px;
     margin: -15px auto 0;
-    background: #fff;
+    background: $color-white;
     width: 17em;
   }
 }
@@ -738,9 +738,9 @@ a.selected {
   .cancel-submit-btn {
     width: 100%;
     display: block;
-    background: #bdbdbd;
+    background: $color-gray;
     border-radius: 100px;
-    border: 1px solid #bdbdbd;
+    border: 1px solid $color-gray;
     box-sizing: border-box;
     color: #313f52 !important;
     font-size: 16px;

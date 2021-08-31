@@ -12,7 +12,7 @@
 body {
   font: 13px/1.231 arial, helvetica, clean, sans-serif;
   *font: x-small;
-  background: #fff;
+  background: $color-white;
   color: #444;
   font-family: '游ゴシック', 'YuGothic', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
     sans-serif;
@@ -35,7 +35,7 @@ body {
 
 a:link {
   text-decoration: none;
-  color: $main-blue;
+  color: $color-main;
 }
 
 //******** フラッシュ **********//
