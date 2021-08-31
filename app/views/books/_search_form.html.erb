@@ -1,8 +1,8 @@
-<div class="Search">
+<div class="SearchForm">
   <%= form_with url: books_path, id: :search_form, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, class: "Search__form", id: :keyword, placeholder: "タイトル、著者名" %>
-    <%= f.button type: "submit", class: "Search__btn" do %>
-      <i class="fas fa-search Search__btn-icon"></i>
+    <%= f.text_field :keyword, class: "SearchForm__input", id: :keyword, placeholder: "タイトル、著者名" %>
+    <%= f.button type: "submit", class: "SearchForm__btn" do %>
+      <i class="fas fa-search SearchForm__btn-icon"></i>
     <% end %>
   <% end %>
 </div>
