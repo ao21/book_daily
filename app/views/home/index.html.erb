@@ -49,15 +49,17 @@
             <ul class="NewsList__group">
               <% @reads_new.each do |read| %>
                 <li class="NewsList__item">
-                  <%= render partial: 'books/book_image', locals: { image_link: read.task.book.image_link } %>
-                  <div class="NewsList__item-title">
-                    <%= read.task.book.title %>
-                  </div>
-                  <div class="NewsList__item-date"><%= read.read_on.strftime('%-m月%-d日') %></div>
-                  <div class="NewsList__item-text">
-                    <%= read.task.user.name %>さんが<br />
-                    <%= read.read_page %>ページまで<br />
-                    読みました！
+                  <div class="NewsList__item-wrap">
+                    <%= render partial: 'books/book_image', locals: { image_link: read.task.book.image_link } %>
+                    <div class="NewsList__item-title">
+                      <%= read.task.book.title %>
+                    </div>
+                    <div class="NewsList__item-date"><%= read.read_on.strftime('%-m月%-d日') %></div>
+                    <div class="NewsList__item-text">
+                      <%= read.task.user.name %>さんが<br />
+                      <%= read.read_page %>ページまで<br />
+                      読みました！
+                    </div>
                   </div>
                 </li>
               <% end %>

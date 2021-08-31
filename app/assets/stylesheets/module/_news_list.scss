@@ -6,17 +6,34 @@
   .NewsList__group {
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
   }
 
   .NewsList__item {
-    width: calc(1vw + 132px);
     display: inline-block;
-    padding: 0 5px;
-    margin-bottom: calc(1vw + 25px);
-    margin-right: auto;
-    margin-left: auto;
     position: relative;
-    box-sizing: border-box;
+    flex-basis: 20%;
+    max-width: 20%;
+    @include mq($xl) {
+      flex-basis: 25%;
+      max-width: 25%;
+    }
+    @include mq($md) {
+      flex-basis: 33.3%;
+      max-width: 33.3%;
+    }
+    @include mq($sm) {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+  }
+
+  .NewsList__item-wrap {
+    width: 100%;
+    max-width: calc(2vw + 132px);
+    margin: 0 auto;
+    margin-bottom: calc(1vw + 25px);
+    padding: 0 5px;
   }
 
   .NewsList__item-title {

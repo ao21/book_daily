@@ -4,15 +4,15 @@
   .BookImage__cover {
     position: relative;
     text-align: center;
-    width: calc(1vw + 122px);
+    width: 100%;
     height: calc(1vw + 145px);
     margin-bottom: 3px;
   }
 
   .BookImage__image {
     position: absolute;
-    width: 100px;
-    max-height: 100%;
+    width: auto;
+    height: 100%;
     top: 0;
     bottom: 0;
     left: 0;
