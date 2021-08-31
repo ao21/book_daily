@@ -1,38 +1,72 @@
-<div class="introduction-block mb-2">
-  <div><%= image_tag 'top.png' %></div>
-</div>
-
-<div class="main-wrapper">
-  <div class="content-with-header">
-    <div class="content-header">
-      <div class="header-title">新着</div>
-    </div>
-
-    <div class="content-body">
-      <div class="read-new-list">
-        <ul class="read-list-group">
-          <% @reads_new.each_slice(5) do |reads| %>
-            <% reads.each do |read| %>
-              <li class="group-new">
-                <div class="book-image-cover">
-                  <%= render partial: 'books/image_link', locals: { image_link: read.task.book.image_link } %>
-                </div>
-                <div class="new-detail">
-                  <div class="detail-title">
-                    <%= read.task.book.title %>
-                  </div>
-                  <div class="detail-content">
-                    <div class="detail-read-date"><%= read.read_on.strftime('%-m月%-d日') %></div>
-                    <div class="detail-user-name"><%= read.task.user.name %>さんが</div>
-                    <div class="detail-read-page"><%= read.read_page %>ページまで</div>
-                    <div>読みました！</div>
-                  </div>
-                </div>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
+<section class="Firstview">
+  <div class="Firstview__container">
+    <div class="Firstview__form">
+      <h1 class="Firstview__form-head">
+        読書を習慣に。
+      </h1>
+      <div class="Firstview__form-search">
+        <p class="Firstview__form-sentence">
+          新しいタスクを登録する
+        </p>
+        <%= render "books/search_form" %>
       </div>
     </div>
+
+    <div class="Firstview__img">
+      <%= image_tag 'top' %>
+    </div>
+  </section>
+
+  <div class="c-container">
+    <section class="Description">
+      <div class="Description__title">
+        <h2 class="Description__title-sentence">
+          読みたい本に
+          <br>
+          <span class="orange">毎日の目標</span>を設定する。
+        </h2>
+      </div>
+      <p class="Description__text">
+        読み終わりたい日を設定すると、毎日の何ページ読むか目標を決められます。
+        <br>
+        1冊読み終わるごとに、読書が習慣になっていきます。
+      </p>
+    </section>
   </div>
+</div>
+
+  <section class="News">
+    <div class="News__top">
+      <h3 class="News__title">
+        <span class="News__title-text --main">NEWS</span>
+        <small class="News__title-text --sub">新着</small>
+      </h3>
+    </div>
+    <div class="News__content">
+      <div class="News__container">
+        <div class="News__wrapper">
+          <div class="NewsList">
+            <ul class="NewsList__group">
+              <% @reads_new.each do |read| %>
+                <li class="NewsList__item">
+                  <div class="NewsList__item-wrap">
+                    <%= render partial: 'books/book_image', locals: { image_link: read.task.book.image_link } %>
+                    <div class="NewsList__item-title">
+                      <%= read.task.book.title %>
+                    </div>
+                    <div class="NewsList__item-date"><%= read.read_on.strftime('%-m月%-d日') %></div>
+                    <div class="NewsList__item-text">
+                      <%= read.task.user.name %>さんが<br />
+                      <%= read.read_page %>ページまで<br />
+                      読みました！
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

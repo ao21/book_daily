@@ -1,0 +1,38 @@
+//******** トップ サイト説明 ********//
+
+.Description {
+  padding-right: calc(5vw + -4.8px);
+  padding-top: calc(1.4vw + 14px);
+  padding-left: 10px;
+
+  .Description__title {
+    margin-bottom: calc(1.2vw + 10px);
+  }
+
+  .Description__title-sentence {
+    font-size: calc(1vw + 1rem);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    line-height: 1.8;
+    white-space: nowrap;
+
+    .orange {
+      color: $second-orange;
+    }
+
+    &::after {
+      content: '';
+      width: calc(1.2vw + 10px);
+      height: calc(0.08vw + 1.6px);
+      background-color: $main-blue;
+      display: block;
+      margin-top: calc(0.8vw + 7px);
+    }
+  }
+
+  .Description__text {
+    font-size: calc(0.8vw + 10px);
+    letter-spacing: 0.01em;
+    margin-bottom: calc(1.3vw + 20px);
+  }
+}

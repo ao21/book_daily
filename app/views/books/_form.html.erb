@@ -1,6 +1,0 @@
-<%= form_with url: books_path, id: :search_form, method: :get, local: true do |f| %>
-  <%= f.text_field :keyword, id: :keyword, placeholder: "タイトル、著者名" %>
-  <%= f.button type: "submit", style: "border-style: none;" do %>
-    <i class="fas fa-search"></i>
-  <% end %>
-<% end %>

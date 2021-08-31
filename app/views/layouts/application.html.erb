@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
   </head>
 
@@ -18,9 +19,7 @@
     <main>
       <%= render 'layouts/flash' %>
       <%# max_width メソッドは application_helper.rb に記載 %>
-      <div class="base-container <%= max_width %>">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </main>
     <footer>
     </footer>

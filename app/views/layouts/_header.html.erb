@@ -1,45 +1,39 @@
-<div class="header-menu">
-  <div class="menu-inner">
-    <div class="personal-account">
+<div class="Header">
+  <div class="Header__logo">
+   <%= link_to image_tag('title.png'), "/" %>
+  </div>
+  <div class="Header__container">
+    <div class="Header__list">
       <% if user_signed_in? %>
-        <div class="account-task">
-          <%= link_to "#{current_user.name}さんのマイページ", task_path(first_task.id), class: "link account-task-link" %>
-        </div>
-        <div class="account-menu">
-          <div class="menu-item">
-            <a class="menu-item-link js-menu-item-link" href="">メニュー</a>
-            <ul class="submenu">
-              <li class="submenu-item">
-                <%= link_to "アカウント編集", edit_user_registration_path %>
-              </li>
-              <li class="submenu-item">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
-              </li>
-            </ul>
+        <%= link_to task_path(first_task.id), class: "Header__list-item" do %>
+          <div class="Header__icon"><i class="far fa-bookmark"></i></div>
+          <div class="Header__text"><span class="Header__for-margin">MY</span>PAGE</div>
+        <% end %>
+        <a class="Header__list-item js-list-menu" href="">
+          <div class="Header__icon"><i class="fas fa-grip-lines"></i></div>
+          <div class="Header__text">MENU</div>
+        </a>
+        <ul class="Header__list-submenu js-list-submenu">
+          <div class="Header__head">
+            <span class="Header__text-account">ACCOUNT</span>
           </div>
-        </div>
+          <li class="Header__head --item">
+            <%= link_to "編集", edit_user_registration_path %>
+          </li>
+          <li class="Header__head --item --last">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+          </li>
+        </ul>
       <% else %>
-        <div class="login-menu">
-          <div class="menu-signup">
-            <%= link_to "新規登録", new_user_registration_path, class: "link" %>
-          </div>
-          <div class="menu-login">
-            <%= link_to "ログイン", new_user_session_path, class: "link" %>
-          </div>
-          <div class="menu-guest-login">
-            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "link" %>
-          </div>
-        </div>
+        <%= link_to users_guest_sign_in_path, method: :post, class: "Header__list-item" do %>
+          <div class="Header__icon"><i class="fas fa-sign-in-alt"></i></div>
+          <div class="Header__text">GUEST</div>
+        <% end %>
+        <%= link_to new_user_session_path, class: "Header__list-item" do %>
+          <div class="Header__icon"><i class="fas fa-grip-lines"></i></div>
+          <div class="Header__text">LOGIN</div>
+        <% end %>
       <% end %>
     </div>
   </div>
-</div>
-<div class="title-header">
-  <span class="title">
-    <h2><%= link_to "読書の習慣", root_path %></h2>
-    <p>日々の読書目標を達成しよう！</p>
-  </span>
-  <span class="search-form">
-    新しいタスクを登録する<%= render 'books/form' %>
-  </span>
 </div>
