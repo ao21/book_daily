@@ -1,5 +1,5 @@
-<div class="Home">
-  <section class="Firstview">
+<section class="Firstview">
+  <div class="Firstview__container">
     <div class="Firstview__form">
       <h1 class="Firstview__form-head">
         読書を習慣に。
@@ -43,8 +43,8 @@
   <section class="News">
     <div class="News__top">
       <h3 class="News__title">
-        <span class="News__title--main">NEWS</span>
-        <small class="News__title--sub">新着</small>
+        <span class="News__title --main">NEWS</span>
+        <small class="News__title --sub">新着</small>
       </h3>
     </div>
     <div class="News__content">
@@ -54,15 +54,15 @@
             <ul class="News__group">
               <% @reads_new.each do |read| %>
                 <li class="News__item">
-                  <%= render partial: 'books/image_link', locals: { image_link: read.task.book.image_link } %>
+                  <%= render partial: 'books/book_image', locals: { image_link: read.task.book.image_link } %>
                   <div class="News__detail">
                     <div class="News__detail-title">
                       <%= read.task.book.title %>
                     </div>
                     <div class="News__detail-content">
-                      <div class="News__detail-content--date"><%= read.read_on.strftime('%-m月%-d日') %></div>
-                      <div class="News__detail-content--name"><%= read.task.user.name %>さんが</div>
-                      <div class="News__detail-content--page"><%= read.read_page %>ページまで</div>
+                      <div class="News__detail-content --date"><%= read.read_on.strftime('%-m月%-d日') %></div>
+                      <div class="News__detail-content"><%= read.task.user.name %>さんが</div>
+                      <div class="News__detail-content"><%= read.read_page %>ページまで</div>
                       <div>読みました！</div>
                     </div>
                   </div>

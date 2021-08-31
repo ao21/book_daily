@@ -1,21 +1,6 @@
-/* 画面サイズ */
+//******** サイト共通定義 **********//
 
-$sm: 400px;
-$md: 768px;
-$xl: 1023px;
-
-@mixin mq($breakpoint: $sm) {
-  @media screen and (max-width: #{$breakpoint} ) {
-    @content;
-  }
-}
-
-/* カラー */
-
-$main-color: #219ebc;
-$second-orange: #ffb703;
-
-/* 全体 */
+//******** 全体 **********//
 
 *,
 ::after,
@@ -50,10 +35,10 @@ body {
 
 a:link {
   text-decoration: none;
-  color: $main-color;
+  color: $main-blue;
 }
 
-/* フラッシュ*/
+//******** フラッシュ **********//
 
 .alert-notice {
   @extend .alert-success !optional;
@@ -63,7 +48,7 @@ a:link {
   @extend .alert-danger !optional;
 }
 
-/* エラーメッセージ */
+//******** エラーメッセージ **********//
 
 div.field_with_errors {
   display: contents;

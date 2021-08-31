@@ -1,7 +1,9 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'simple_calendar';
-@import 'base';
-@import 'partials/*';
+@import 'setting/*';
+@import 'mixin/*';
+@import 'base/*';
+@import 'module/*';
 
 /* 全体 */
 

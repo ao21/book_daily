@@ -1,4 +1,4 @@
-/* 新着欄 */
+//******** トップ 新着欄 ********//
 
 .News {
   .News__top {
@@ -16,10 +16,10 @@
     width: calc(25vw + 150px);
     height: auto;
     padding: 10px calc(0.8vw + 6px) 10px calc(18vw + -43px);
-    background-color: $main-color;
+    background-color: $main-blue;
     color: #fff;
 
-    &--main {
+    &.--main {
       font-family: 'URWDIN-Demi', sans-serif;
       -webkit-transform: translateY(0.5em);
       transform: translateY(0.5em);
@@ -28,7 +28,7 @@
       line-height: 1;
     }
 
-    &--sub {
+    &.--sub {
       font-size: calc(0.4vw + 1rem);
       font-weight: 700;
       margin-left: calc(0.6vw + 7.5px);
@@ -98,13 +98,13 @@
     line-height: 15px;
     font-size: 11px;
     font-weight: bold;
-    color: $main-color;
+    color: $main-blue;
   }
 
   .News__detail-content {
     font-size: 14px;
 
-    &__date {
+    &.--date {
       background-color: #bdbdbd;
       height: 20px;
       width: 50px;
