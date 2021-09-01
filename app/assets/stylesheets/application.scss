@@ -1,9 +1,16 @@
+// Webフォント
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+// 外部読み込み
 @import 'bootstrap/scss/bootstrap';
 @import 'simple_calendar';
-@import 'setting/*';
-@import 'mixin/*';
-@import 'base/*';
-@import 'module/*';
+
+// モジュール
+@import 'resets/*';
+@import 'settings/*';
+@import 'mixins/*';
+@import 'bases/*';
+@import 'modules/*';
 
 /* 全体 */
 
