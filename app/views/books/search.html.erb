@@ -1,47 +1,41 @@
 <div class="Search">
-  <div class="SearchTop">
+  <section class="SearchTop">
     <h1 class="SearchTop__title">
       <div class="SearchTop__title --main">Books</div>
       <small class="SearchTop__title --sub">読みたい本を選んでください。</small>
     </h1>
-  </div>
+  </section>
+  
+  <%= render 'books/breadcrumbs' %>
+
   <div class="c-container">
-    <div class="SearchBar">
-    </div>
-  </div>
-</div>
-<div class="main-wrapper">
-  <div class="content-with-header">
-    <div class="content-header">
-      <div class="header-title"><%= params[:keyword] %>の検索結果</div>
-    </div>
-    <div class="content-body">
-      <div class="book-list">
+    <section class="Search__bar">
+      <h3 class="Search__bar-text">"<%= params[:keyword] %>"の検索結果</h3>
+    </section>
+    
+    <section class="SearchList">
+      <ul class="SearchList__group">
         <% if @results_data %>
-          <% @results_data.each_slice(4) do |results| %>
-            <ul class="book-list-group">
-              <% results.each do |result| %>
-                <li class="group-book">
-                  <%= render partial: 'book_image', locals: { image_link: result[:image_link] } %>
-                  <div class="book-detail">
-                    <div class="detail-title">
-                      <%= link_to result[:title], controller: :books, action: :new, remote: true, title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
-                    </div>
-                    <div class="detail-author"><%= result[:author] %></div>
-                    <dl class="detail-page-count">
-                      <dt class="count-title">ページ数</dt>
-                      <dd class="count-item"><%= result[:page_count] %></dd>
-                    </dl>
-                  </div>
-                  <div class="book-submit">
-                  </div>
-                </li>
-              <% end %>
-            </ul>
+          <% @results_data.each do |result| %>
+            <li class="SearchList__item">
+              <div class="SearchList__item-wrap">
+                <%= render partial: 'book_image', locals: { image_link: result[:image_link] } %>
+                <div class="SearchList__item-title">
+                  <%= link_to result[:title], controller: :books, action: :new, remote: true, title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count] %>
+                </div>
+                <div class="SearchList__item-author"><%= result[:author] %></div>
+                <dl class="SearchList__item-page">
+                  <dt class="SearchList__item-page-title">ページ数</dt>
+                  <dd class="SearchList__item-page-count"><%= result[:page_count] %></dd>
+                </dl>
+                <div class="book-submit">
+                </div>
+              </div>
+            </li>
           <% end %>
         <% end %>
-      </div>
-    </div>
+      </ul>
+    </section>
   </div>
 </div>
 
