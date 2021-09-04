@@ -1,16 +1,23 @@
+// Webフォント
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+// 外部読み込み
 @import 'bootstrap/scss/bootstrap';
 @import 'simple_calendar';
-@import 'setting/*';
-@import 'mixin/*';
-@import 'base/*';
-@import 'module/*';
+
+// モジュール
+@import 'resets/*';
+@import 'settings/*';
+@import 'mixins/*';
+@import 'bases/*';
+@import 'modules/*';
 
 /* 全体 */
 
 .main-wrapper {
   border-radius: 4px;
-  background-color: #fff;
-  border: 1px solid #bdbdbd;
+  background-color: $color-white;
+  border: 1px solid $color-gray;
   box-sizing: border-box;
   margin-bottom: 10px;
   width: 100%;
@@ -23,7 +30,7 @@
   .content-header {
     height: 50px;
     position: relative;
-    border-bottom: 1px solid #bdbdbd;
+    border-bottom: 1px solid $color-gray;
     box-sizing: border-box;
     line-height: 50px;
   }
@@ -47,175 +54,6 @@
   }
 }
 
-/* 新着欄 */
-
-.read-new-list {
-  overflow: hidden;
-  width: 100%;
-  margin: 0 auto -15px auto;
-  padding: 0;
-
-  .read-list-group {
-    width: 680px;
-    margin: 0;
-    padding: 0;
-
-    .group-new {
-      width: 132px;
-      display: inline-block;
-      padding: 0 5px;
-      margin-bottom: 15px;
-      position: relative;
-      box-sizing: border-box;
-
-      .book-image-cover {
-        position: relative;
-        text-align: center;
-        width: 122px;
-        height: 145px;
-        margin-bottom: 3px;
-
-        .book-image {
-          position: absolute;
-          width: 100px;
-          max-height: 100%;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          margin: auto;
-        }
-      }
-
-      .new-detail {
-        width: 100%;
-
-        .detail-title {
-          position: relative;
-          width: 100%;
-          height: 30px;
-          padding-right: 4px;
-          margin-bottom: 2px;
-          box-sizing: border-box;
-          overflow: hidden;
-          background: #fff;
-          line-height: 15px;
-          font-size: 11px;
-          color: #4756ca;
-        }
-
-        .detail-content {
-          font-size: 14px;
-
-          .detail-read-date {
-            background-color: #bdbdbd;
-            height: 20px;
-            width: 50px;
-            border-radius: 4px;
-            border: 1px solid #bdbdbd;
-            box-sizing: border-box;
-            background-color: #bdbdbd;
-            color: #fff;
-            font-size: 10px;
-            line-height: 18px;
-            text-align: center;
-          }
-        }
-      }
-    }
-  }
-}
-
-/* 書籍検索結果ページ */
-
-.book-list {
-  width: 660px;
-  margin: 5px 0 0 0;
-  padding: 0;
-}
-
-.book-list-group {
-  width: 660px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.group-book {
-  display: inline-block;
-  vertical-align: top;
-  width: 132px;
-  min-height: 250px;
-  padding: 15px 5px 15px 5px;
-  margin: 5px 5px 5px 5px;
-  position: relative;
-  box-sizing: border-box;
-}
-
-img.book-image {
-  width: 122px;
-  height: 145px;
-  margin-bottom: 3px;
-}
-
-.detail-title {
-  position: relative;
-  width: 100%;
-  height: 40px;
-  padding-right: 4px;
-  margin-bottom: 2px;
-  box-sizing: border-box;
-  overflow: hidden;
-  line-height: 20px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.detail-author {
-  height: 2em;
-  margin-bottom: 5px;
-  overflow: hidden;
-  -ms-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
-  display: block;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.detail-page-count {
-  display: flex;
-  margin-bottom: 3px;
-}
-
-.count-title {
-  height: 20px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-top: 1px solid #bdbdbd;
-  border-bottom: 1px solid #bdbdbd;
-  border-left: 1px solid #bdbdbd;
-  box-sizing: border-box;
-  background-color: #bdbdbd;
-  color: #fff;
-  font-size: 10px;
-  line-height: 18px;
-  padding: 0 5px;
-}
-
-.count-item {
-  height: 20px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top: 1px solid #f0f0f0;
-  border-bottom: 1px solid #f0f0f0;
-  border-right: 1px solid #f0f0f0;
-  box-sizing: border-box;
-  color: #4756ca;
-  font-size: 10px;
-  line-height: 18px;
-  padding: 0 5px;
-}
-
 /* ログイン、サインインページ */
 
 .field-title {
@@ -228,7 +66,7 @@ img.book-image {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
-  border: 1px solid #bdbdbd;
+  border: 1px solid $color-gray;
   border-radius: 0;
   outline: none;
   background: none;
@@ -258,7 +96,7 @@ img.book-image {
   border-radius: 100px;
   border: 1px solid #4756ca;
   box-sizing: border-box;
-  color: #fff !important;
+  color: $color-white !important;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
@@ -288,7 +126,7 @@ img.book-image {
   height: 30px;
   line-height: 30px;
   margin: -15px auto 0;
-  background: #fff;
+  background: $color-white;
   width: 17em;
 }
 
@@ -302,9 +140,9 @@ img.book-image {
 .login-btn-link {
   width: 100%;
   display: block;
-  background: #bdbdbd;
+  background: $color-gray;
   border-radius: 100px;
-  border: 1px solid #bdbdbd;
+  border: 1px solid $color-gray;
   box-sizing: border-box;
   color: #313f52 !important;
   font-size: 16px;
@@ -347,8 +185,8 @@ a.selected {
 
 .side-wrapper {
   border-radius: 4px;
-  background-color: #fff;
-  border: 1px solid #bdbdbd;
+  background-color: $color-white;
+  border: 1px solid $color-gray;
   box-sizing: border-box;
   float: left;
   text-align: left;
@@ -378,11 +216,11 @@ a.selected {
   }
 
   .user-data {
-    border-top: 1px solid #bdbdbd;
+    border-top: 1px solid $color-gray;
 
     .reading-title {
       background-color: #e6e9ec;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1px solid $color-white;
       border-right: 1px solid #e6e9ec;
       font-size: 12px;
       font-weight: bold;
@@ -395,7 +233,7 @@ a.selected {
 }
 
 .task {
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid $color-gray;
   margin-top: 5px;
 
   .task-image {
@@ -425,9 +263,9 @@ a.selected {
       .number-title {
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
-        border-top: 1px solid #bdbdbd;
-        border-bottom: 1px solid #bdbdbd;
-        border-left: 1px solid #bdbdbd;
+        border-top: 1px solid $color-gray;
+        border-bottom: 1px solid $color-gray;
+        border-left: 1px solid $color-gray;
         box-sizing: border-box;
         background-color: #bde4f4;
         font-size: 15px;
@@ -437,9 +275,9 @@ a.selected {
       .number-item {
         border-top-right-radius: 4px;
         border-bottom-right-radius: 4px;
-        border-top: 1px solid #bdbdbd;
-        border-bottom: 1px solid #bdbdbd;
-        border-right: 1px solid #bdbdbd;
+        border-top: 1px solid $color-gray;
+        border-bottom: 1px solid $color-gray;
+        border-right: 1px solid $color-gray;
         box-sizing: border-box;
         color: #4756ca;
         font-size: 13px;
@@ -459,7 +297,7 @@ a.selected {
 
 .month-reading {
   margin-top: 10px;
-  border-top: 1px solid #bdbdbd;
+  border-top: 1px solid $color-gray;
   display: flex;
 
   .reading-this-month,
@@ -698,7 +536,7 @@ a.selected {
   border-radius: 100px;
   border: 1px solid #4756ca;
   box-sizing: border-box;
-  color: #fff !important;
+  color: $color-white !important;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
@@ -724,7 +562,7 @@ a.selected {
     height: 30px;
     line-height: 30px;
     margin: -15px auto 0;
-    background: #fff;
+    background: $color-white;
     width: 17em;
   }
 }
@@ -738,9 +576,9 @@ a.selected {
   .cancel-submit-btn {
     width: 100%;
     display: block;
-    background: #bdbdbd;
+    background: $color-gray;
     border-radius: 100px;
-    border: 1px solid #bdbdbd;
+    border: 1px solid $color-gray;
     box-sizing: border-box;
     color: #313f52 !important;
     font-size: 16px;

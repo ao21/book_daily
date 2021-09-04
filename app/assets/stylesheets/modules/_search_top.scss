@@ -1,0 +1,36 @@
+.SearchTop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 30vw;
+  min-height: 200px;
+  margin-top: -10px;
+  margin-bottom: calc(1.2vw + 10px);
+  padding: 10px;
+  border-radius: 30px;
+  background-clip: content-box;
+  background-color: $color-beige;
+
+  .SearchTop__title {
+    text-align: center;
+
+    &.--main {
+      transform: translateY(0.2em);
+      margin-bottom: calc(1.2vw + 1rem);
+      font-weight: 700;
+      font-size: calc(2.4vw + 1.5rem);
+      line-height: 1;
+      font-family: $font-google;
+      letter-spacing: 0.1em;
+    }
+
+    &.--sub {
+      color: $color-main;
+      font-size: calc(0.1vw + 1rem);
+      font-weight: 700;
+    }
+  }
+}

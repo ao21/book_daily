@@ -6,38 +6,37 @@
 }
 
 .Header {
-  @extend %header-height;
-  padding-left: 0;
-  margin-bottom: 20px;
-  background-color: #fff;
-  width: 100%;
   top: 0;
   left: 0;
+  width: 100%;
+  @extend %header-height;
+  margin-bottom: 20px;
+  padding-left: 0;
+  background-color: $color-white;
 
   .Header__logo {
+    float: left;
     width: 100%;
     max-width: 325px;
-    float: left;
 
     a {
       display: block;
       width: 100%;
 
       img {
-        @extend %header-height;
-        border: none;
         width: auto;
         max-width: 40vw;
         @include mq($md) {
           max-width: calc(50vw);
         }
+        @extend %header-height;
         padding: 20px 10px 0 10px;
+        border: none;
       }
     }
   }
 
   .Header__container {
-    @extend %header-height;
     position: fixed;
     top: 0;
     right: 0;
@@ -46,41 +45,42 @@
     @include mq($md) {
       width: calc(100% - 50vw);
     }
-    background: $main-blue;
+    @extend %header-height;
     border-radius: 0 0 0 40px;
+    background: $color-main;
   }
 
   .Header__list {
-    position: relative;
     display: flex;
     justify-content: flex-end;
-    vertical-align: top;
+    position: relative;
     height: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
+    vertical-align: top;
   }
 
   .Header__list-item {
-    width: calc(5vw + 40px);
-    border-left: 1px solid #fff;
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
-    flex-flow: column;
+    width: calc(5vw + 40px);
+    border-left: 1px solid $color-white;
+    color: $color-white;
     font-weight: bold;
-    color: #fff;
   }
 
   .Header__list-submenu {
     display: none;
     position: absolute;
     top: calc(5vw + 40px);
-    background-color: $main-blue;
-    border-radius: 0 0 50% 50%;
-    color: #fff;
     right: 0;
     margin: 0;
     padding: 0 3vw 3vw 1vw;
+    border-radius: 0 0 50% 50%;
+    background-color: $color-main;
+    color: $color-white;
   }
 
   .Header__icon {
@@ -88,10 +88,10 @@
   }
 
   .Header__text {
-    font-family: 'URWDIN-Demi', sans-serif;
-    font-size: 1vw;
-    color: #fff;
     overflow: hidden;
+    color: $color-white;
+    font-size: 1vw;
+    font-family: $font-google;
   }
 
   .Header__for-margin {
@@ -99,27 +99,23 @@
   }
 
   .Header__head {
-    color: #fec800;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     margin-top: 1em;
     margin-bottom: 1em;
     padding: 0.5em;
-    font-size: calc(-0.4vw + 1rem);
+    color: $color-second;
     font-weight: 700;
+    font-size: calc(-0.4vw + 1rem);
 
     &.--item {
-      border: 0;
-      padding-bottom: 0;
       margin-top: 0;
       margin-bottom: 1em;
+      padding-bottom: 0;
+      border: 0;
 
       a {
-        color: #fff;
+        color: $color-white;
       }
     }
 
@@ -129,8 +125,8 @@
   }
 
   .Header__text-account {
-    font-family: 'URWDIN-Demi', sans-serif;
-    -webkit-transform: translateY(0.2em);
     transform: translateY(0.2em);
+    font-family: $font-google;
+    font-weight: 700;
   }
 }
