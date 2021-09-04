@@ -5,14 +5,14 @@
       <small class="SearchTop__title --sub">読みたい本を選んでください。</small>
     </h1>
   </section>
-  
+
   <%= render 'books/breadcrumbs' %>
 
   <div class="c-container">
     <section class="Search__bar">
       <h3 class="Search__bar-text">"<%= params[:keyword] %>"の検索結果</h3>
     </section>
-    
+
     <section class="SearchList">
       <ul class="SearchList__group">
         <% if @results_data %>

@@ -11,7 +11,10 @@
   padding: 0 calc(1.6vw + 13px);
 }
 
-a:link {
+a:active,
+a:hover,
+a:link,
+a:visited {
   text-decoration: none;
   color: $color-main;
 }
