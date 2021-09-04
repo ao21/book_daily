@@ -31,9 +31,21 @@
   .SearchList__item-wrap {
     margin: 0 auto;
     margin-bottom: calc(1vw + 25px);
-    padding: 0 5px;
-    width: 100%;
-    max-width: calc(2vw + 132px);
+
+    a {
+      display: block;
+      padding: 10px;
+      width: 100%;
+      max-width: calc(2vw + 132px);
+      border: 3px solid $color-white;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border: 3px solid $color-main;
+        background-color: #f0f0f0;
+      }
+    }
   }
 
   .SearchList__item-title {
@@ -43,25 +55,10 @@
     margin-bottom: 2px;
     padding-right: 4px;
     overflow: hidden;
-    background: $color-white;
     color: $color-main;
     font-weight: bold;
-    font-size: 12px;
+    font-size: calc(0.2vw + 12px);
     line-height: 15px;
-  }
-
-  .SearchList__item-date {
-    width: 50px;
-    height: 20px;
-    margin-top: calc(0.5vw + 5px);
-    padding-left: 3px;
-    border: 1px solid $color-gray;
-    border-radius: 4px;
-    background-color: $color-gray;
-    color: $color-white;
-    font-size: 11px;
-    line-height: 18px;
-    text-align: center;
   }
 
   .SearchList__item-author {
@@ -69,7 +66,8 @@
     height: 2em;
     margin-bottom: 5px;
     overflow: hidden;
-    font-size: 13px;
+    color: #444;
+    font-size: calc(0.2vw + 13px);
     line-height: 1.5;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -90,7 +88,7 @@
     border-bottom-left-radius: 4px;
     background-color: $color-main;
     color: $color-white;
-    font-size: 10px;
+    font-size: calc(0.2vw + 10px);
     line-height: 18px;
   }
 
@@ -102,7 +100,8 @@
     border-right: 1px solid $color-gray;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-    font-size: 10px;
+    color: #444;
+    font-size: calc(0.2vw + 10px);
     line-height: 18px;
   }
 }
