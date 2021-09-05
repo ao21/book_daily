@@ -2,17 +2,39 @@
   .SearchForm__input {
     width: calc(9vw + 100px);
     height: calc(2vw + 20px);
+    border: solid 2px $color-gray;
+    border-radius: 8px;
     font-size: calc(0.2vw + 12px);
     line-height: calc(0.8vw + 20px);
+
+    &:focus {
+      border: solid 2px $color-main;
+      border-radius: 10px;
+      outline: 0;
+    }
   }
 
   .SearchForm__btn {
-    transform: translateY(0.1em);
-    height: calc(1.2vw + 20px);
-    border-style: none;
+    border-radius: 5px;
+    outline: none;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 5px 1px #777;
+      opacity: 0.8;
+      transition-duration: 0.3s;
+    }
   }
 
   .SearchForm__btn-icon {
+    transform: translateY(0.1em);
+    width: calc(1vw + 20px);
+    height: calc(1vw + 20px);
+    border-radius: 5px;
     background-color: $color-white;
+    font-size: calc(0.2vw + 1em);
+    line-height: calc(1vw + 20px);
+    text-align: center;
+    outline: none;
   }
 }
