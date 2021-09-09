@@ -1,0 +1,97 @@
+.HeaderMenu {
+  .HeaderMenu__toggle {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .HeaderMenu__toggle-icon {
+    height: calc(1.6vw + 23px);
+    color: #fff;
+    transition: transform 0.6s ease-in-out, top 0.5s ease, bottom 0.5s ease;
+
+    &::before {
+      font-family: 'Font Awesome 5 Free';
+      content: '\f7a4';
+    }
+
+    &.show::before {
+      font-weight: 700;
+      line-height: 1;
+      content: '×';
+    }
+  }
+
+  .HeaderMenu__toggle-text {
+    overflow: hidden;
+    color: $color-white;
+    font-size: 1vw;
+    font-family: $font-google;
+  }
+
+  .HeaderMenu__content {
+    display: block;
+    position: absolute;
+    top: calc(5vw + 40px);
+    right: 0.5em;
+    width: 20vw;
+    @include mq($md) {
+      width: 40vw;
+    }
+    height: auto;
+    border-radius: 20px;
+    padding: 0.5em 0 0.5em 1em;
+    background-color: $color-main;
+    // フェードインの設定
+    opacity: 0;
+    transform: translateX(300px);
+    transition: transform 0.5s;
+
+    &.show {
+      opacity: 0.9;
+      transform: translateX(0);
+    }
+  }
+
+  .HeaderMenu__list-text {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 0.5em;
+    color: $color-second;
+
+    &.--head {
+      transform: translateY(0.2em);
+      font-family: $font-google;
+      font-weight: 700;
+      font-size: calc(0.4vw + 1rem);
+    }
+
+    &.--top {
+      width: 90%;
+      padding-bottom: 0.5em;
+      border-bottom: solid 1px $color-white;
+
+      a {
+        color: $color-second;
+      }
+    }
+
+    &.--item {
+      padding-left: 1em;
+      border: 0;
+      font-size: calc(0.4vw + 0.8rem);
+
+      a {
+        color: $color-white;
+      }
+    }
+
+    &.--last {
+      margin-bottom: 2em;
+    }
+  }
+}

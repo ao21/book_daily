@@ -40,7 +40,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 1;
+    z-index: 100;
     width: calc(100% - 40vw);
     @include mq($md) {
       width: calc(100% - 50vw);
@@ -65,22 +65,11 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    position: relative;
     width: calc(5vw + 40px);
     border-left: 1px solid $color-white;
     color: $color-white;
     font-weight: bold;
-  }
-
-  .Header__list-submenu {
-    display: none;
-    position: absolute;
-    top: calc(5vw + 40px);
-    right: 0;
-    margin: 0;
-    padding: 0 3vw 3vw 1vw;
-    border-radius: 0 0 50% 50%;
-    background-color: $color-main;
-    color: $color-white;
   }
 
   .Header__icon {
@@ -96,37 +85,5 @@
 
   .Header__for-margin {
     margin-right: 3px;
-  }
-
-  .Header__head {
-    display: flex;
-    align-items: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding: 0.5em;
-    color: $color-second;
-    font-weight: 700;
-    font-size: calc(-0.4vw + 1rem);
-
-    &.--item {
-      margin-top: 0;
-      margin-bottom: 1em;
-      padding-bottom: 0;
-      border: 0;
-
-      a {
-        color: $color-white;
-      }
-    }
-
-    &.--last {
-      margin-bottom: 2em;
-    }
-  }
-
-  .Header__text-account {
-    transform: translateY(0.2em);
-    font-family: $font-google;
-    font-weight: 700;
   }
 }
