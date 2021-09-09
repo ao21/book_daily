@@ -9,21 +9,27 @@
           <div class="Header__icon"><i class="far fa-bookmark"></i></div>
           <div class="Header__text"><span class="Header__for-margin">MY</span>PAGE</div>
         <% end %>
-        <a class="Header__list-item js-list-menu" href="">
-          <div class="Header__icon"><i class="fas fa-grip-lines"></i></div>
-          <div class="Header__text">MENU</div>
-        </a>
-        <ul class="Header__list-submenu js-list-submenu">
-          <div class="Header__head">
-            <span class="Header__text-account">ACCOUNT</span>
+        <div class="Header__list-item">
+          <div class="HeaderMenu">
+            <div class="HeaderMenu__toggle js-HeaderMenu__toggle">
+              <div class="HeaderMenu__toggle-icon js-HeaderMenu__toggle-icon"></div>
+              <div class="HeaderMenu__toggle-text">MENU</div>
+            </div>
+            <div class="HeaderMenu__content js-HeaderMenu__content">
+              <ul class="HeaderMenu__list">
+                <div class="HeaderMenu__content-head">
+                  <span class="HeaderMenu__content-text">ACCOUNT</span>
+                </div>
+                <li class="HeaderMenu__content-head --item">
+                  <%= link_to "編集", edit_user_registration_path %>
+                </li>
+                <li class="HeaderMenu__content-head --item --last">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+                </li>
+              </ul>
+            </div>
           </div>
-          <li class="Header__head --item">
-            <%= link_to "編集", edit_user_registration_path %>
-          </li>
-          <li class="Header__head --item --last">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
-          </li>
-        </ul>
+        </div>
       <% else %>
         <%= link_to users_guest_sign_in_path, method: :post, class: "Header__list-item" do %>
           <div class="Header__icon"><i class="fas fa-sign-in-alt"></i></div>

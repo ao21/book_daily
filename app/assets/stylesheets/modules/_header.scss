@@ -97,36 +97,4 @@
   .Header__for-margin {
     margin-right: 3px;
   }
-
-  .Header__head {
-    display: flex;
-    align-items: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding: 0.5em;
-    color: $color-second;
-    font-weight: 700;
-    font-size: calc(-0.4vw + 1rem);
-
-    &.--item {
-      margin-top: 0;
-      margin-bottom: 1em;
-      padding-bottom: 0;
-      border: 0;
-
-      a {
-        color: $color-white;
-      }
-    }
-
-    &.--last {
-      margin-bottom: 2em;
-    }
-  }
-
-  .Header__text-account {
-    transform: translateY(0.2em);
-    font-family: $font-google;
-    font-weight: 700;
-  }
 }
