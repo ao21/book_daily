@@ -50,24 +50,25 @@
       letter-spacing: 0.1em;
       text-shadow: 2px 2px 10px #777, -2px 2px 10px #777, 2px -2px 10px #777, -2px -2px 10px #777;
     }
+  }
 
-    .Firstview__img {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: -1;
+  .Firstview__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    @extend %firstview-width;
+    margin: 0;
+    padding: 10px;
+
+    .Firstview__image {
+      display: block;
       @extend %firstview-width;
-      margin: 0;
-      padding: 10px;
-
-      img {
-        @extend %firstview-width;
-        @extend %firstview-height;
-        border: none;
-        border-radius: 30px;
-        object-fit: cover;
-        object-position: 100% 70%;
-      }
+      @extend %firstview-height;
+      border: none;
+      border-radius: 30px;
+      object-fit: cover;
+      object-position: 100% 70%;
     }
   }
 }
