@@ -17,13 +17,14 @@
             </div>
             <div class="HeaderMenu__content js-HeaderMenu__content">
               <ul class="HeaderMenu__list">
-                <div class="HeaderMenu__content-head">
-                  <span class="HeaderMenu__content-text">ACCOUNT</span>
+                <div class="HeaderMenu__list-text --head --top">
+                  <%= link_to "TOP", root_path %>
                 </div>
-                <li class="HeaderMenu__content-head --item">
+                <div class="HeaderMenu__list-text --head">ACCOUNT</div>
+                <li class="HeaderMenu__list-text --item">
                   <%= link_to "編集", edit_user_registration_path %>
                 </li>
-                <li class="HeaderMenu__content-head --item --last">
+                <li class="HeaderMenu__list-text --item --last">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
                 </li>
               </ul>
