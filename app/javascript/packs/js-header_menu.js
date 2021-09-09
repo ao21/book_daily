@@ -5,7 +5,7 @@ document.addEventListener('turbolinks:load', function () {
   });
 
   $(document).on('click touchend', function (event) {
-    if (!$(event.target).closest('.js-HeaderMenu__content').length) {
+    if (!$(event.target).closest('.js-HeaderMenu__content, .js-HeaderMenu__toggle').length) {
       $('.js-HeaderMenu__toggle-icon, .js-HeaderMenu__content').removeClass('show');
     }
   });
