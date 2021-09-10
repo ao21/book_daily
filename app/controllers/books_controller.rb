@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   include GoogleBooksApi
-  before_action :authenticate_user!, except: [:search]
+  before_action :authenticate_user!, except: [:search, :new]
 
   def search
     if params[:keyword].present?
