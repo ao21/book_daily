@@ -1,36 +1,37 @@
 <div class="modal-dialog">
   <div class="modal-content">
 
-    <div class="content-with-header">
-      <div class="content-header">
-        <div class="header-title">書籍の新規登録</div>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="BookNew">
+      <div class="BookNew__top">
+        <div class="BookNew__close-button">
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span class="BookNew__close-button-text" aria-hidden="true">&times;</span>
+          </button>
+        </div>
       </div>
-
-      <div class="content-body">
-        <table class="table table-bordered table-sm">
-          <tr>
-            <th scope="row">タイトル</th>
-            <td><%= @book.title %></td>
-          </tr>
-          <tr>
-            <th scope="row">著者</th>
-            <td><%= @book.author %></td>
-          </tr>
-          <tr>
-            <th scope="row">ページ数</th>
-            <td><%= @book.page_count %></td>
-          </tr>
-        </table>
-        <%= image_tag @book.image_link if @book.image_link? %>
-      </div>
+      <div class="BookNew__title">書籍の新規登録</div>
+        <div class="BookNew__content">
+          <div class="BookNew__image"><%= image_tag @book.image_link if @book.image_link? %></div>
+          <div class="BookNew__data">
+            <dl>
+              <dt>タイトル</dt>
+              <dd><%= @book.title %></dd>
+            </dl>
+            <dl>
+              <dt>著者</dt>
+              <dd><%= @book.author %></dd>
+            </dl>
+            <dl>
+              <dt>ページ数</dt>
+              <dd><%= @book.page_count %>ページ</dd>
+            </dl>
+          </div>
+        </div>
 
         <% if @book.persisted? %>
-          <div class="book-new-btn">
+          <div class="BookNew__submit">
             <%= link_to(controller: :tasks, action: :new, book_id: @book.id) do %>
-              <button class="btn btn-book-new-submit">登録</button>
+              <button class="BookNew__submit-button btn">登録</button>
             <% end %>
           </div>
         <% else %>
@@ -40,8 +41,8 @@
             <%= f.hidden_field :author, value:@book.author %>
             <%= f.hidden_field :image_link, value:@book.image_link %>
             <%= f.hidden_field :page_count, value:@book.page_count %>
-            <div class="book-new-btn">
-              <%= f.submit "登録", class: "btn btn-book-new-submit" %>
+            <div class="BookNew__submit">
+              <%= f.submit "登録", class: "BookNew__submit-button btn" %>
             </div>
           <% end %>
         <% end %>
