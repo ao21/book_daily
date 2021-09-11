@@ -1,4 +1,4 @@
-.SearchTop {
+.PageTop {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,7 +14,7 @@
   background-clip: content-box;
   background-color: $color-beige;
 
-  .SearchTop__title {
+  .PageTop__title {
     text-align: center;
 
     &.--main {
