@@ -2,9 +2,7 @@
 <%= render 'shared/breadcrumbs' %>
 
 <div class="c-container">
-  <section class="PageBar">
-    <h3 class="PageBar__text">"<%= params[:keyword] %>" の検索結果</h3>
-  </section>
+  <%= render partial: 'shared/page_bar', locals: {var: params[:keyword], text: " の検索結果"} %>
 
   <section class="SearchList">
     <ul class="SearchList__group">
