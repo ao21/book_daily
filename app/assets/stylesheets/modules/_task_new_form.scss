@@ -1,0 +1,33 @@
+.TaskNewForm {
+  .TasknewForm__field {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: calc(0.2vw + 1rem);
+  }
+
+  .TasknewForm__field-label,
+  .TasknewForm__field-input {
+    display: flex;
+    align-items: center;
+  }
+
+  .TasknewForm__field-label {
+    flex: 0 0 calc(8vw + 50px);
+    justify-content: center;
+    width: 100%;
+    max-width: calc(12vw + 82px);
+    padding: 20px;
+    border-radius: 20px;
+    background-color: $color-beige;
+    font-weight: 700;
+  }
+
+  .TasknewForm__field-input {
+    flex-basis: 150px;
+    transform: translateY(0.3vw);
+    width: 100%;
+    height: calc(0.2vw + 50px);
+    margin-left: 10px;
+  }
+}
