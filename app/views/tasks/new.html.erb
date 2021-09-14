@@ -9,13 +9,13 @@
       <section class="TaskNewForm">
         <%= render 'shared/error_messages', model: f.object %>
         <%= hidden_field_tag :book_id, @book.id %>
-        <div class="TasknewForm__field">
-          <%= f.label :started_on, class: "TasknewForm__field-label" %>
-          <%= f.date_field :started_on, class: "TasknewForm__field-input", id: "started_on" %>
+        <div class="TaskNewForm__field">
+          <%= f.label :started_on, class: "TaskNewForm__field-label" %>
+          <%= f.date_field :started_on, class: "TaskNewForm__field-input", id: "started_on" %>
         </div>
-        <div class="TasknewForm__field">
-          <%= f.label :finished_on, class: "TasknewForm__field-label" %>
-          <%= f.date_field :finished_on, class: "TasknewForm__field-input", id: "finished_on" %>
+        <div class="TaskNewForm__field">
+          <%= f.label :finished_on, class: "TaskNewForm__field-label" %>
+          <%= f.date_field :finished_on, class: "TaskNewForm__field-input", id: "finished_on" %>
         </div>
       </section>
 

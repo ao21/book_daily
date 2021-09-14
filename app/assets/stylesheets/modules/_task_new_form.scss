@@ -1,18 +1,18 @@
 .TaskNewForm {
-  .TasknewForm__field {
+  .TaskNewForm__field {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
     font-size: calc(0.2vw + 1rem);
   }
 
-  .TasknewForm__field-label,
-  .TasknewForm__field-input {
+  .TaskNewForm__field-label,
+  .TaskNewForm__field-input {
     display: flex;
     align-items: center;
   }
 
-  .TasknewForm__field-label {
+  .TaskNewForm__field-label {
     flex: 0 0 calc(8vw + 50px);
     justify-content: center;
     width: 100%;
@@ -23,7 +23,7 @@
     font-weight: 700;
   }
 
-  .TasknewForm__field-input {
+  .TaskNewForm__field-input {
     flex-basis: 150px;
     transform: translateY(0.3vw);
     width: 100%;
