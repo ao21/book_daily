@@ -28,6 +28,7 @@
     background-color: $color-second;
     font-weight: 700;
     line-height: 1.5;
+    white-space: nowrap;
 
     &::before {
       content: '';
@@ -85,6 +86,8 @@
       &.--title {
         flex-basis: 90%;
         font-weight: 600;
+        overflow-x: hidden;
+        white-space: nowrap;
       }
     }
   }
