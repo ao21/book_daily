@@ -73,7 +73,7 @@
       display: flex;
       margin-left: calc(0.5vw + 5px);
       font-size: calc(0.2vw + 11px);
-      line-height: 1;
+      line-height: 1.4;
     }
 
     dt {
@@ -103,6 +103,7 @@
     position: relative;
     width: 100%;
     padding: 1em calc(0.8vw + 16px);
+    border-color: $color-main;
     border-radius: 20px;
     background-color: $color-main;
     color: #fff;

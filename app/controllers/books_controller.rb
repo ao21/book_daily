@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   include GoogleBooksApi
-  before_action :authenticate_user!, except: [:search]
+  before_action :authenticate_user!, except: [:search, :new]
 
   def search
     if params[:keyword].present?
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to new_task_path(book_id: @book.id), notice: "本を登録しました"
+      redirect_to new_task_path(book_id: @book.id)
     else
       flash[:alert] = "本の登録に失敗しました"
       render :new

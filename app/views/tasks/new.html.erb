@@ -1,47 +1,50 @@
-<div class="main-wrapper">
-  <div class="content-with-header">
-    <div class="content-header">
-      <div class="header-title">タスク新規登録</div>
-    </div>
-    <div class="content-body">
-      <table class="table table-bordered table-sm table-task-new">
-        <tr>
-          <th scope="row">タイトル</th>
-          <td><%= @book.title %></td>
-        </tr>
-        <tr>
-          <th scope="row">日数</th>
-          <td><span id="days"></span></td>
-        </tr>
-        <tr>
-          <th scope="row">1日の目標ページ数</th>
-          <td><span id="page", data-page-id="<%= @book.page_count %>"></span></td>
-        </tr>
-      </table>
+<div class="TaskNew">
+  <%= render partial: 'shared/page_top', locals: {main: "Task", sub: "目標を設定しましょう。"} %>
+  <%= render 'shared/breadcrumbs' %>
 
-      <%= form_with model: @task, local: true do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
+  <div class="c-container">
+    <%= render partial: 'shared/page_bar', locals: {var: "", text: "開始日と終了日を設定"} %>
+
+    <%= form_with model: @task, local: true do |f| %>
+      <section class="TaskNewForm">
+        <%= render 'shared/error_messages', model: f.object %>
         <%= hidden_field_tag :book_id, @book.id %>
-        <div class="form-field">
-          <div class="field-caption caption-task-new">
-            <%= f.label :started_on %>
-          </div>
-          <div class="field-input">
-            <%= f.date_field :started_on, id: "started_on" %>
-          </div>
+        <div class="TaskNewForm__field">
+          <%= f.label :started_on, class: "TaskNewForm__field-label" %>
+          <%= f.date_field :started_on, class: "TaskNewForm__field-input", id: "started_on" %>
         </div>
-        <div class="form-field">
-          <div class="field-caption caption-task-new">
-            <%= f.label :finished_on %>
-          </div>
-          <div class="field-input">
-            <%= f.date_field :finished_on, id: "finished_on" %>
-          </div>
+        <div class="TaskNewForm__field">
+          <%= f.label :finished_on, class: "TaskNewForm__field-label" %>
+          <%= f.date_field :finished_on, class: "TaskNewForm__field-input", id: "finished_on" %>
         </div>
-        <div class="btn-read-new btn-task-new">
-          <%= f.submit "登録" %>
+      </section>
+
+      <section class="TaskNew__result">
+        <div class="TaskNew__result-title">
+          <i class="fas fa-flag-checkered"></i>
+          <span>目標</span>
         </div>
-      <% end %>
-    </div>
+        <div class="TaskNew__result-content">
+          <dl>
+            <i class="fas fa-check"></i>
+            <dd class="--title"><%= @book.title %></dd>
+          </dl>
+          <dl>
+            <i class="fas fa-check"></i>
+            <dt><span>読み終わる日数</span></dt>
+            <dd><span id="days"></span></dd>
+          </dl>
+          <dl>
+            <i class="fas fa-check"></i>
+            <dt><span>1日のページ数</span></dt>
+            <dd><span id="page", data-page-id="<%= @book.page_count %>"></span></dd>
+          </dl>
+        </div>
+      </section>
+
+      <div class="TaskNew__submit">
+        <%= f.submit "登録", class: "TaskNew__submit-button" %>
+      </div>
+    <% end %>
   </div>
 </div>

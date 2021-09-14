@@ -13,7 +13,7 @@
         <% @tasks.zip(@progress_data) do |task, data| %>
           <div class="task">
             <div class="task-image">
-              <%= render partial: 'books/image_link', locals: { image_link: task.book.image_link } %>
+              <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
             </div>
             <div class="task-detail">
               <div class="task-detail-title"><%= task.book.title %></div>

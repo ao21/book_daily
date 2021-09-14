@@ -14,10 +14,10 @@
 
   <body>
     <header>
-      <%= render 'layouts/header', first_task: @first_task %>
+      <%= render 'shared/header', first_task: @first_task %>
     </header>
     <main>
-      <%= render 'layouts/flash' %>
+      <%= render 'shared/flash' %>
       <%# max_width メソッドは application_helper.rb に記載 %>
       <%= yield %>
     </main>

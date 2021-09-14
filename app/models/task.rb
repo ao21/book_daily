@@ -49,11 +49,15 @@ class Task < ApplicationRecord
 
   def self.daily_goal_pages(task, max_read_page, total_pages)
     new_read = task.reads.order(read_page: :desc).limit(2)
-    daily_goal_pages = self.daily_pages_by_left_days(task, max_read_page, total_pages)
-    if new_read[0].read_on == Date.today
-      daily_goal_pages - new_read[1].read_page
+    if new_read.present?
+      daily_goal_pages = self.daily_pages_by_left_days(task, max_read_page, total_pages)
+      if new_read[0].read_on == Date.today
+        daily_goal_pages - new_read[1].read_page
+      else
+        daily_goal_pages
+      end
     else
-      daily_goal_pages
+      0
     end
   end
 
@@ -64,7 +68,7 @@ class Task < ApplicationRecord
 
   # 進捗データを計算
   def self.cul_progress_data(task, progress_data)
-    max_read_page = task.reads.select(:read_page).maximum(:read_page)
+    max_read_page = task.reads.select(:read_page).maximum(:read_page) || 0
     total_pages = task.book.page_count
 
     left_days = self.left_days(task)
