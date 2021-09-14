@@ -1,13 +1,12 @@
 .PageBar {
-  font-size: calc(0.16327vw + 1.33878rem);
+  font-size: calc(0.1vw + 1.3rem);
 
   .PageBar__text {
-    background-color: #faf7f3;
-    color: #444;
-    font-size: calc(0.2vw + 1rem);
+    margin-bottom: calc(0.8vw + 16px);
+    padding: calc(0.2vw + 6px) calc(0.7vw + 12px);
     border-left: 5px solid $color-second;
-    padding: calc(0.2449vw + 6.08163px) calc(0.73469vw + 12.2449px);
-    margin-bottom: calc(0.81633vw + 16.93878px);
+    background-color: $color-beige;
     font-weight: 700;
+    font-size: calc(0.2vw + 1rem);
   }
 }

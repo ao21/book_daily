@@ -2,14 +2,14 @@
   .TaskNew__result {
     display: flex;
     justify-content: center;
-    margin: 0 auto;
     width: 90%;
     @include mq($sm) {
       width: 100%;
     }
     max-width: 700px;
-    padding: calc(0.8vw + 16px) calc(3vw + 7px);
+    margin: 0 auto;
     margin-bottom: 1em;
+    padding: calc(0.8vw + 16px) calc(3vw + 7px);
   }
 
   .TaskNew__result-title {
@@ -31,18 +31,18 @@
     white-space: nowrap;
 
     &::before {
-      content: '';
       position: absolute;
       top: 50%;
       left: 100%;
       margin-top: -15px;
       border: 15px solid transparent;
       border-left: 15px solid $color-second;
+      content: '';
     }
 
     i.fa-flag-checkered {
-      margin-right: 5px;
       margin: 10px;
+      margin-right: 5px;
     }
   }
 
@@ -94,8 +94,8 @@
 
   .TaskNew__submit {
     width: 100%;
-    padding: 0 calc(1vw + 40px);
     margin-bottom: calc(1.6vw + 13px);
+    padding: 0 calc(1vw + 40px);
   }
 
   .TaskNew__submit-button {
