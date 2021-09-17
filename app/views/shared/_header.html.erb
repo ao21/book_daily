@@ -5,7 +5,7 @@
   <div class="Header__container">
     <div class="Header__list">
       <% if user_signed_in? %>
-        <%= link_to task_path(first_task.id), class: "Header__list-item" do %>
+        <%= link_to link_task_show_or_index, class: "Header__list-item" do %>
           <div class="Header__icon"><i class="far fa-bookmark"></i></div>
           <div class="Header__text"><span class="Header__for-margin">MY</span>PAGE</div>
         <% end %>
