@@ -15,6 +15,20 @@ class Task < ApplicationRecord
     end
   end
 
+  def self.array_task_in_progress(user)
+    array_task_in_progress = []
+    tasks = user.tasks
+    tasks.each do |task|
+      book_page_count = task.book.page_count
+      max_read_page = task.reads.select(:read_page).maximum(:read_page) || 0
+      if book_page_count > max_read_page
+        array_task_in_progress.push(task)
+      end
+    end
+    return array_task_in_progress
+  end
+
+
   # 読書進捗のパーセンテージを計算
   def self.percentage(max_read_page, total_pages)
     if max_read_page

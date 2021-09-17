@@ -3,5 +3,8 @@
   <%= render 'shared/breadcrumbs' %>
 
   <div class="c-container">
+    <% @tasks.each do |task| %>
+      <%= task %>
+    <% end %>
   </div>
 </div>
