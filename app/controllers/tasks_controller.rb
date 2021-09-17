@@ -1,11 +1,14 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: %i[show edit update destroy]
+  before_action :correct_user, only: %i[show edit update destroy]
   before_action :side_bar, only: %i[index show]
   
   def side_bar
     @reads = current_user.reads
     @month_data = Read.month_data(current_user)
+  end
+
+  def today
   end
 
   def index
@@ -14,10 +17,6 @@ class TasksController < ApplicationController
   end
 
   def show
-    if params
-      @task = Task.find(params[:id])
-    end
-
     @reads = @task.reads.all.order(read_on: :desc)
     @task_progress_data = Task.task_progress_data(@task)
     @progress_percentage = { read: @task_progress_data[0][:percentage], unread: 100 - @task_progress_data[0][:percentage] }
@@ -33,7 +32,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build(task_params)
 
     if @task.save
-      redirect_to tasks_path, notice: "目標を登録しました"
+      redirect_to @task, notice: "目標を登録しました"
     else
       flash.now[:alert] = "目標の登録に失敗しました"
       render :new
@@ -59,8 +58,11 @@ class TasksController < ApplicationController
 
   private
 
-  def set_task
+  def correct_user
     @task = Task.find(params[:id])
+    unless @task.user.id == current_user.id
+      redirect_to tasks_path
+    end
   end
 
   def task_params
