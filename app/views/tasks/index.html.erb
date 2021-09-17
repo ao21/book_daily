@@ -6,7 +6,11 @@
   <div class="main-wrapper-task">
     <div class="content-with-header">
       <div class="content-header">
-        <%= link_to 'タスク', task_path(@first_task.id), class: "header-title-task-tab" %>
+        <% if @first_task %>
+          <%= link_to 'タスク', task_path(@first_task.id), class: "header-title-task-tab" %>
+        <% else %>
+          <div class="header-title-task-tab">タスク</div>
+        <% end %>
         <%= link_to 'タスク一覧', tasks_path, class: "header-title-task-tab selected" %>
       </div>
       <div class="content-body">

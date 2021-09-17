@@ -11,11 +11,17 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resorce)
-    tasks_path
+    if @first_task
+      task_path(@first_task.id)
+    else
+      tasks_path
+    end
   end
 
   def first_task
-    task = Task.joins(:reads).order(read_on: :desc).limit(1)
-    @first_task = task[0]
+    if user_signed_in?
+      task = current_user.tasks.joins(:reads).order(read_on: :desc).limit(1)
+      @first_task = task[0]
+    end
   end
 end
