@@ -9,7 +9,7 @@ class TasksController < ApplicationController
   end
 
   def today
-    @tasks = Task.array_task_in_progress(current_user)
+    @tasks = Task.array_tasks_in_progress(current_user)
   end
 
   def index
