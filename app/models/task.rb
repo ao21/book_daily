@@ -22,7 +22,7 @@ class Task < ApplicationRecord
       book_page_count = task.book.page_count
       max_read_page = task.reads.select(:read_page).maximum(:read_page) || 0
       if book_page_count > max_read_page
-        array_task_in_progress.push(task)
+        array_tasks_in_progress.push(task)
       end
     end
     return array_tasks_in_progress
