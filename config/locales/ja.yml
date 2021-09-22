@@ -22,10 +22,10 @@ ja:
         finished_on: 終了日
       read:
         read_on: 読んだ日
-        read_page: 読み終わったページ番号
+        up_to_page: 読み終わったページ番号
       task/reads:
         read_on: 読んだ日
-        read_page: 読み終わったページ番号
+        up_to_page: 読み終わったページ番号
   date:
     abbr_day_names:
       - 日

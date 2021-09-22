@@ -4,7 +4,7 @@ class Read < ApplicationRecord
 
   with_options presence: true do
     validates :read_on
-    validates :read_page, numericality: { only_integer: true }
+    validates :up_to_page, numericality: { only_integer: true }
   end
 
   # タスク一覧ページの SimpleCalendar で使用
@@ -14,14 +14,14 @@ class Read < ApplicationRecord
 
   # タスク一覧ページのサイドバーの今月、先月の読書データ
   def self.month_data(user)
-    max_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).maximum(:read_page)
-    min_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).minimum(:read_page)
-    min_last = user.reads.where(read_on: Time.now.last_month.all_month).group(:task_id).maximum(:read_page)
+    max_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).maximum(:up_to_page)
+    min_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).minimum(:up_to_page)
+    min_last = user.reads.where(read_on: Time.now.last_month.all_month).group(:task_id).maximum(:up_to_page)
     this_month = self.month_data_cal(max_pages, min_pages, min_last)
 
     max_pages = min_last
-    min_pages = user.reads.where(read_on: Time.now.last_month.all_month).group(:task_id).minimum(:read_page)
-    min_last = user.reads.where(read_on: 2.months.ago.all_month).group(:task_id).maximum(:read_page)
+    min_pages = user.reads.where(read_on: Time.now.last_month.all_month).group(:task_id).minimum(:up_to_page)
+    min_last = user.reads.where(read_on: 2.months.ago.all_month).group(:task_id).maximum(:up_to_page)
     last_month = self.month_data_cal(max_pages, min_pages, min_last)
 
     month_data = {

@@ -44,6 +44,6 @@ class ReadsController < ApplicationController
   end
 
   def read_params
-    params.require(:read).permit(:read_on, :read_page)
+    params.require(:read).permit(:read_on, :up_to_page)
   end
 end
