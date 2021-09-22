@@ -53,7 +53,7 @@ class Read < ApplicationRecord
 
       # 今月の読んだ冊数を計算
       tasks.each do |task|
-        if value == task.book.page_count
+        if value == task.book.total_pages
           month_book = 1
         else
           month_book = 0

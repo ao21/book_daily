@@ -19,9 +19,9 @@ class Task < ApplicationRecord
     array_tasks_in_progress = []
     tasks = user.tasks
     tasks.each do |task|
-      book_page_count = task.book.page_count
+      book_total_pages = task.book.total_pages
       max_read_page = task.reads.select(:read_page).maximum(:read_page) || 0
-      if book_page_count > max_read_page
+      if book_total_pages > max_read_page
         array_tasks_in_progress.push(task)
       end
     end
@@ -82,7 +82,7 @@ class Task < ApplicationRecord
   # 進捗データを計算
   def self.cul_progress_data(task, progress_data)
     max_read_page = task.reads.select(:read_page).maximum(:read_page) || 0
-    total_pages = task.book.page_count
+    total_pages = task.book.total_pages
 
     left_days = self.left_days(task)
     daily_goal_pages = self.daily_goal_pages(task, max_read_page, total_pages) || 0

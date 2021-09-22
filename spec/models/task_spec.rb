@@ -21,13 +21,13 @@ RSpec.describe Task, type: :model do
       expect(Task.array_tasks_in_progress(task.user)).to include task
     end
 
-    let(:book) { FactoryBot.create(:book, page_count: "500") }
+    let(:book) { FactoryBot.create(:book, total_pages: "500") }
 
     context "書籍ページ数が進捗ページ数より大きいとき" do
       it "タスクを配列に追加すること" do
         task1 = FactoryBot.create(:task, id: 1, book_id: book.id, user_id: user.id)
         read = FactoryBot.create(:read, task_id: task1.id, read_page: "250")
-        expect(book.page_count).to be > read.read_page
+        expect(book.total_pages).to be > read.read_page
         expect(Task.array_tasks_in_progress(user)).to include task1
       end
     end
@@ -36,7 +36,7 @@ RSpec.describe Task, type: :model do
       it "タスクを配列に追加しないこと" do
         task2 = FactoryBot.create(:task, id: 2, book_id: book.id, user_id: user.id)
         read = FactoryBot.create(:read, task_id: task2.id, read_page: "550")
-        expect(book.page_count).to be <= read.read_page
+        expect(book.total_pages).to be <= read.read_page
         expect(Task.array_tasks_in_progress(user)).to_not include task2
       end
     end

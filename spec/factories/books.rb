@@ -3,6 +3,6 @@ FactoryBot.define do
     title { "factory bot" }
     author { "Joen Tester"}
     image_link { "http://test.com" }
-    page_count { "500" }
+    total_pages { "500" }
   end
 end

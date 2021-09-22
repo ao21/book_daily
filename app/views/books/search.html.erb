@@ -10,13 +10,13 @@
         <% @results_data.each do |result| %>
           <li class="SearchList__item">
             <div class="SearchList__item-wrap">
-              <%= link_to(controller: :books, action: :new, title: result[:title], author: result[:author], image_link: result[:image_link], page_count: result[:page_count], remote: true) do %>
+              <%= link_to(controller: :books, action: :new, title: result[:title], author: result[:author], image_link: result[:image_link], total_pages: result[:total_pages], remote: true) do %>
                 <%= render partial: 'book_image', locals: { image_link: result[:image_link] } %>
                 <div class="SearchList__item-title"><%= result[:title] %></div>
                 <div class="SearchList__item-author"><%= result[:author] %></div>
                 <dl class="SearchList__item-page">
                   <dt class="SearchList__item-page-title">ページ数</dt>
-                  <dd class="SearchList__item-page-count"><%= result[:page_count] %></dd>
+                  <dd class="SearchList__item-page-count"><%= result[:total_pages] %></dd>
                 </dl>
                 <div class="book-submit">
                 </div>
