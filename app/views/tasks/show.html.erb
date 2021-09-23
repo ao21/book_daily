@@ -5,6 +5,7 @@
   <div class="main-wrapper-task">
     <div class="content-with-header">
       <div class="content-header">
+        <%# 要改善: タスクを持たない場合 %>
         <%= link_to 'タスク', task_path(@first_task.id), class: "header-title-task-tab selected" %>
         <%= link_to 'タスク一覧', tasks_path, class: "header-title-task-tab" %>
       </div>

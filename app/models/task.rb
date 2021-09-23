@@ -73,7 +73,7 @@ class Task < ApplicationRecord
 
   # 残り日数を計算
   def self.left_days(task)
-    left_days = (task.finished_on - Date.today).to_i
+    left_days = (task.finished_on - Date.today + 1).to_i
     if left_days < 0
       left_days = 0
     else
@@ -98,7 +98,7 @@ class Task < ApplicationRecord
     new_read = task.reads.order(up_to_page: :desc).limit(2)
     if new_read.present?
       daily_goal_pages = self.daily_pages_by_left_days(task, max_read_up_to_page, total_pages)
-      if new_read[0].read_on == Date.today
+      if new_read.length == 2 && new_read[0].read_on == Date.today
         daily_goal_pages - new_read[1].up_to_page
       else
         daily_goal_pages
