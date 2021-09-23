@@ -28,6 +28,40 @@ class Task < ApplicationRecord
     return array_tasks_in_progress
   end
 
+  def self.calculate_days_left_until_finished_on(task)
+    days_left_until_finished_on = (task.finished_on - Date.today + 1).to_i
+    if days_left_until_finished_on < 0
+      days_left_until_finished_on = 0
+    else
+      days_left_until_finished_on
+    end
+  end
+
+
+  def self.decide_status_todays_target(task)
+    max_read_up_to_page_until_yesterday = "Read".constantize.where(task_id: task.id).where("read_on < ?", Date.today).maximum(:up_to_page) || 0
+      # "Read".constantize で Read が Rails のモジュールだと判断されないようにしている
+    days_left_until_finished_on = self.calculate_days_left_until_finished_on(task)
+
+    if days_left_until_finished_on == 0
+      target_pages_per_a_day = task.book.total_pages - max_read_up_to_page_until_yesterday
+    else
+      target_pages_per_a_day = ((task.book.total_pages - max_read_up_to_page_until_yesterday) / days_left_until_finished_on.to_f).ceil
+    end
+
+    todays_target_up_to_page = target_pages_per_a_day + max_read_up_to_page_until_yesterday
+    max_read_up_to_page_today = "Read".constantize.where(task_id: task.id).where("read_on = ?", Date.today).maximum(:up_to_page) || 0
+
+    # ステータスを決める
+    if todays_target_up_to_page <= max_read_up_to_page_today
+      return "DONE"
+    else
+      pages_left_to_todays_target = todays_target_up_to_page - max_read_up_to_page_today
+      return "あと#{pages_left_to_todays_target}ページ"
+    end
+  end
+
+
   # 読書進捗のパーセンテージを計算
   def self.percentage(max_read_up_to_page, total_pages)
     if max_read_up_to_page
