@@ -4,7 +4,15 @@ class Read < ApplicationRecord
 
   with_options presence: true do
     validates :read_on
-    validates :up_to_page, numericality: { only_integer: true }
+    validates :up_to_page, numericality: { only_integer: true, greater_than: 0 }
+  end
+  validate :up_to_page_cannot_be_greater_than_total_pages
+
+  def up_to_page_cannot_be_greater_than_total_pages
+    if up_to_page.present? && up_to_page > task.book.total_pages
+      # up_to_page ||= task.book.total_pages
+      errors.add(:up_to_page, ": 総ページ数より大きい数は登録できません")
+    end
   end
 
   # タスク一覧ページの SimpleCalendar で使用
