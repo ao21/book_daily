@@ -143,7 +143,7 @@ RSpec.describe Task, type: :model do
         book = FactoryBot.create(:book, total_pages: 505)
         task = FactoryBot.create(:task, book_id: book.id, finished_on: Date.today.since(99.days))
         read = FactoryBot.create(:read, task_id: task.id, up_to_page: 5, read_on: Date.today.ago(1.days))
-        read = FactoryBot.create(:read, task_id: task.id, up_to_page: 10    , read_on: Date.today)
+        read = FactoryBot.create(:read, task_id: task.id, up_to_page: 10, read_on: Date.today)
         expect((Task.decide_status_todays_target(task)).include?("DONE")).to be_truthy
       end
     end
@@ -154,6 +154,15 @@ RSpec.describe Task, type: :model do
         task = FactoryBot.create(:task, book_id: book.id, finished_on: Date.today.since(99.days))
         read = FactoryBot.create(:read, task_id: task.id, up_to_page: 6, read_on: Date.today)
         expect((Task.decide_status_todays_target(task)).include?("DONE")).to be_truthy
+      end
+    end
+
+    context "今日読んだ最大ページ番号が今日の目標ページ数より小さい場合" do
+      it "残りページ数を返す" do
+        book = FactoryBot.create(:book, total_pages: 500)
+        task = FactoryBot.create(:task, book_id: book.id, finished_on: Date.today.since(99.days))
+        read = FactoryBot.create(:read, task_id: task.id, up_to_page: 3, read_on: Date.today)
+        expect((Task.decide_status_todays_target(task)).include?("2ページ")).to be_truthy
       end
     end
   end
