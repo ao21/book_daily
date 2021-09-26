@@ -29,27 +29,32 @@ class Task < ApplicationRecord
   end
 
   def self.calculate_days_left_until_finished_on(task)
-    days_left_until_finished_on = (task.finished_on - Date.today + 1).to_i
-    if days_left_until_finished_on < 0
-      days_left_until_finished_on = 0
-    else
-      days_left_until_finished_on
+    if task
+      days_left_until_finished_on = (task.finished_on - Date.today + 1).to_i
+      if days_left_until_finished_on <= 0
+        days_left_until_finished_on = 0
+      else
+        days_left_until_finished_on
+      end
     end
   end
 
+  def self.calculate_target_pages_per_a_day(task)
+    if task
+      @max_read_up_to_page_until_yesterday = "Read".constantize.where(task_id: task.id).where("read_on < ?", Date.today).maximum(:up_to_page) || 0
+        # "Read".constantize で Read が Rails のモジュールだと判断されないようにしている
+      days_left_until_finished_on = self.calculate_days_left_until_finished_on(task)
+      if days_left_until_finished_on == 0
+        target_pages_per_a_day = task.book.total_pages - @max_read_up_to_page_until_yesterday
+      else
+        target_pages_per_a_day = ((task.book.total_pages - @max_read_up_to_page_until_yesterday) / days_left_until_finished_on.to_f).ceil
+      end
+    end
+  end
 
   def self.decide_status_todays_target(task)
-    max_read_up_to_page_until_yesterday = "Read".constantize.where(task_id: task.id).where("read_on < ?", Date.today).maximum(:up_to_page) || 0
-      # "Read".constantize で Read が Rails のモジュールだと判断されないようにしている
-    days_left_until_finished_on = self.calculate_days_left_until_finished_on(task)
-
-    if days_left_until_finished_on == 0
-      target_pages_per_a_day = task.book.total_pages - max_read_up_to_page_until_yesterday
-    else
-      target_pages_per_a_day = ((task.book.total_pages - max_read_up_to_page_until_yesterday) / days_left_until_finished_on.to_f).ceil
-    end
-
-    todays_target_up_to_page = target_pages_per_a_day + max_read_up_to_page_until_yesterday
+    target_pages_per_a_day = self.calculate_target_pages_per_a_day(task)
+    todays_target_up_to_page = target_pages_per_a_day + @max_read_up_to_page_until_yesterday
     max_read_up_to_page_today = "Read".constantize.where(task_id: task.id).where("read_on = ?", Date.today).maximum(:up_to_page) || 0
 
     # ステータスを決める
