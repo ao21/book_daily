@@ -6,12 +6,18 @@ class Read < ApplicationRecord
     validates :read_on
     validates :up_to_page, numericality: { only_integer: true, greater_than: 0 }
   end
-  validate :up_to_page_cannot_be_greater_than_total_pages
+  validate :up_to_page_cannot_be_greater_than_total_pages, :up_to_page_cannot_be_less_than_or_equal_to_saved_up_to_page
 
   def up_to_page_cannot_be_greater_than_total_pages
     if up_to_page.present? && up_to_page > task.book.total_pages
-      # up_to_page ||= task.book.total_pages
       errors.add(:up_to_page, ": 総ページ数より大きい数は登録できません")
+    end
+  end
+
+  def up_to_page_cannot_be_less_than_or_equal_to_saved_up_to_page
+    max_read_up_to_page = "Read".constantize.where(task_id: task.id).maximum(:up_to_page) || 0
+    if up_to_page.present? && up_to_page <= max_read_up_to_page
+      errors.add(:up_to_page, ": 登録済みのページ番号より小さい数は登録できません")
     end
   end
 
