@@ -3,6 +3,7 @@ class Task < ApplicationRecord
   belongs_to :user
   has_many :reads, dependent: :destroy
 
+  # バリデーション
   with_options presence: true do
     validates :started_on
     validates :finished_on
@@ -29,43 +30,92 @@ class Task < ApplicationRecord
   end
 
   def self.calculate_days_left_until_finished_on(task)
-    if task
-      days_left_until_finished_on = (task.finished_on - Date.today + 1).to_i
-      if days_left_until_finished_on <= 0
-        days_left_until_finished_on = 0
-      else
-        days_left_until_finished_on
-      end
+    days_left_until_finished_on = (task.finished_on - Date.today + 1).to_i
+
+    if days_left_until_finished_on <= 0
+      days_left_until_finished_on = 0
+    else
+      days_left_until_finished_on
     end
   end
 
-  def self.calculate_target_pages_per_a_day(task)
-    if task
-      @max_read_up_to_page_until_yesterday = "Read".constantize.where(task_id: task.id).where("read_on < ?", Date.today).maximum(:up_to_page) || 0
-        # "Read".constantize で Read が Rails のモジュールだと判断されないようにしている
-      days_left_until_finished_on = self.calculate_days_left_until_finished_on(task)
-      if days_left_until_finished_on == 0
-        target_pages_per_a_day = task.book.total_pages - @max_read_up_to_page_until_yesterday
-      else
-        target_pages_per_a_day = ((task.book.total_pages - @max_read_up_to_page_until_yesterday) / days_left_until_finished_on.to_f).ceil
-      end
+  def self.calculate_target_pages_per_a_day(task, days_left_until_finished_on, max_read_up_to_page_until_yesterday)
+    book_total_pages = task.book.total_pages
+
+    if days_left_until_finished_on == 0
+      target_pages_per_a_day = book_total_pages - max_read_up_to_page_until_yesterday
+    else
+      target_pages_per_a_day = ((book_total_pages - max_read_up_to_page_until_yesterday) / days_left_until_finished_on.to_f).ceil
     end
   end
 
-  def self.decide_status_todays_target(task)
-    target_pages_per_a_day = self.calculate_target_pages_per_a_day(task)
-    todays_target_up_to_page = target_pages_per_a_day + @max_read_up_to_page_until_yesterday
-    max_read_up_to_page_today = "Read".constantize.where(task_id: task.id).where("read_on = ?", Date.today).maximum(:up_to_page) || 0
+  def self.calculate_todays_target_up_to_page(target_pages_per_a_day, max_read_up_to_page_until_yesterday)
+    todays_target_up_to_page = target_pages_per_a_day + max_read_up_to_page_until_yesterday
+  end
 
-    # ステータスを決める
+  def self.calculate_pages_left_to_todays_taget(target_pages_per_a_day, max_read_up_to_page_today)
+    pages_left_to_todays_target = target_pages_per_a_day - max_read_up_to_page_today
+  end
+
+  def self.decide_status_todays_target(todays_target_up_to_page, max_read_up_to_page_today, pages_left_to_todays_target)
     if todays_target_up_to_page <= max_read_up_to_page_today
       return "DONE"
     else
-      pages_left_to_todays_target = todays_target_up_to_page - max_read_up_to_page_today
       return "あと#{pages_left_to_todays_target}ページ"
     end
   end
 
+  def self.array_read_data_this_week(task, target_pages_per_a_day)
+    # 今日を起点とした今週の範囲を設定する
+    today = Date.today
+    day_of_the_week = today.wday
+
+    from = today.prev_occurring(:monday)
+    to = today.next_occurring(:sunday)
+    if day_of_the_week == 1
+      from = today
+    elsif day_of_the_week == 0
+      to = today
+    end
+
+    each_date = []
+    reads = "Read".constantize.where(task_id: task.id, read_on: from...to)
+    (from..to).each do |date|
+      reads_on_date = reads.select { |read| read.read_on == date }
+      if reads_on_date.present?
+        each_date.push(1)
+      else
+        each_date.push(0)
+      end
+    end
+
+    this_weeks = {}
+    (from..to).to_a.zip(each_date) do |date, per|
+      this_weeks.store(date.mday, per)
+    end
+    return this_weeks
+  end
+
+  def self.todays_page_data(task)
+    if task
+      max_read_up_to_page_until_yesterday = "Read".constantize.where(task_id: task.id).where("read_on < ?", Date.today).maximum(:up_to_page) || 0
+      max_read_up_to_page_today = "Read".constantize.where(task_id: task.id).where("read_on = ?", Date.today).maximum(:up_to_page) || 0
+
+      # 計算メソッドの呼び出し変数をセット
+      days_left_until_finished_on = self.calculate_days_left_until_finished_on(task)
+      target_pages_per_a_day = self.calculate_target_pages_per_a_day(task, days_left_until_finished_on, max_read_up_to_page_until_yesterday)
+      todays_target_up_to_page = self.calculate_todays_target_up_to_page(target_pages_per_a_day, max_read_up_to_page_until_yesterday)
+      pages_left_to_todays_target = self.calculate_pages_left_to_todays_taget(target_pages_per_a_day, max_read_up_to_page_today)
+      status_todays_target = self.decide_status_todays_target(todays_target_up_to_page, max_read_up_to_page_today, pages_left_to_todays_target)
+      array_read_data_this_week = self.array_read_data_this_week(task, target_pages_per_a_day)
+
+      todays_target = {
+        up_to_page: todays_target_up_to_page,
+        status: status_todays_target
+      }
+      return todays_target, array_read_data_this_week
+    end
+  end
 
   # 読書進捗のパーセンテージを計算
   def self.percentage(max_read_up_to_page, total_pages)
