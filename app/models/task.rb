@@ -111,9 +111,10 @@ class Task < ApplicationRecord
 
       todays_target = {
         up_to_page: todays_target_up_to_page,
-        status: status_todays_target
+        status: status_todays_target,
+        read_data: array_read_data_this_week
       }
-      return todays_target, array_read_data_this_week
+      return todays_target
     end
   end
 
