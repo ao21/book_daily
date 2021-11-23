@@ -58,11 +58,13 @@ class Task < ApplicationRecord
   end
 
   def self.decide_status_todays_target(todays_target_up_to_page, max_read_up_to_page_today, pages_left_to_todays_target)
+    status_todays_target = {}
     if todays_target_up_to_page <= max_read_up_to_page_today
-      return "DONE"
+      status_todays_target = { color: "main", status: "DONE"}
     else
-      return "あと#{pages_left_to_todays_target}ページ"
+      status_todays_target = { color: "second", status: "あと#{pages_left_to_todays_target}ページ"}
     end
+    return status_todays_target
   end
 
   def self.array_read_data_this_week(task, target_pages_per_a_day)
@@ -83,15 +85,15 @@ class Task < ApplicationRecord
     (from..to).each do |date|
       reads_on_date = reads.select { |read| read.read_on == date }
       if reads_on_date.present?
-        each_date.push(1)
+        each_date.push(" --main")
       else
-        each_date.push(0)
+        each_date.push(nil)
       end
     end
 
     this_weeks = {}
     (from..to).to_a.zip(each_date) do |date, per|
-      this_weeks.store(date.mday, per)
+      this_weeks.store(date, per)
     end
     return this_weeks
   end
