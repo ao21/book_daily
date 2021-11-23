@@ -1,10 +1,26 @@
-<div class="main-wrapper">
-  <div class="content-with-header">
-    <div class="content-header">
-      <div class="header-title">進捗の新規登録</div>
+<div class="ReadNew">
+  <%= render partial: 'shared/page_top', locals: {main: "Read", sub: "進捗の登録"} %>
+  <div class="c-container">
+    <div class="Breadcrumbs">
+      <%= link_to 'TOP', '/' %>
+      <span class="Breadcrumbs__arrow">></span>
+      <%= link_to '今日の目標', today_tasks_path, class: "Breadcrumbs__item" %>
+      <span class="Breadcrumbs__arrow">></span>
+      <span class="Breadcrumbs__item Breadcrumbs__now">進捗の登録</span>
     </div>
-    <div class="content-body">
-      <%= render "form", task: @task, read: @read, button_value: "登録" %>
+  </div>
+
+  <div class="ReadNew__wrapper">
+    <div class="ReadNewCard">
+      <div class="ReadNewCard__container">
+        <div class="ReadNewCard__title"><%= @task.book.title %></div>
+        <div class="ReadNewCard__content">
+          <div class="ReadNewCard__book-image">
+            <%= render partial: 'books/book_image', locals: { image_link: @task.book.image_link } %>
+          </div>
+          <%= render "form", task: @task, read: @read, button_value: "登録" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
