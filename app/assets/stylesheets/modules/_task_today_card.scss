@@ -1,0 +1,74 @@
+.TaskTodayCard {
+  display: flex;
+  margin: 10px;
+  background-color: $color-white;
+
+  .TaskTodayCard__border {
+    margin: 10px;
+    width: 10px;
+    height: 200px;
+    background-color: $color-second;
+  }
+
+  .TaskTodayCard__content {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .TaskTodayCard__status {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(0.2vw + 130px);
+    height: calc(0.2vw + 30px);
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10px;
+
+    &.--main {
+      background-color: $color-main;
+    }
+
+    &.--second {
+      background-color: $color-second;
+    }
+  }
+
+  .TaskTodayCard__title {
+    width: 60%;
+    margin: 5px;
+    border-bottom: solid 2px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .TaskTodayCard__goal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .TaskTodayCard__book-image {
+    flex-basis: 15%;
+
+    .BookImage__cover {
+      width: auto;
+      height: 100px;
+    }
+  }
+
+  .TaskTodayCard__read-date {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border: solid 1px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+
+    &.--main {
+      background-color: $color-main;
+    }
+  }
+}
