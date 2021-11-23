@@ -21,6 +21,9 @@ class ApplicationController < ActionController::Base
   def first_task
     if user_signed_in?
       task = current_user.tasks.joins(:reads).order(read_on: :desc).limit(1)
+      if task.blank?
+        task = current_user.tasks.order(finished_on: :asc).limit(1)
+      end
       @first_task = task[0]
     end
   end

@@ -35,11 +35,11 @@ class BooksController < ApplicationController
       title: params[:title],
       author: params[:author],
       image_link: params[:image_link],
-      page_count: params[:page_count],
+      total_pages: params[:total_pages],
     }
   end
 
   def book_params
-    params.require(:book).permit(:title, :author, :image_link, :page_count)
+    params.require(:book).permit(:title, :author, :image_link, :total_pages)
   end
 end

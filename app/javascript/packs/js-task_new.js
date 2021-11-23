@@ -7,20 +7,20 @@ document.addEventListener('turbolinks:load', function () {
     var dateStart = Date.parse(start);
     var dateFinish = Date.parse(finish);
     var pageCount = $('#page').data('page-id');
-    var days = dateFinish - dateStart;
+    var days = (dateFinish - dateStart) / 86400000 + 1;
 
-    if (days < 0) {
+    if (days <= 0) {
       var resultDays = 'N/A';
       var resultPages = 'N/A';
     } else {
-      if (days == 0) {
-        var resultDays = 0;
+      if (days == 1) {
+        var resultDays = 1;
         var resultPages = pageCount;
-      } else if (days / 86400000 >= pageCount) {
+      } else if (days >= pageCount) {
         var resultDays = pageCount;
         var resultPages = 1;
       } else {
-        var resultDays = days / 86400000;
+        var resultDays = days;
         var resultPages = Math.ceil(pageCount / resultDays);
       }
     }

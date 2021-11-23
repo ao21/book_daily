@@ -1,7 +1,38 @@
 <div class="TaskToday">
   <%= render partial: 'shared/page_top', locals: {main: "Today", sub: "今日の目標"} %>
-  <%= render 'shared/breadcrumbs' %>
-
   <div class="c-container">
+    <div class="Breadcrumbs">
+      <%= link_to 'TOP', '/' %>
+      <span class="Breadcrumbs__arrow">></span>
+      <span class="Breadcrumbs__item Breadcrumbs__now">今日の目標</span>
+    </div>
+  </div>
+
+  <div class="TaskToday__wrapper">
+    <div class="c-container">
+      <% @tasks.each_with_index do |task, i| %>
+        <% val = "@target#{i}" %>
+        <div class="TaskTodayCard">
+          <div class="TaskTodayCard__border"></div>
+          <div class="TaskTodayCard__content">
+            <div class="TaskTodayCard__status --<%= eval("#{val}[:status][:color]") %>"><%= eval("#{val}[:status][:status]") %></div>
+            <div class="TaskTodayCard__title"><%= task.book.title %></div>
+            <div class="TaskTodayCard__goal">
+              <div class="TaskTodayCard__book-image">
+                <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+              </div>
+              <div class="TaskTodayCard__page"><%= eval("#{val}[:up_to_page]") %>ページまで</div>
+            </div>
+            <div class="TaskTodayCard__read">
+              <% eval("#{val}[:read_data]").each do |date, val| %>
+                <%= link_to new_task_read_path(task_id: task.id, read_on: date) do %>
+                  <span class="TaskTodayCard__read-date<%= val %>"><%= date.mday %></span>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -4,7 +4,21 @@ class Read < ApplicationRecord
 
   with_options presence: true do
     validates :read_on
-    validates :read_page, numericality: { only_integer: true }
+    validates :up_to_page, numericality: { only_integer: true, greater_than: 0 }
+  end
+  validate :up_to_page_cannot_be_greater_than_total_pages, :up_to_page_cannot_be_less_than_or_equal_to_saved_up_to_page
+
+  def up_to_page_cannot_be_greater_than_total_pages
+    if up_to_page.present? && up_to_page > task.book.total_pages
+      errors.add(:up_to_page, ": 総ページ数より大きい数は登録できません")
+    end
+  end
+
+  def up_to_page_cannot_be_less_than_or_equal_to_saved_up_to_page
+    max_read_up_to_page = "Read".constantize.where(task_id: task.id).maximum(:up_to_page) || 0
+    if up_to_page.present? && up_to_page <= max_read_up_to_page
+      errors.add(:up_to_page, ": 登録済みのページ番号より小さい数は登録できません")
+    end
   end
 
   # タスク一覧ページの SimpleCalendar で使用
@@ -14,14 +28,14 @@ class Read < ApplicationRecord
 
   # タスク一覧ページのサイドバーの今月、先月の読書データ
   def self.month_data(user)
-    max_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).maximum(:read_page)
-    min_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).minimum(:read_page)
-    min_last = user.reads.where(read_on: Time.now.last_month.all_month).group(:task_id).maximum(:read_page)
+    max_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).maximum(:up_to_page)
+    min_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).minimum(:up_to_page)
+    min_last = user.reads.where(read_on: Time.now.last_month.all_month).group(:task_id).maximum(:up_to_page)
     this_month = self.month_data_cal(max_pages, min_pages, min_last)
 
     max_pages = min_last
-    min_pages = user.reads.where(read_on: Time.now.last_month.all_month).group(:task_id).minimum(:read_page)
-    min_last = user.reads.where(read_on: 2.months.ago.all_month).group(:task_id).maximum(:read_page)
+    min_pages = user.reads.where(read_on: Time.now.last_month.all_month).group(:task_id).minimum(:up_to_page)
+    min_last = user.reads.where(read_on: 2.months.ago.all_month).group(:task_id).maximum(:up_to_page)
     last_month = self.month_data_cal(max_pages, min_pages, min_last)
 
     month_data = {
@@ -53,7 +67,7 @@ class Read < ApplicationRecord
 
       # 今月の読んだ冊数を計算
       tasks.each do |task|
-        if value == task.book.page_count
+        if value == task.book.total_pages
           month_book = 1
         else
           month_book = 0
