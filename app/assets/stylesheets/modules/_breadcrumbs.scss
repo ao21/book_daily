@@ -14,7 +14,9 @@
     vertical-align: middle;
   }
 
-  .Breadcrumbs__now {
-    border-bottom: solid 3px $color-main;
+  .Breadcrumbs__item {
+    &.--now {
+      border-bottom: solid 3px $color-main;
+    }
   }
 }

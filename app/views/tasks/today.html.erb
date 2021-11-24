@@ -8,8 +8,9 @@
     </div>
   </div>
 
-  <div class="TaskToday__wrapper">
-    <div class="c-container">
+  <div class="c-container">
+    <%= render partial: 'shared/task_nav' %>
+    <div class="TaskToday__wrapper">
       <% @tasks.each_with_index do |task, i| %>
         <% val = "@target#{i}" %>
         <div class="TaskTodayCard">
