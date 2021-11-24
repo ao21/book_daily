@@ -1,22 +1,37 @@
-<%= form_with model: [task, read], local: true do |f| %>
-  <%= render 'shared/error_messages', model: f.object %>
-  <div class="form-field">
-    <div class="field-caption">
-      <%= f.label :read_on %>
+<div class="ReadForm">
+  <%= form_with model: [task, read], local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <div class="ReadForm__content">
+      <div class="ReadForm__data">
+        <div class="ReadForm__book-image">
+          <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+        </div>
+        <dl class="ReadForm__page">
+          <dt class="ReadForm__page-title">ページ数</dt>
+          <dd class="ReadForm__page-count"><%= task.book.total_pages %></dd>
+        </dl>
+      </div>
+      <div class="ReadForm__form">
+        <div class="ReadForm__field">
+          <div class="ReadForm__caption">
+            <%= f.label :read_on %>
+          </div>
+          <div class="ReadForm__input">
+            <%= f.date_field :read_on %>
+          </div>
+        </div>
+        <div class="ReadForm__field">
+          <div class="ReadForm__caption">
+            <%= f.label :up_to_page, "読み終わった<br>ページ番号".html_safe %>
+          </div>
+          <div class="ReadForm__input">
+            <%= f.text_field :up_to_page %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="field-input">
-      <%= f.date_field :read_on %>
+    <div class="ReadForm__submit">
+      <%= f.submit button_value, class: "ReadForm__submit-button" %>
     </div>
-  </div>
-  <div class="form-field">
-    <div class="field-caption">
-      <%= f.label :up_to_page %>
-    </div>
-    <div class="field-input">
-      <%= f.text_field :up_to_page %>
-    </div>
-  </div>
-  <div class="btn-read-new">
-    <%= f.submit button_value %>
-  </div>
-<% end %>
+  <% end %>
+</div>

@@ -14,11 +14,7 @@
     <div class="ReadNewCard">
       <div class="ReadNewCard__container">
         <div class="ReadNewCard__title"><%= @task.book.title %></div>
-        <div class="ReadNewCard__content">
-          <div class="ReadNewCard__book-image">
-            <%= render partial: 'books/book_image', locals: { image_link: @task.book.image_link } %>
-          </div>
-          <%= render "form", task: @task, read: @read, button_value: "登録" %>
+        <%= render "form", task: @task, read: @read, button_value: "登録" %>
         </div>
       </div>
     </div>
