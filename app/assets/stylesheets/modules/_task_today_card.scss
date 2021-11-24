@@ -68,6 +68,8 @@
     line-height: 50px;
 
     &.--main {
+      border-color: $color-main;
+      color: $color-white;
       background-color: $color-main;
     }
   }
