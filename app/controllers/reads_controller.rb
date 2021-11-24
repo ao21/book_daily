@@ -13,7 +13,7 @@ class ReadsController < ApplicationController
   def create
     @read = @task.reads.build(read_params)
     if @read.save
-      redirect_to @read, notice: "進捗を登録しました。"
+      redirect_to today_tasks_path, notice: "進捗を登録しました。"
     else
       flash.now[:alert] = "進捗の登録に失敗しました。"
       render :new
