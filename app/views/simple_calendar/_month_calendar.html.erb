@@ -31,10 +31,10 @@
 
   <div class="calendar-footer">
     <div class="calendar-previous">
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view, remote: true %>
     </div>
     <div class="calendar-next">
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view, remote: true %>
     </div>
   </div>
 </div>
