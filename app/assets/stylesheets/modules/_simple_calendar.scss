@@ -5,6 +5,14 @@
     font-size: 0.8em;
   }
 
+  .has-events {
+    background-color: $color-second;
+  }
+
+  .today {
+    background-color: transparent;
+  }
+
   table {
     border: none;
     margin-bottom: 0.5em;
@@ -20,6 +28,7 @@
   .day {
     height: 0.5em;
     border: none;
+    border-radius: 5px;
     font-size: 0.8em;
   }
 
