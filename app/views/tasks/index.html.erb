@@ -1,40 +1,65 @@
-<div class="task-wrapper">
-  <div class="side-wrapper">
-    <%= render 'side' %>
+<div class="TaskIndex">
+  <%= render partial: 'shared/page_top', locals: {main: "All", sub: "目標の一覧"} %>
+  <div class="c-container">
+    <div class="Breadcrumbs">
+      <%= link_to 'TOP', '/' %>
+      <span class="Breadcrumbs__arrow">></span>
+      <span class="Breadcrumbs__item --now">目標の一覧</span>
+    </div>
   </div>
 
-  <div class="main-wrapper-task">
-    <div class="content-with-header">
-      <div class="content-header">
-        <% if @first_task %>
-          <%= link_to 'タスク', task_path(@first_task.id), class: "header-title-task-tab" %>
-        <% else %>
-          <div class="header-title-task-tab">タスク</div>
-        <% end %>
-        <%= link_to 'タスク一覧', tasks_path, class: "header-title-task-tab selected" %>
-      </div>
-      <div class="content-body">
-        <% @tasks.zip(@progress_data) do |task, data| %>
-          <div class="task">
-            <div class="task-image">
-              <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
-            </div>
-            <div class="task-detail">
-              <div class="task-detail-title"><%= task.book.title %></div>
-              <div class="task-detail-today-page-number">
-                <div class="number-title"><i class="fa fa-book" aria-hidden="true"></i>今日の目標</div>
-                <div class="number-item"><%= data[:today_page_number] %>頁まで</div>
-              </div>
-              <div class="task-detail-today-page">今日読むページ数：<%= data[:daily_goal_pages] %>ページ</div>
-              <div class="task-detail-finish-date">目標日：<%= task.finished_on.strftime("%-m月%-d日") %></div>
-              <div>
-                <%= link_to "詳細", task %>
-                <%= link_to "進捗登録", new_task_read_path(task) %>
-              </div>
-              <%= render 'percentage', percentage: data[:percentage] %>
-            </div>
+  <div class="c-container">
+    <%= render partial: 'shared/task_nav' %>
+
+    <div class="TaskIndex__wrapper">
+      <div class="TaskHistory">
+        <div class="TaskHistory__calendar">
+          <h2 class="TaskHitory__calendar-title">HISTORY</h2>
+          <div class="TaskHitory__calendar-item" id="calendar">
+            <%= render partial: "calendar", locals: {reads: @reads} %>
           </div>
-        <% end %>
+        </div>
+        <div class="TaskHistory__table">
+          <%= render partial: "history_table", locals: {month_data: @month_data[:this_month], month_name: "今月"} %>
+          <%= render partial: "history_table", locals: {month_data: @month_data[:last_month], month_name: "先月"} %>
+        </div>
+      </div>
+
+
+      <div class="main-wrapper-task">
+        <div class="content-with-header">
+          <div class="content-header">
+            <% if @first_task %>
+              <%= link_to 'タスク', task_path(@first_task.id), class: "header-title-task-tab" %>
+            <% else %>
+              <div class="header-title-task-tab">タスク</div>
+            <% end %>
+            <%= link_to 'タスク一覧', tasks_path, class: "header-title-task-tab selected" %>
+          </div>
+          <div class="content-body">
+            <% @tasks.zip(@progress_data) do |task, data| %>
+              <div class="task">
+                <div class="task-image">
+                  <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+                </div>
+                <div class="task-detail">
+                  <div class="task-detail-title"><%= task.book.title %></div>
+                  <div class="task-detail-today-page-number">
+                    <div class="number-title"><i class="fa fa-book" aria-hidden="true"></i>今日の目標</div>
+                    <div class="number-item"><%= data[:today_page_number] %>頁まで</div>
+                  </div>
+                  <div class="task-detail-today-page">今日読むページ数：<%= data[:daily_goal_pages] %>ページ</div>
+                  <div class="task-detail-finish-date">目標日：<%= task.finished_on.strftime("%-m月%-d日") %></div>
+                  <div>
+                    <%= link_to "詳細", task %>
+                    <%= link_to "進捗登録", new_task_read_path(task) %>
+                  </div>
+                  <%= render 'percentage', percentage: data[:percentage] %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
