@@ -1,0 +1,28 @@
+.TaskHistoryTable {
+  margin-bottom: 1em;
+
+  .TaskHistoryTable__title {
+    width: 70%;
+    margin-bottom: 0.2em;
+    border-bottom: 1px solid $color-gray;
+    font-size: 0.9em;
+    font-weight: 700;
+  }
+
+  table {
+    margin-left: 0.5em;
+  }
+
+  tr {
+    margin-bottom: 0.2em;
+  }
+
+  td.number {
+    font-size: 0.9em;
+    text-align: center;
+  }
+
+  td.unit {
+    font-size: 0.7em;
+  }
+}
