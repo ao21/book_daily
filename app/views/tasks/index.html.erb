@@ -26,42 +26,30 @@
       </div>
     </div>
 
-    <div class="TaskIndex__wrapper">
-      <div class="main-wrapper-task">
-        <div class="content-with-header">
-          <div class="content-header">
-            <% if @first_task %>
-              <%= link_to 'タスク', task_path(@first_task.id), class: "header-title-task-tab" %>
-            <% else %>
-              <div class="header-title-task-tab">タスク</div>
-            <% end %>
-            <%= link_to 'タスク一覧', tasks_path, class: "header-title-task-tab selected" %>
-          </div>
-          <div class="content-body">
-            <% @tasks.zip(@progress_data) do |task, data| %>
-              <div class="task">
-                <div class="task-image">
-                  <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
-                </div>
-                <div class="task-detail">
-                  <div class="task-detail-title"><%= task.book.title %></div>
-                  <div class="task-detail-today-page-number">
-                    <div class="number-title"><i class="fa fa-book" aria-hidden="true"></i>今日の目標</div>
-                    <div class="number-item"><%= data[:today_page_number] %>頁まで</div>
+    <div class="TaskIndex__wrapper --second">
+      <% @tasks.zip(@tasks_data) do |task, data| %>
+        <div class="TaskIndexCard">
+          <div class="TaskIndexCard__link">
+            <%= link_to(task) do %>
+              <div class="TaskIndexCard__wrapper">
+                <div class="TaskIndexCard__content">
+                  <div class="TaskIndexCard__title"><%= task.book.title %></div>
+                  <div class="TaskIndexCard__data">
+                    <div class="TaskIndexCard__book-image">
+                      <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+                    </div>
+                    <div class="TaskIndexCard__finished-on">
+                      <span class="label">目標日</span>
+                      <span class="date"><%= task.finished_on.strftime("%-m月%-d日") %></span>
+                    </div>
                   </div>
-                  <div class="task-detail-today-page">今日読むページ数：<%= data[:daily_goal_pages] %>ページ</div>
-                  <div class="task-detail-finish-date">目標日：<%= task.finished_on.strftime("%-m月%-d日") %></div>
-                  <div>
-                    <%= link_to "詳細", task %>
-                    <%= link_to "進捗登録", new_task_read_path(task) %>
-                  </div>
-                  <%= render 'percentage', percentage: data[:percentage] %>
                 </div>
+                <%= pie_chart data[:percentage], class: "TaskIndexCard__graph", width: "10em", height: "10em", library: {title: {text: "#{data[:percentage][:read]}%", style:{fontSize: "1.5em"} }} %>
               </div>
             <% end %>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,7 +1,9 @@
 .TaskTodayCard {
-  display: flex;
-  margin: 10px;
-  background-color: $color-white;
+  .TaskTodayCard__wrapper {
+    display: flex;
+    margin: 10px;
+    background-color: $color-white;
+  }
 
   .TaskTodayCard__border {
     margin: 10px;
@@ -12,8 +14,34 @@
 
   .TaskTodayCard__content {
     position: relative;
-    width: 100%;
     padding: 15px;
+    padding-left: 10px;
+    width: 100%;
+  }
+
+  .TaskTodayCard__link {
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: #444;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      padding: 5px;
+      border: 3px solid $color-white;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border: 3px solid $color-main;
+        background-color: rgba(33, 158, 188, 0.3);
+        opacity: 0.7;
+        transition-duration: 0.3s;
+      }
+    }
   }
 
   .TaskTodayCard__status {
@@ -56,6 +84,10 @@
       width: auto;
       height: 100px;
     }
+  }
+
+  .TaskTodayCard__read {
+    margin-left: 10px;
   }
 
   .TaskTodayCard__read-date {
