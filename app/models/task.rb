@@ -4,6 +4,7 @@ class Task < ApplicationRecord
   has_many :reads, dependent: :destroy
 
   # バリデーション
+
   with_options presence: true do
     validates :started_on
     validates :finished_on
@@ -16,9 +17,11 @@ class Task < ApplicationRecord
     end
   end
 
+  # TaskTodayページ
+
   def self.array_tasks_in_progress(user)
     array_tasks_in_progress = []
-    tasks = user.tasks
+    tasks = user.tasks.all
     tasks.each do |task|
       book_total_pages = task.book.total_pages
       max_read_up_to_page = task.reads.select(:up_to_page).maximum(:up_to_page) || 0
@@ -98,6 +101,7 @@ class Task < ApplicationRecord
     return this_weeks
   end
 
+  # tasks_controller.rb で呼び出す配列
   def self.todays_page_data(task)
     if task
       max_read_up_to_page_until_yesterday = "Read".constantize.where(task_id: task.id).where("read_on < ?", Date.today).maximum(:up_to_page) || 0
@@ -120,8 +124,9 @@ class Task < ApplicationRecord
     end
   end
 
-  # 読書進捗のパーセンテージを計算
-  def self.percentage(max_read_up_to_page, total_pages)
+  # TaskIndexページ
+
+  def self.calculate_percentage(max_read_up_to_page, total_pages)
     if max_read_up_to_page
        100 * max_read_up_to_page / total_pages
     else
@@ -129,78 +134,42 @@ class Task < ApplicationRecord
     end
   end
 
-  # 残り日数を計算
-  def self.left_days(task)
-    left_days = (task.finished_on - Date.today + 1).to_i
-    if left_days < 0
-      left_days = 0
-    else
-      left_days
-    end
-  end
-
-  # 目標日と総ページ数から1日の目標ページ数を計算
-  def self.daily_pages_by_left_days(task, max_read_up_to_page, total_pages)
-    left_days = self.left_days(task)
-
-    if left_days == 0
-      total_pages - max_read_up_to_page
-    elsif max_read_up_to_page
-      ( total_pages - max_read_up_to_page ) / left_days
-    else
-      total_pages / left_days
-    end
-  end
-
-  def self.daily_goal_pages(task, max_read_up_to_page, total_pages)
-    new_read = task.reads.order(up_to_page: :desc).limit(2)
-    if new_read.present?
-      daily_goal_pages = self.daily_pages_by_left_days(task, max_read_up_to_page, total_pages)
-      if new_read.length == 2 && new_read[0].read_on == Date.today
-        daily_goal_pages - new_read[1].up_to_page
-      else
-        daily_goal_pages
-      end
-    else
-      0
-    end
-  end
-
-  def self.today_page_number(task, max_read_up_to_page, total_pages)
-    daily_goal_pages = self.daily_goal_pages(task, max_read_up_to_page, total_pages)
-    max_read_up_to_page + daily_goal_pages
-  end
-
   # 進捗データを計算
-  def self.cul_progress_data(task, progress_data)
+  def self.calculate_tasks_data(task, progress_data)
     max_read_up_to_page = task.reads.select(:up_to_page).maximum(:up_to_page) || 0
     total_pages = task.book.total_pages
 
-    left_days = self.left_days(task)
-    daily_goal_pages = self.daily_goal_pages(task, max_read_up_to_page, total_pages) || 0
-    today_page_number = self.today_page_number(task, max_read_up_to_page, total_pages)
-    percentage = self.percentage(max_read_up_to_page, total_pages) || 0
+    if max_read_up_to_page
+      percentage = 100 * max_read_up_to_page / total_pages
+    else
+      percentage = 0
+    end
+
+    if percentage == 100
+      status = 'done'
+    else
+      status = 'progress'
+    end
 
     progress_data.push(
       {
-        left_days: left_days,
-        daily_goal_pages: daily_goal_pages,
-        today_page_number: today_page_number,
-        percentage: percentage,
+        percentage: {read: percentage, unread: 100 - percentage},
+        status: status
       }
     )
   end
 
-  # タスク一覧ページ
   # 進捗のデータをハッシュに整形
-  def self.progress_data(tasks)
+  def self.tasks_data(tasks)
     progress_data = []
 
     tasks.each do |task|
-      self.cul_progress_data(task, progress_data)
+      self.calculate_tasks_data(task, progress_data)
     end
     return progress_data
   end
+
+  # タスク一覧ページ
 
   # タスク詳細ページ
   def self.task_progress_data(task)

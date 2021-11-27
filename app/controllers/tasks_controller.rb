@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks.all.order(finished_on: :desc)
     @reads = current_user.reads
-    @progress_data = Task.progress_data(@tasks)
+    @tasks_data = Task.tasks_data(@tasks)
     @month_data = Read.month_data(current_user)
   end
 
