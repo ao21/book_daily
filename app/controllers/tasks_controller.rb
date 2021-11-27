@@ -1,12 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: %i[show edit update destroy]
-  before_action :side_bar, only: %i[index show]
-  
-  def side_bar
-    @reads = current_user.reads
-    @month_data = Read.month_data(current_user)
-  end
 
   def today
     @tasks = Task.array_tasks_in_progress(current_user)
@@ -18,7 +12,9 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks.all.order(finished_on: :desc)
-    @progress_data = Task.progress_data(@tasks)
+    @reads = current_user.reads
+    @tasks_percentage = Task.tasks_percentage(@tasks)
+    @month_data = Read.month_data(current_user)
   end
 
   def show

@@ -1,0 +1,85 @@
+.TaskIndexCard {
+  margin: 10px;
+  border-radius: 10px;
+  background-color: $color-white;
+
+  .TaskIndexCard__link {
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: #444;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      border: 3px solid $color-white;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        opacity: 0.7;
+        border: 3px solid $color-main;
+        background-color: rgba(33, 158, 188, 0.3);
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  .TaskIndexCard__wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+  }
+
+  .TaskIndexCard__content {
+    flex-basis: 70%;
+    max-width: 70%;
+  }
+
+  .TaskIndexCard__title {
+    margin: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-bottom: solid 2px;
+    font-size: calc(0.5vw + 0.7em);
+    white-space: nowrap;
+  }
+
+  .TaskIndexCard__data {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .TaskIndexCard__book-image {
+    flex-basis: 20%;
+
+    .BookImage__cover {
+      width: auto;
+      height: 100px;
+    }
+  }
+
+  .TaskIndexCard__finished-on {
+    span.label {
+      margin: 5px;
+      padding: 5px;
+      border: 1px solid $color-main;
+      border-radius: 10px;
+      background-color: $color-main;
+      color: $color-white;
+      font-size: calc(0.5vw + 0.7em);
+    }
+  }
+
+  .TaskIndexCard__graph {
+    flex-basis: 15%;
+    max-width: 15%;
+  }
+
+  .highcharts-background {
+    fill: none;
+  }
+}

@@ -1,0 +1,23 @@
+.TaskHistory {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .TaskHistory__calendar {
+    flex-basis: 60%;
+    padding: 5px 20px;
+    background-color: $color-white;
+    text-align: center;
+  }
+
+  .TaskHitory__calendar-title {
+    margin: 0.5em;
+    color: $color-main;
+    font-weight: 700;
+  }
+
+  .TaskHistory__table {
+    flex-basis: 25%;
+    width: 100%;
+  }
+}

@@ -337,67 +337,6 @@ a.selected {
   }
 }
 
-/* カレンダー */
-.simple-calendar {
-  color: #212121;
-  width: 100%;
-
-  .calendar-heading {
-    margin-left: 10px;
-
-    .calendar-title {
-      font-size: 12px;
-      font-weight: bold;
-      line-height: 31px;
-    }
-  }
-
-  .table {
-    margin-bottom: 0;
-  }
-
-  .day {
-    height: 30px;
-  }
-
-  .today {
-    background-color: transparent;
-  }
-
-  .has-events {
-    background-color: #bde4f4;
-  }
-
-  .prev-month {
-    background-color: #e6e9ec !important;
-    font-size: 12px;
-    text-align: center;
-  }
-
-  .next-month {
-    background-color: #e6e9ec !important;
-    font-size: 12px;
-    text-align: center;
-  }
-
-  .current_month {
-    text-align: center;
-  }
-
-  .calendar-footer {
-    .calendar-previous {
-      text-align: left;
-      float: left;
-      margin-left: 8px;
-    }
-
-    .calendar-next {
-      text-align: right;
-      margin-right: 8px;
-    }
-  }
-}
-
 /* タスク詳細ページ */
 
 .btn-read-new-submit {

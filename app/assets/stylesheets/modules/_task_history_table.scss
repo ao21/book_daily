@@ -1,0 +1,32 @@
+.TaskHistoryTable {
+  margin-bottom: 1em;
+
+  .TaskHistoryTable__title {
+    width: 70%;
+    @include mq($md) {
+      width: 100%;
+      max-width: 120px;
+    }
+    margin-bottom: calc(0.5vw + 0.2em);
+    border-bottom: 1px solid $color-gray;
+    font-size: calc(0.5vw + 0.7em);
+    font-weight: 700;
+  }
+
+  table {
+    margin-left: 0.5em;
+  }
+
+  tr {
+    margin-bottom: 0.2em;
+  }
+
+  td.number {
+    font-size: calc(0.5vw + 0.9em);
+    text-align: center;
+  }
+
+  td.unit {
+    font-size: calc(0.5vw + 0.7em);
+  }
+}

@@ -1,0 +1,52 @@
+.simple-calendar {
+  margin: 0.5em;
+
+  .calendar-title {
+    font-size: 0.8em;
+  }
+
+  .has-events {
+    background-color: $color-second;
+  }
+
+  .today {
+    background-color: transparent;
+  }
+
+  table {
+    border: none;
+    margin-bottom: 0.5em;
+  }
+
+  th {
+    border: none;
+    font-size: 0.5em;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  .day {
+    height: 0.5em;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.8em;
+  }
+
+  .prev-month {
+    background-color: transparent;
+    color: transparent;
+  }
+
+  .next-month {
+    background-color: transparent;
+    color: transparent;
+  }
+
+  .calendar-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    font-size: 0.8em;
+  }
+}
