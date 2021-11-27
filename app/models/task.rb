@@ -126,16 +126,8 @@ class Task < ApplicationRecord
 
   # TaskIndexページ
 
-  def self.calculate_percentage(max_read_up_to_page, total_pages)
-    if max_read_up_to_page
-       100 * max_read_up_to_page / total_pages
-    else
-      0
-    end
-  end
-
   # 進捗データを計算
-  def self.calculate_tasks_data(task, progress_data)
+  def self.calculate_tasks_percentage(task, tasks_percentage)
     max_read_up_to_page = task.reads.select(:up_to_page).maximum(:up_to_page) || 0
     total_pages = task.book.total_pages
 
@@ -145,31 +137,22 @@ class Task < ApplicationRecord
       percentage = 0
     end
 
-    if percentage == 100
-      status = 'done'
-    else
-      status = 'progress'
-    end
-
-    progress_data.push(
+    tasks_percentage.push(
       {
-        percentage: {read: percentage, unread: 100 - percentage},
-        status: status
+        read: percentage, unread: 100 - percentage
       }
     )
   end
 
   # 進捗のデータをハッシュに整形
-  def self.tasks_data(tasks)
-    progress_data = []
+  def self.tasks_percentage(tasks)
+    tasks_percentage = []
 
     tasks.each do |task|
-      self.calculate_tasks_data(task, progress_data)
+      self.calculate_tasks_percentage(task, tasks_percentage)
     end
-    return progress_data
+    return tasks_percentage
   end
-
-  # タスク一覧ページ
 
   # タスク詳細ページ
   def self.task_progress_data(task)

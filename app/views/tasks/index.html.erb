@@ -27,7 +27,7 @@
     </div>
 
     <div class="TaskIndex__wrapper --second">
-      <% @tasks.zip(@tasks_data) do |task, data| %>
+      <% @tasks.zip(@tasks_percentage) do |task, data| %>
         <div class="TaskIndexCard">
           <div class="TaskIndexCard__link">
             <%= link_to(task) do %>

@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks.all.order(finished_on: :desc)
     @reads = current_user.reads
-    @tasks_data = Task.tasks_data(@tasks)
+    @tasks_percentage = Task.tasks_percentage(@tasks)
     @month_data = Read.month_data(current_user)
   end
 
