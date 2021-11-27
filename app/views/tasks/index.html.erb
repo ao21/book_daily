@@ -44,7 +44,7 @@
                     </div>
                   </div>
                 </div>
-                <%= pie_chart data[:percentage], class: "TaskIndexCard__graph", width: "10em", height: "10em", library: {title: {text: "#{data[:percentage][:read]}%", style:{fontSize: "1.5em"} }} %>
+                <%= pie_chart data, class: "TaskIndexCard__graph", width: "10em", height: "10em", library: {title: {text: "#{data[:read]}%", style:{fontSize: "1.5em"} }} %>
               </div>
             <% end %>
           </div>
