@@ -2,7 +2,7 @@ Chartkick.options = {
   height: "250px",
   width: "500px",
   donut: true,
-  colors: [ "#4756ca",
+  colors: [ "#219ebc",
             "#bdbdbd"
           ],
   message: { empty: "データがありません" },
@@ -13,7 +13,7 @@ Chartkick.options = {
       align: 'center',
       verticalAlign: 'middle',
       style: {
-        color: "#163172",
+        color: "#219ebc",
         fontWeight: "bold",
         fontSize: "30px"
       }
@@ -26,8 +26,8 @@ Chartkick.options = {
         dataLabels: {
           enabled: false,
         },
-        size: '110%',
-        innerSize: '60%',
+        size: '100%',
+        innerSize: '80%',
         borderWidth: 0,
       }
     }
