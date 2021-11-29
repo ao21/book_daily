@@ -19,8 +19,7 @@ class TasksController < ApplicationController
 
   def show
     @reads = @task.reads.all.order(read_on: :desc)
-    @task_progress_data = Task.task_progress_data(@task)
-    @progress_percentage = { read: @task_progress_data[0][:percentage], unread: 100 - @task_progress_data[0][:percentage] }
+    @task_percentage = Task.task_percentage(@task)
   end
 
   def new
