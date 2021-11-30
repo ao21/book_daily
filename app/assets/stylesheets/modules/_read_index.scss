@@ -1,0 +1,88 @@
+.ReadIndex {
+  #chart-2 {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .ReadIndex__wrapper {
+    position: relative;
+    width: 95%;
+    max-width: 95%;
+    margin: 0 auto;
+    padding-top: calc(0.5vw + 20px);
+  }
+
+  .ReadIndex__title {
+    padding-left: 10%;
+    font-weight: 700;
+  }
+
+  .ReadIndex__border {
+    width: 95%;
+    margin: 10px auto;
+    border-bottom: 5px solid $color-second;
+  }
+
+  .ReadIndex__link-button {
+    display: block;
+    width: 35%;
+    max-width: 150px;
+    margin: calc(0.5vw + 0.5em) auto calc(0.5vw + 0.5em) 5%;
+    padding: 0.3em calc(0.8vw + 5px);
+    border-radius: 20px;
+    background-color: $color-main;
+    color: $color-white;
+    font-size: calc(0.3vw + 1rem);
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .ReadIndex__table {
+    width: 85%;
+    margin: 0 auto;
+
+    thead {
+      border-bottom: 5px solid $color-beige;
+    }
+
+    th {
+      padding-left: 5px;
+      font-weight: normal;
+    }
+
+    th.number {
+      text-align: center;
+    }
+
+    td {
+      height: 2em;
+    }
+
+    td.number {
+      text-align: center;
+    }
+
+    .hide {
+      display: none;
+    }
+  }
+
+  .ReadIndex__reads-more {
+    width: 85%;
+    margin: 0 auto;
+    padding: 0.3em calc(0.8vw + 5px);
+    font-size: calc(0.3vw + 1rem);
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  .ReadIndex__message {
+    padding: 0.5em;
+    padding-bottom: 4em;
+    color: $color-gray;
+    text-align: center;
+  }
+}

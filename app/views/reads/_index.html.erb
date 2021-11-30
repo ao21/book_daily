@@ -1,21 +1,25 @@
-<div class="reads-index">
-  <div class="content-header">
-    <div class="header-title">進捗一覧</div>
-  </div>
-  <div class="content-body">
-    <%= link_to "進捗登録", new_task_read_path(task), class: "btn btn-read-new-submit" %>
-    <table class="table table-sm table-read">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">読んだ日</th>
-          <th scope="col">読んだページ数</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: "reads/read_data", locals: { task: task }, collection: reads, as: "read" %>
-      </tbody>
-    </table>
+<div class="ReadIndex">
+  <%= area_chart reads_percentage, min: 0, max: 100 %>
+  <div class="ReadIndex__wrapper">
+    <div class="ReadIndex__title">進捗一覧</div>
+    <div class="ReadIndex__border"></div>
+    <%= link_to "新規登録", new_task_read_path(task), class: "ReadIndex__link-button" %>
+    <% if reads.present? %>
+      <table class="ReadIndex__table" id="js-ReadIndex__table">
+        <thead>
+          <tr>
+            <th>読んだ日</th>
+            <th class="number">読み終わった<br />ページ番号</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="js-ReadIndex__reads">
+          <%= render partial: "reads/read_data", locals: { task: task }, collection: reads, as: "read" %>
+        </tbody>
+      </table>
+      <div class="ReadIndex__reads-more"><a href="#" id="js-ReadIndex__reads-more">more...</a></div>
+    <% else %>
+      <div class="ReadIndex__message">進捗がありません</div>
+    <% end %>
   </div>
 </div>
