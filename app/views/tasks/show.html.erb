@@ -12,32 +12,34 @@
 
   <div class="c-container">
     <div class="TaskShow__wrapper">
-      <div class="TaskShow__content">
-        <div class="TaskShow__graph">
-          <%= pie_chart @task_percentage[0], width: "20em", height: "20em", library: {title: {text: "#{@task_percentage[0][:read]}%", style:{fontSize: "2em"} }} %>
-        </div>
-        <div class="TaskShow__data">
-          <div class="TaskShow__title"><%= @task.book.title %></div>
-          <div class="TaskShow__item">
-            <div class="TaskShow__book-image">
-              <%= render partial: 'books/book_image', locals: { image_link: @task.book.image_link } %>
-            </div>
-            <table class="TaskShow__table">
-              <tbody>
-                <tr class="TaskShow__table-row">
-                  <td class="label">開始日</td>
-                  <td class="data"><%= @task.started_on %></td>
-                </tr>
-                <tr class="TaskShow__table-row">
-                  <td class="label">終了日</td>
-                  <td class="data"><%= @task.finished_on %></td>
-                </tr>
-              </tbody>
-            </table>
+      <div class="TaskShow__container">
+        <div class="TaskShow__content">
+          <div class="TaskShow__graph">
+            <%= pie_chart @task_percentage[0], width: "20em", height: "20em", library: {title: {text: "#{@task_percentage[0][:read]}%", style:{fontSize: "2em"} }} %>
           </div>
-          <div class="TaskShow__link">
-            <%= link_to "編集", edit_task_path(@task), class: "TaskShow__link-button --edit" %>
-            <%= link_to "削除", @task, class: "TaskShow__link-button --delete", method: :delete, data: { confirm: "削除しますか?" } %>
+          <div class="TaskShow__data">
+            <div class="TaskShow__title"><%= @task.book.title %></div>
+            <div class="TaskShow__item">
+              <div class="TaskShow__book-image">
+                <%= render partial: 'books/book_image', locals: { image_link: @task.book.image_link } %>
+              </div>
+              <table class="TaskShow__table">
+                <tbody>
+                  <tr class="TaskShow__table-row">
+                    <td class="label">開始日</td>
+                    <td class="data"><%= @task.started_on %></td>
+                  </tr>
+                  <tr class="TaskShow__table-row">
+                    <td class="label">終了日</td>
+                    <td class="data"><%= @task.finished_on %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="TaskShow__link">
+              <%= link_to "編集", edit_task_path(@task), class: "TaskShow__link-button --edit" %>
+              <%= link_to "削除", @task, class: "TaskShow__link-button --delete", method: :delete, data: { confirm: "削除しますか?" } %>
+            </div>
           </div>
         </div>
       </div>
@@ -45,7 +47,7 @@
 
     <div class="TaskShow__wrapper">
       <div class="TaskShow__container">
-        <%= render partial: "reads/index", locals: { task: @task, reads: @reads } %>
+        <%= render partial: "reads/index", locals: { task: @task, reads: @reads, reads_percentage: @reads_percentage } %>
       </div>
     </div>
   </div>

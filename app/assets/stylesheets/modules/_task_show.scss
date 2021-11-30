@@ -6,14 +6,17 @@
     background-color: $color-beige;
   }
 
+  .TaskShow__container {
+    margin: 10px;
+    background-color: $color-white;
+  }
+
   .TaskShow__content {
     @media screen and (min-width: 550px) {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    margin: 10px;
-    background-color: $color-white;
   }
 
   .TaskShow__graph {
