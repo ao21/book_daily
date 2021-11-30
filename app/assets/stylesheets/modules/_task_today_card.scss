@@ -6,17 +6,18 @@
   }
 
   .TaskTodayCard__border {
-    margin: 10px;
     width: 10px;
     height: 200px;
+    margin: 5px;
     background-color: $color-second;
   }
 
   .TaskTodayCard__content {
+    flex-basis: 95%;
     position: relative;
+    max-width: 95%;
     padding: 15px;
     padding-left: 10px;
-    width: 100%;
   }
 
   .TaskTodayCard__link {
@@ -36,9 +37,9 @@
       transition: all 0.3s ease;
 
       &:hover {
+        opacity: 0.7;
         border: 3px solid $color-main;
         background-color: rgba(33, 158, 188, 0.3);
-        opacity: 0.7;
         transition-duration: 0.3s;
       }
     }
@@ -48,11 +49,13 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: calc(0.2vw + 130px);
-    height: calc(0.2vw + 30px);
+    height: 30px;
     margin: 10px;
     padding: 5px;
     border-radius: 10px;
+    font-size: calc(0.2vw + 0.8em);
+    line-height: calc(-0.2vw + 25px);
+    text-align: center;
 
     &.--main {
       background-color: $color-main;
@@ -65,9 +68,10 @@
 
   .TaskTodayCard__title {
     width: 60%;
-    margin: 5px;
-    border-bottom: solid 2px;
+    margin-bottom: 5px;
+    padding: 5px 5px 0 5px;
     overflow: hidden;
+    border-bottom: solid 2px;
     white-space: nowrap;
   }
 
@@ -78,7 +82,8 @@
   }
 
   .TaskTodayCard__book-image {
-    flex-basis: 15%;
+    flex-basis: 20%;
+    min-width: 20%;
 
     .BookImage__cover {
       width: auto;
@@ -87,22 +92,25 @@
   }
 
   .TaskTodayCard__read {
-    margin-left: 10px;
+    margin: 10px;
+  }
+
+  .TaskTodayCard__read-circle {
+    display: inline-flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(0.5vw + 30px);
+    height: calc(0.5vw + 30px);
+    margin: 1px;
+    border: 2px solid $color-main;
+    border-radius: 50%;
+    color: $color-main;
+    vertical-align: top;
   }
 
   .TaskTodayCard__read-date {
-    width: 50px;
-    height: 50px;
-    padding: 5px;
-    border: solid 1px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 50px;
-
-    &.--main {
-      border-color: $color-main;
-      color: $color-white;
-      background-color: $color-main;
-    }
+    font-size: 1em;
+    line-height: 1em;
   }
 }
