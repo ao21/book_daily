@@ -1,53 +1,52 @@
-<div class="TaskShow">
-  <%= render partial: 'shared/page_top', locals: {main: "Show", sub: "目標の詳細"} %>
-  <div class="c-container">
-    <div class="Breadcrumbs">
-      <%= link_to 'TOP', '/' %>
-      <span class="Breadcrumbs__arrow">></span>
-      <%= link_to '目標の一覧', tasks_path, class: "Breadcrumbs__item" %>
-      <span class="Breadcrumbs__arrow">></span>
-      <span class="Breadcrumbs__item --now">詳細</span>
-    </div>
+<div class="task-wrapper">
+  <div class="side-wrapper">
+    <%= render 'side' %>
   </div>
-
-  <div class="c-container">
-    <div class="TaskShow__wrapper">
-      <div class="TaskShow__container">
-        <div class="TaskShow__content">
-          <div class="TaskShow__graph">
-            <%= pie_chart @task_percentage[0], width: "20em", height: "20em", library: {title: {text: "#{@task_percentage[0][:read]}%", style:{fontSize: "2em"} }} %>
-          </div>
-          <div class="TaskShow__data">
-            <div class="TaskShow__title"><%= @task.book.title %></div>
-            <div class="TaskShow__item">
-              <div class="TaskShow__book-image">
-                <%= render partial: 'books/book_image', locals: { image_link: @task.book.image_link } %>
-              </div>
-              <table class="TaskShow__table">
-                <tbody>
-                  <tr class="TaskShow__table-row">
-                    <td class="label">開始日</td>
-                    <td class="data"><%= @task.started_on %></td>
-                  </tr>
-                  <tr class="TaskShow__table-row">
-                    <td class="label">終了日</td>
-                    <td class="data"><%= @task.finished_on %></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="TaskShow__link">
-              <%= link_to "編集", edit_task_path(@task), class: "TaskShow__link-button --edit" %>
-              <%= link_to "削除", @task, class: "TaskShow__link-button --delete", method: :delete, data: { confirm: "削除しますか?" } %>
-            </div>
-          </div>
-        </div>
+  <div class="main-wrapper-task">
+    <div class="content-with-header">
+      <div class="content-header">
+        <%# 要改善: タスクを持たない場合 %>
+        <%= link_to 'タスク', task_path(@first_task.id), class: "header-title-task-tab selected" %>
+        <%= link_to 'タスク一覧', tasks_path, class: "header-title-task-tab" %>
       </div>
-    </div>
+      <div class="content-body">
+        <%= pie_chart @progress_percentage, class: "percentage-graph", library: {title: {text: "#{@progress_percentage[:read]}%" }} %>
+        <table class="table table-bordered table-sm">
+          <tr>
+            <th scope="row">本のタイトル</th>
+            <td><%= @task.book.title %></td>
+          </tr>
+          <tr>
+            <th scope="row">ページ数</th>
+            <td><%= @task.book.total_pages %></td>
+          </tr>
+          <tr>
+            <th scope="row">開始日</th>
+            <td><%= @task.started_on %></td>
+          </tr>
+          <tr>
+            <th scope="row">目標日</th>
+            <td><%= @task.finished_on %></td>
+          </tr>
+          <tr>
+            <th scope="row">目標日まで</th>
+            <td>あと<%= @task_progress_data[0][:left_days] %>日</td>
+          </tr>
+          <tr>
+            <th scope="row">1日の目標ページ数</th>
+            <td><%= @task_progress_data[0][:daily_goal_pages] %></td>
+          </tr>
+          <tr>
+            <th scope="row">進捗率</th>
+            <td>
+              <%= render 'percentage', percentage: @task_progress_data[0][:percentage] %>
+            </td>
+          </tr>
+        </table>
+        <%= link_to "編集", edit_task_path(@task) %>
+        <%= link_to "削除", @task, method: :delete, data: { confirm: "削除しますか?" } %>
 
-    <div class="TaskShow__wrapper">
-      <div class="TaskShow__container">
-        <%= render partial: "reads/index", locals: { task: @task, reads: @reads, reads_percentage: @reads_percentage } %>
+        <%= render partial: "reads/index", locals: { task: @task, reads: @reads } %>
       </div>
     </div>
   </div>

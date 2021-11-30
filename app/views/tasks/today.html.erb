@@ -31,11 +31,9 @@
               </div>
               <div class="TaskTodayCard__read">
                 <% eval("#{val}[:read_data]").each do |date, val| %>
-                  <div class="TaskTodayCard__read-circle">
-                    <%= link_to new_task_read_path(task_id: task.id, read_on: date) do %>
-                      <div class="TaskTodayCard__read-date<%= val %>"><%= date.mday %></div>
-                    <% end %>
-                  </div>
+                  <%= link_to new_task_read_path(task_id: task.id, read_on: date) do %>
+                    <span class="TaskTodayCard__read-date<%= val %>"><%= date.mday %></span>
+                  <% end %>
                 <% end %>
               </div>
             </div>
