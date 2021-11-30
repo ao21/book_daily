@@ -1,6 +1,7 @@
 <tr>
+  <th scope="row"><%= read_counter + 1 %></th>
   <td><%= read.read_on %></td>
-  <td class="number"><%= read.up_to_page %></td>
+  <td><%= read.up_to_page %></td>
   <td>
     <%= link_to "編集", edit_task_read_path(task, read) %>
     <%= link_to "削除", task_read_path(task, read), method: :delete, data: { confirm: "削除しますか?" } %>

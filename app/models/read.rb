@@ -26,7 +26,7 @@ class Read < ApplicationRecord
     self.read_on
   end
 
-  # タスク一覧ページの今月、先月の読書データ
+  # タスク一覧ページのサイドバーの今月、先月の読書データ
   def self.month_data(user)
     max_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).maximum(:up_to_page)
     min_pages = user.reads.where(read_on: Time.now.all_month).group(:task_id).minimum(:up_to_page)
@@ -86,19 +86,5 @@ class Read < ApplicationRecord
       day_page: day_page,
       month_book: month_book
     }
-  end
-
-  def self.reads_percentage(reads, task)
-    reads_percentage = {}
-    if reads
-      reads.reverse.each do |read|
-          percentage = 100 * read.up_to_page / task.book.total_pages
-          reads_percentage.store(
-            read.read_on,
-            percentage
-          )
-      end
-    end
-    return reads_percentage
   end
 end

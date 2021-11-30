@@ -155,8 +155,8 @@ class Task < ApplicationRecord
   end
 
   # タスク詳細ページ
-  def self.task_percentage(task)
-    task_percentage = []
-    self.calculate_tasks_percentage(task, task_percentage)
+  def self.task_progress_data(task)
+    progress_data = []
+    self.cul_progress_data(task, progress_data)
   end
 end
