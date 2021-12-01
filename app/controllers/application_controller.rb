@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :first_task
 
   private
 
@@ -11,20 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resorce)
-    if @first_task
-      task_path(@first_task.id)
-    else
-      tasks_path
-    end
-  end
-
-  def first_task
-    if user_signed_in?
-      task = current_user.tasks.joins(:reads).order(read_on: :desc).limit(1)
-      if task.blank?
-        task = current_user.tasks.order(finished_on: :asc).limit(1)
-      end
-      @first_task = task[0]
-    end
+    today_tasks_path
   end
 end
