@@ -105,12 +105,20 @@
     margin: 1px;
     border: 2px solid $color-main;
     border-radius: 50%;
-    color: $color-main;
     vertical-align: top;
+
+    &.--main {
+      background-color: $color-main;
+    }
   }
 
   .TaskTodayCard__read-date {
+    color: $color-main;
     font-size: 1em;
     line-height: 1em;
+
+    &.--main {
+      color: $color-white;
+    }
   }
 }
