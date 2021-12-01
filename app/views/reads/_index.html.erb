@@ -1,9 +1,13 @@
 <div class="ReadIndex">
-  <%= area_chart reads_percentage, min: 0, max: 100 %>
+  <div class="ReadIndex__wrapper">
+    <div class="ReadIndex__title">進捗データ</div>
+    <div class="ReadIndex__border"></div>
+    <%= area_chart reads_percentage, min: 0, max: 100 %>
+    <%= link_to "新規登録", new_task_read_path(task), class: "ReadIndex__link-button" %>
+  </div>
   <div class="ReadIndex__wrapper">
     <div class="ReadIndex__title">進捗一覧</div>
     <div class="ReadIndex__border"></div>
-    <%= link_to "新規登録", new_task_read_path(task), class: "ReadIndex__link-button" %>
     <% if reads.present? %>
       <table class="ReadIndex__table" id="js-ReadIndex__table">
         <thead>
