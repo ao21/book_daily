@@ -19,7 +19,7 @@ class TasksController < ApplicationController
 
   def show
     @task_percentage = Task.task_percentage(@task)
-    @reads = @task.reads.all.order(read_on: :desc)
+    @reads = @task.reads.all.order(up_to_page: :desc)
     @reads_percentage = Read.reads_percentage(@reads, @task)
   end
 
