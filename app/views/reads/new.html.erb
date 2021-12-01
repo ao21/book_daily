@@ -10,13 +10,5 @@
     </div>
   </div>
 
-  <div class="ReadNew__wrapper">
-    <div class="ReadNewCard">
-      <div class="ReadNewCard__container">
-        <div class="ReadNewCard__title"><%= @task.book.title %></div>
-        <%= render "form", task: @task, read: @read, button_value: "登録" %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "form", task: @task, read: @read, button_value: "登録" %>
 </div>
