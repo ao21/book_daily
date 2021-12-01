@@ -1,6 +1,14 @@
 <div class="TaskEdit">
-  <%= render partial: 'shared/page_top', locals: {main: "Task", sub: "目標を編集しましょう。"} %>
-  <%= render 'shared/breadcrumbs' %>
+  <%= render partial: 'shared/page_top', locals: {main: "Task", sub: "目標の編集"} %>
+  <div class="c-container">
+      <div class="Breadcrumbs">
+        <%= link_to 'TOP', '/' %>
+        <span class="Breadcrumbs__arrow">></span>
+        <%= link_to 'タスクの詳細', @task, class: "Breadcrumbs__item" %>
+        <span class="Breadcrumbs__arrow">></span>
+        <span class="Breadcrumbs__item --now">タスクの編集</span>
+      </div>
+    </div>
 
   <%= render 'form', task: @task, book: @book, button_value: "更新" %>
 </div>

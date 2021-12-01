@@ -1,33 +1,117 @@
 .TaskForm {
-  .TaskForm__field {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    font-size: calc(0.2vw + 1rem);
+  .TaskForm__title {
+    margin: 0 auto 10px auto;
+    width: 70%;
+    max-width: 500px;
+    border-bottom: 1px solid;
   }
 
-  .TaskForm__field-label,
-  .TaskForm__field-input {
+  .TaskForm__book-image {
+    margin: 5px;
+  }
+
+  .TaskForm__result {
     display: flex;
+    justify-content: center;
+    width: 90%;
+    @include mq($sm) {
+      width: 100%;
+    }
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    padding: calc(0.8vw + 16px) calc(3vw + 7px);
+  }
+
+  .TaskForm__result-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-  }
-
-  .TaskForm__field-label {
-    flex: 0 0 calc(8vw + 50px);
-    justify-content: center;
-    width: 100%;
-    max-width: calc(12vw + 82px);
-    padding: calc(0.5vw + 15px);
+    position: relative;
+    min-width: 120px;
+    @include mq($md) {
+      min-width: 80px;
+    }
+    margin: 0 20px;
+    padding: 0 20px;
     border-radius: 20px;
-    background-color: $color-beige;
+    background-color: $color-second;
     font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      margin-top: -15px;
+      border: 15px solid transparent;
+      border-left: 15px solid $color-second;
+      content: '';
+    }
+
+    i.fa-flag-checkered {
+      margin: 10px;
+      margin-right: 5px;
+    }
   }
 
-  .TaskForm__field-input {
-    flex-basis: 150px;
-    transform: translateY(0.3vw);
+  .TaskForm__result-content {
     width: 100%;
-    height: calc(0.2vw + 50px);
-    margin-left: 10px;
+    padding: 10px calc(1vw + 1px);
+    background-color: #e8f4f6;
+
+    dl {
+      display: flex;
+      align-items: center;
+      margin: calc(0.5vw + 20px) 0;
+      margin-left: 0.5vw;
+      font-size: calc(0.2vw + 11px);
+      line-height: 1.4;
+    }
+
+    i.fa-check::before {
+      margin-right: 5px;
+      color: $color-main;
+    }
+
+    dt {
+      flex-basis: calc(3vw + 95px);
+      justify-content: center;
+      font-weight: 600;
+
+      span {
+        padding: 7px 10px;
+        border-radius: 10px;
+        background-color: rgba(33, 158, 188, 0.6);
+      }
+    }
+
+    dd {
+      flex-basis: calc(90% - (3vw + 95px));
+      padding: 5px 0 5px 5px;
+      margin-left: 5px;
+      border-bottom: 1px solid;
+    }
+  }
+
+  .TaskForm__submit {
+    width: 100%;
+    margin-bottom: calc(1.6vw + 13px);
+    padding: 0 calc(1vw + 40px);
+  }
+
+  .TaskForm__submit-button {
+    position: relative;
+    width: 100%;
+    padding: 1em calc(0.8vw + 16px);
+    border-color: $color-main;
+    border-radius: 20px;
+    background-color: $color-main;
+    color: #fff;
+    font-weight: 700;
+    font-size: calc(0.3vw + 1rem);
+    line-height: 1.5;
   }
 }

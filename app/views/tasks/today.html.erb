@@ -15,7 +15,7 @@
         <% val = "@target#{i}" %>
         <div class="TaskTodayCard">
           <div class="TaskTodayCard__wrapper">
-            <div class="TaskTodayCard__border"></div>
+            <div class="TaskTodayCard__border --<%= eval("#{val}[:status][:color]") %>"></div>
             <div class="TaskTodayCard__content">
               <div class="TaskTodayCard__link">
                 <%= link_to(task) do %>
@@ -31,7 +31,7 @@
               </div>
               <div class="TaskTodayCard__read">
                 <% eval("#{val}[:read_data]").each do |date, val| %>
-                  <div class="TaskTodayCard__read-circle">
+                  <div class="TaskTodayCard__read-circle<%= val %>">
                     <%= link_to new_task_read_path(task_id: task.id, read_on: date) do %>
                       <div class="TaskTodayCard__read-date<%= val %>"><%= date.mday %></div>
                     <% end %>

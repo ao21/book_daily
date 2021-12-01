@@ -1,26 +1,21 @@
 .ReadForm {
-  .ReadForm__content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding-top: 20px;
+  .ReadForm__title {
+    margin: 0 auto 10px auto;
+    width: 70%;
+    max-width: 500px;
+    border-bottom: 1px solid;
   }
 
   .ReadForm__data {
     display: flex;
     flex-flow: column;
-    flex-basis: 20%;
     align-items: center;
     align-self: baseline;
-    margin-top: calc(1vw + 10px);
-    margin-right: calc(1vw + 5px);
+    margin: calc(1vw + 10px);
   }
 
   .ReadForm__book-image {
-    .BookImage__cover {
-      width: auto;
-      height: 100px;
-    }
+    width: 100%;
   }
 
   .ReadForm__page {
@@ -57,24 +52,26 @@
 
   .ReadForm__field {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-bottom: 1.5em;
   }
 
-  .ReadForm__book-image {
-    width: 100%;
+  .ReadForm__caption,
+  .ReadForm__input {
+    display: flex;
+    align-items: center;
   }
 
   .ReadForm__caption {
-    flex: 0 0 40%;
-    max-width: 40%;
-    padding-right: 1em;
+    justify-content: center;
+    width: 100%;
+    max-width: calc(12vw + 82px);
     font-weight: 700;
   }
 
   .ReadForm__input {
-    flex: 0 0 60%;
-    max-width: 60%;
+    width: 200px;
 
     input[type='text'],
     input[type='date'] {
@@ -92,15 +89,14 @@
   }
 
   .ReadForm__submit {
-    position: relative;
     width: 100%;
     padding: 0 calc(1vw + 40px);
     margin-bottom: calc(1.6vw + 13px);
+    text-align: center;
   }
 
   .ReadForm__submit-button {
     position: relative;
-    left: calc(5vw - 10px);
     width: 100%;
     max-width: calc(1vw + 300px);
     padding: 1em calc(0.8vw + 16px);

@@ -1,31 +1,32 @@
-<div class="c-container">
-  <%= render partial: 'shared/page_bar', locals: {var: "", text: "開始日と終了日を設定"} %>
+<div class="TaskForm">
+  <div class="c-container">
+    <%= render partial: 'shared/page_bar', locals: {var: "", text: "開始日と終了日を設定"} %>
 
-  <%= form_with model: task, local: true do |f| %>
-    <section class="TaskForm">
-      <%= render 'shared/error_messages', model: f.object %>
-      <%= hidden_field_tag :book_id, book.id %>
-      <div class="TaskForm__field">
-        <%= f.label :started_on, class: "TaskForm__field-label" %>
-        <%= f.date_field :started_on, class: "TaskForm__field-input", id: "started_on" %>
-      </div>
-      <div class="TaskForm__field">
-        <%= f.label :finished_on, class: "TaskForm__field-label" %>
-        <%= f.date_field :finished_on, class: "TaskForm__field-input", id: "finished_on" %>
-      </div>
-    </section>
+    <div class="TaskForm__title"><%= book.title %></div>
+    <div class="TaskForm__book-image">
+      <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+    </div>
 
-    <section class="TaskFormCal">
-      <div class="TaskFormCal__result">
-        <div class="TaskFormCal__result-title">
+    <%= form_with model: task, local: true do |f| %>
+      <section class="TaskFormInput">
+        <%= render 'shared/error_messages', model: f.object %>
+        <%= hidden_field_tag :book_id, book.id %>
+        <div class="TaskFormInput__field">
+          <%= f.label :started_on, class: "TaskFormInput__field-label" %>
+          <%= f.date_field :started_on, class: "TaskFormInput__field-input", id: "started_on" %>
+        </div>
+        <div class="TaskFormInput__field">
+          <%= f.label :finished_on, class: "TaskFormInput__field-label" %>
+          <%= f.date_field :finished_on, class: "TaskFormInput__field-input", id: "finished_on" %>
+        </div>
+      </section>
+
+      <section class="TaskForm__result">
+        <div class="TaskForm__result-title">
           <i class="fas fa-flag-checkered"></i>
           <span>目標</span>
         </div>
-        <div class="TaskFormCal__result-content">
-          <dl>
-            <i class="fas fa-check"></i>
-            <dd class="--title"><%= book.title %></dd>
-          </dl>
+        <div class="TaskForm__result-content">
           <dl>
             <i class="fas fa-check"></i>
             <dt><span>読み終わる日数</span></dt>
@@ -37,11 +38,11 @@
             <dd><span id="page", data-page-id="<%= book.total_pages %>"></span></dd>
           </dl>
         </div>
-      </div>
+      </section>
 
-      <div class="TaskFormCal__submit">
-        <%= f.submit button_value, class: "TaskFormCal__submit-button" %>
+      <div class="TaskForm__submit">
+        <%= f.submit button_value, class: "TaskForm__submit-button" %>
       </div>
-    </section>
-  <% end %>
+    <% end %>
+  </div>
 </div>

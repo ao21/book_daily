@@ -6,7 +6,9 @@ class Read < ApplicationRecord
     validates :read_on
     validates :up_to_page, numericality: { only_integer: true, greater_than: 0 }
   end
-  validate :up_to_page_cannot_be_greater_than_total_pages, :up_to_page_cannot_be_less_than_or_equal_to_saved_up_to_page
+  validate :up_to_page_cannot_be_greater_than_total_pages,
+    :up_to_page_cannot_be_less_than_or_equal_to_saved_up_to_page,
+    :up_to_page_and_read_on_cannot_be_greater_than_saved_record
 
   def up_to_page_cannot_be_greater_than_total_pages
     if up_to_page.present? && up_to_page > task.book.total_pages
@@ -20,6 +22,16 @@ class Read < ApplicationRecord
       errors.add(:up_to_page, ": 登録済みのページ番号より小さい数は登録できません")
     end
   end
+
+  def up_to_page_and_read_on_cannot_be_greater_than_saved_record
+    read = task.reads.order(up_to_page: :desc).order(read_on: :desc).limit(1)
+    max_read_up_to_page = read[0].up_to_page
+    date_max_read_up_to_page = read[0].read_on
+    if up_to_page.present? && read_on.present? && up_to_page > max_read_up_to_page && date_max_read_up_to_page > read_on
+      errors.add(:up_to_page, ": すでに過去の日付でより大きいページ番号が登録されています")
+    end
+  end
+
 
   # タスク一覧ページの SimpleCalendar で使用
   def start_time

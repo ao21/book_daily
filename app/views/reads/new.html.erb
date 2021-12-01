@@ -4,19 +4,9 @@
     <div class="Breadcrumbs">
       <%= link_to 'TOP', '/' %>
       <span class="Breadcrumbs__arrow">></span>
-      <%= link_to '今日の目標', today_tasks_path, class: "Breadcrumbs__item" %>
-      <span class="Breadcrumbs__arrow">></span>
       <span class="Breadcrumbs__item --now">進捗の登録</span>
     </div>
   </div>
 
-  <div class="ReadNew__wrapper">
-    <div class="ReadNewCard">
-      <div class="ReadNewCard__container">
-        <div class="ReadNewCard__title"><%= @task.book.title %></div>
-        <%= render "form", task: @task, read: @read, button_value: "登録" %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "form", task: @task, read: @read, button_value: "登録" %>
 </div>
