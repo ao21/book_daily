@@ -1,5 +1,5 @@
-.TaskNew {
-  .TaskNew__result {
+.TaskFormCal {
+  .TaskFormCal__result {
     display: flex;
     justify-content: center;
     width: 90%;
@@ -12,7 +12,7 @@
     padding: calc(0.8vw + 16px) calc(3vw + 7px);
   }
 
-  .TaskNew__result-title {
+  .TaskFormCal__result-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +46,7 @@
     }
   }
 
-  .TaskNew__result-content {
+  .TaskFormCal__result-content {
     width: 100%;
     padding: 10px calc(1vw + 1px);
     background-color: #e8f4f6;
@@ -92,13 +92,13 @@
     }
   }
 
-  .TaskNew__submit {
+  .TaskFormCal__submit {
     width: 100%;
     margin-bottom: calc(1.6vw + 13px);
     padding: 0 calc(1vw + 40px);
   }
 
-  .TaskNew__submit-button {
+  .TaskFormCal__submit-button {
     position: relative;
     width: 100%;
     padding: 1em calc(0.8vw + 16px);
