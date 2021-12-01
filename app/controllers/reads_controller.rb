@@ -8,12 +8,17 @@ class ReadsController < ApplicationController
     else
       @read = Read.new
     end
+    session[:previous_url] = request.referer
   end
 
   def create
     @read = @task.reads.build(read_params)
     if @read.save
-      redirect_to today_tasks_path, notice: "進捗を登録しました。"
+      if session[:previous_url]
+        redirect_to session[:previous_url], notice: "進捗を登録しました"
+      else
+        redirect_to today_tasks_path, notice: "進捗を登録しました"
+      end
     else
       flash.now[:alert] = "進捗の登録に失敗しました。"
       render :new
@@ -25,9 +30,9 @@ class ReadsController < ApplicationController
 
   def update
     if @read.update(read_params)
-      redirect_to task_path(@task.id), notice: "更新しました"
+      redirect_to task_path(@task.id), notice: "進捗を更新しました"
     else
-      flash.now[:alert] = "更新に失敗しました"
+      flash.now[:alert] = "進捗の更新に失敗しました"
       render :edit
     end
   end
