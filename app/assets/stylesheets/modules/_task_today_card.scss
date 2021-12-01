@@ -7,9 +7,13 @@
 
   .TaskTodayCard__border {
     width: 10px;
-    height: 200px;
+    height: 223px;
     margin: 5px;
     background-color: $color-second;
+
+    &.--main {
+      background-color: $color-main;
+    }
   }
 
   .TaskTodayCard__content {
@@ -58,7 +62,9 @@
     text-align: center;
 
     &.--main {
+      padding: 5px 15px 5px 15px;
       background-color: $color-main;
+      font-weight: 700;
     }
 
     &.--second {
