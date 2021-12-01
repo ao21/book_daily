@@ -1,5 +1,16 @@
-.TaskFormCal {
-  .TaskFormCal__result {
+.TaskForm {
+  .TaskForm__title {
+    margin: 0 auto 10px auto;
+    width: 70%;
+    max-width: 500px;
+    border-bottom: 1px solid;
+  }
+
+  .TaskForm__book-image {
+    margin: 5px;
+  }
+
+  .TaskForm__result {
     display: flex;
     justify-content: center;
     width: 90%;
@@ -12,7 +23,7 @@
     padding: calc(0.8vw + 16px) calc(3vw + 7px);
   }
 
-  .TaskFormCal__result-title {
+  .TaskForm__result-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +57,7 @@
     }
   }
 
-  .TaskFormCal__result-content {
+  .TaskForm__result-content {
     width: 100%;
     padding: 10px calc(1vw + 1px);
     background-color: #e8f4f6;
@@ -92,13 +103,13 @@
     }
   }
 
-  .TaskFormCal__submit {
+  .TaskForm__submit {
     width: 100%;
     margin-bottom: calc(1.6vw + 13px);
     padding: 0 calc(1vw + 40px);
   }
 
-  .TaskFormCal__submit-button {
+  .TaskForm__submit-button {
     position: relative;
     width: 100%;
     padding: 1em calc(0.8vw + 16px);
