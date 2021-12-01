@@ -1,18 +1,6 @@
-<h1>編集</h1>
-<p><%= @task.book.title %></p>
-<%= form_with model: @task, local: true do |f| %>
-  <%= render 'shared/error_messages', model: f.object %>
-  <%= hidden_field_tag :book_id, @task.book_id %>
-  <div>
-    <%= f.label :started_on %>
-    <%= f.date_field :started_on %>
-  </div>
-  <div>
-    <%= f.label :finished_on %>
-    <%= f.date_field :finished_on %>
-  </div>
-  <div>
-  <%= f.submit "更新" %>
-  </div>
-<% end %>
-<%= link_to "戻る", tasks_path %>
+<div class="TaskEdit">
+  <%= render partial: 'shared/page_top', locals: {main: "Task", sub: "目標を編集しましょう。"} %>
+  <%= render 'shared/breadcrumbs' %>
+
+  <%= render 'form', task: @task, book: @book, button_value: "更新" %>
+</div>
