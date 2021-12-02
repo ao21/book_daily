@@ -9,7 +9,6 @@
   </div>
 
   <div class="c-container">
-    <%= render partial: 'shared/page_bar', locals: {var: nil, text: "ログインしてください"} %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="SignIn__field">
         <%= f.label :email, "メールアドレス", class: "SignIn__label" %>

@@ -5,6 +5,10 @@
     margin-bottom: 1.5em;
   }
 
+  .SignIn__label-wrapper {
+    flex: 0 0 40%;
+  }
+
   .SignIn__label {
     flex: 0 0 40%;
     width: 100%;
@@ -13,6 +17,11 @@
     font-size: 1em;
     font-weight: 700;
     line-height: 1.4;
+  }
+
+  .SignIn__label-caution {
+    display: block;
+    padding-left: 1em;
   }
 
   .SignIn__input {
