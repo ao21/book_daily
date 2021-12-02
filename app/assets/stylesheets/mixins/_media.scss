@@ -1,6 +1,6 @@
 //******** 画面サイズ **********//
 
-@mixin mq($breakpoint: $sm) {
+@mixin mq($breakpoint: $sp) {
   @media screen and (max-width: #{$breakpoint} ) {
     @content;
   }
