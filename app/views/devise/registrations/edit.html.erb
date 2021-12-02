@@ -1,63 +1,70 @@
-<div class="main-wrapper">
-  <div class="content-with-header">
-    <div class="content-header">
-      <div class="header-title"><%= t('.title', resource: resource.model_name.human) %></div>
+<div class="SignIn">
+  <%= render partial: 'shared/page_top', locals: {main: "Account", sub: "アカウント情報の変更"} %>
+  <div class="c-container">
+    <div class="Breadcrumbs">
+      <%= link_to 'TOP', '/' %>
+      <span class="Breadcrumbs__arrow">></span>
+      <span class="Breadcrumbs__item --now">アカウント情報の変更</span>
     </div>
-    <div class="content-body">
+  </div>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="c-container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field-account-edit">
-          <%= f.label :name, "ユーザーネーム", class: "field-title" %>
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "field-field" %>
-        </div>
+      <div class="SignIn__field">
+        <%= f.label :name, "ユーザーネーム", class: "SignIn__label" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "SignIn__input" %>
+      </div>
 
-        <div class="field-account-edit">
-          <%= f.label :email, class: "field-title" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field-field" %>
-        </div>
+      <div class="SignIn__field">
+        <%= f.label :email, class: "SignIn__label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "SignIn__input" %>
+      </div>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
-        <% end %>
-
-        <div class="field-account-edit">
-          <%= f.label :password, class: "field-title" %>
-          <i class="field-title">(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i>
-          <% if @minimum_password_length %>
-            <span class="field-title"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></span>
-          <% end %>
-          <%= f.password_field :password, autocomplete: "new-password", class: "field-field" %>
-        </div>
-
-        <div class="field-account-edit">
-          <%= f.label :password_confirmation, class: "field-title" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "field-field" %>
-        </div>
-
-        <div class="field-account-edit">
-          <%= f.label :current_password, class: "field-title" %>
-          <i class="field-title">(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i>
-          <%= f.password_field :current_password, autocomplete: "current-password", class: "field-field" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit t('.update'), class: "edit-submit-btn" %>
-        </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
       <% end %>
 
-      <div class="cancel-guide-wrap">
-        <div class= "cancel-border-wrap">
-          <p class="cancel-guide-text"><%= t('.cancel_my_account') %>したい方はこちら</p>
+      <div class="SignIn__field">
+        <div class="SignIn__label-wrapper">
+          <%= f.label :password, class: "SignIn__label" %>
+          <span class="SignIn__label-caution">(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</span>
+          <% if @minimum_password_length %>
+            <span class="SignIn__label-caution"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></span>
+          <% end %>
         </div>
+        <%= f.password_field :password, autocomplete: "new-password", class: "SignIn__input" %>
       </div>
 
-      <div class="cancel-btn-wrap">
-        <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "cancel-submit-btn" %>
+      <div class="SignIn__field">
+        <%= f.label :password_confirmation, class: "SignIn__label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "SignIn__input" %>
       </div>
 
-      <%= link_to t('devise.shared.links.back'), :back %>
+      <div class="SignIn__field">
+        <div class="SignIn__label-wrapper">
+          <%= f.label :current_password, class: "SignIn__label" %>
+          <span class="SignIn__label-caution">(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</span>
+        </div>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "SignIn__input --password" %>
+      </div>
+
+      <div class="SignIn__submit">
+        <%= f.submit t('.update'), class: "SignIn__submit-button" %>
+      </div>
+    <% end %>
+
+    <div class="SignIn__guide">
+      <div class= "SignIn__guide-border">
+        <p class="SignIn__guide-text"><%= t('.cancel_my_account') %>したい方はこちら</p>
+      </div>
     </div>
+
+    <div class="SignIn__submit">
+      <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "SignIn__submit-button --delete" %>
+    </div>
+
+    <%= link_to t('devise.shared.links.back'), :back %>
   </div>
 </div>

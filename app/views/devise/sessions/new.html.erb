@@ -1,45 +1,49 @@
-<div class="main-wrapper">
-  <div class="content-with-header">
-    <div class="content-header">
-      <div class="header-title"><%= t('.sign_in') %></div>
+<div class="SignIn">
+  <%= render partial: 'shared/page_top', locals: {main: "Login", sub: "ログイン"} %>
+  <div class="c-container">
+    <div class="Breadcrumbs">
+      <%= link_to 'TOP', '/' %>
+      <span class="Breadcrumbs__arrow">></span>
+      <span class="Breadcrumbs__item --now">ログイン</span>
     </div>
-    <div class="content-body">
+  </div>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email, "メールアドレスを入力してください", class: "field-title" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "半角のみ", class: "field-field" %>
-        </div>
+  <div class="c-container">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="SignIn__field">
+        <%= f.label :email, "メールアドレス", class: "SignIn__label" %>
+        <%= f.email_field :email, class: "SignIn__input", autocomplete: "email", placeholder: "半角のみ" %>
+      </div>
 
-        <div class="field mt-1">
-          <%= f.label :password, "パスワードを入力してください", class: "field-title" %>
-          <%= f.password_field :password, autocomplete: "current-password", placeholder: "半角英数のみ", class: "field-field" %>
-        </div>
+      <div class="SignIn__field">
+        <%= f.label :password, "パスワード", class: "SignIn__label" %>
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "半角英数のみ", class: "SignIn__input" %>
+      </div>
 
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me, "ログインを記憶する", class: "field-title" %>
-          </div>
-        <% end %>
-
-        <div class="actions">
-          <%= f.submit t('.sign_in'), class: "login-submit-btn" %>
+      <% if devise_mapping.rememberable? %>
+        <div class="SignIn__remember">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "ログインを記憶する", class: "SignIn__checkbox" %>
         </div>
       <% end %>
-      <div class="login-render">
-        <%= render "devise/shared/links" %>
-      </div>
 
-      <div class="login-guide-wrap">
-        <div class= "login-border-wrap">
-          <p class="login-guide-text">まだ登録していない方</p>
-        </div>
+      <div class="SignIn__submit">
+        <%= f.submit t('.sign_in'), class: "SignIn__submit-button" %>
       </div>
+    <% end %>
 
-      <div class="login-btn-wrap">
-        <%= link_to "無料登録", new_registration_path(resource_name), class: "login-btn-link" %>
+    <div class="SignIn__links">
+      <%= render "devise/shared/links" %>
+    </div>
+
+    <div class="SignIn__guide">
+      <div class= "SignIn__guide-border">
+        <p class="SignIn__guide-text">まだ登録していない方</p>
       </div>
+    </div>
+
+    <div class="SignIn__submit">
+      <%= link_to "無料登録", new_registration_path(resource_name), class: "SignIn__submit-button --signup" %>
     </div>
   </div>
 </div>
