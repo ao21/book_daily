@@ -4,7 +4,11 @@
 
     <div class="TaskForm__title"><%= book.title %></div>
     <div class="TaskForm__book-image">
-      <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+      <% if controller.action_name == 'new' %>
+        <%= render partial: 'books/book_image', locals: { image_link: book.image_link } %>
+      <% elsif controller.action_name == 'edit' %>
+        <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+      <% end %>
     </div>
 
     <%= form_with model: task, local: true do |f| %>
