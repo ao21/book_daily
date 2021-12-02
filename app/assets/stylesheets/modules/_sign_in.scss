@@ -37,8 +37,16 @@
     line-height: 1.4;
     outline: 0;
 
+    &.--password {
+      background-color: rgba(255, 183, 3, 0.3);
+    }
+
     &:focus {
       box-shadow: 0 0 5px $color-main;
+
+      &.--password {
+        box-shadow: 0 0 5px $color-second;
+      }
     }
   }
 
@@ -115,7 +123,16 @@
     &.--signup {
       display: block;
       margin: 0 auto;
+      border-color: $color-second;
       background-color: $color-second;
+      color: #444;
+    }
+
+    &.--delete {
+      display: block;
+      margin: 0 auto;
+      border-color: $color-gray;
+      background-color: $color-gray;
       color: #444;
     }
   }
