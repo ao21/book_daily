@@ -25,10 +25,12 @@ class Read < ApplicationRecord
 
   def up_to_page_and_read_on_cannot_be_greater_than_saved_record
     read = task.reads.order(up_to_page: :desc).order(read_on: :desc).limit(1)
-    max_read_up_to_page = read[0].up_to_page
-    date_max_read_up_to_page = read[0].read_on
-    if up_to_page.present? && read_on.present? && up_to_page > max_read_up_to_page && date_max_read_up_to_page > read_on
-      errors.add(:up_to_page, ": すでに過去の日付でより大きいページ番号が登録されています")
+    if read.present?
+      max_read_up_to_page = read[0].up_to_page
+      date_max_read_up_to_page = read[0].read_on
+      if up_to_page.present? && read_on.present? && up_to_page > max_read_up_to_page && date_max_read_up_to_page > read_on
+        errors.add(:up_to_page, ": すでに過去の日付でより大きいページ番号が登録されています")
+      end
     end
   end
 
