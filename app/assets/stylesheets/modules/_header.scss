@@ -1,23 +1,14 @@
-//******** ヘッダー********//
-
-// ヘッダーの高さ
-%header-height {
-  height: calc(5vw + 40px);
-}
-
 .Header {
-  top: 0;
-  left: 0;
-  width: 100%;
-  @extend %header-height;
+  %header-height {
+    height: 80px;
+  }
+
   margin-bottom: 20px;
   padding-left: 0;
-  background-color: $color-white;
 
   .Header__logo {
-    float: left;
-    width: 100%;
     max-width: 325px;
+    margin-left: 1%;
 
     a {
       display: block;
@@ -25,10 +16,6 @@
 
       img {
         width: auto;
-        max-width: 40vw;
-        @include mq($md) {
-          max-width: calc(50vw);
-        }
         @extend %header-height;
         padding: 20px 10px 0 10px;
         border: none;
@@ -36,54 +23,137 @@
     }
   }
 
-  .Header__container {
+  nav {
     position: fixed;
     top: 0;
     right: 0;
     z-index: 100;
     width: calc(100% - 40vw);
-    @include mq($md) {
-      width: calc(100% - 50vw);
-    }
     @extend %header-height;
     border-radius: 0 0 0 40px;
     background: $color-main;
   }
 
-  .Header__list {
+  ul {
     display: flex;
-    justify-content: flex-end;
-    position: relative;
-    height: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    vertical-align: top;
-  }
-
-  .Header__list-item {
-    display: flex;
-    flex-flow: column;
     justify-content: center;
-    align-items: center;
     position: relative;
-    width: calc(5vw + 40px);
-    border-left: 1px solid $color-white;
-    color: $color-white;
-    font-weight: bold;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
   }
 
-  .Header__icon {
-    height: calc(1.6vw + 23px);
+  .Header__border {
+    margin: auto 0;
+    width: 1px;
+    height: 80%;
+    background-color: $color-white;
+  }
+
+  li {
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: calc(5vw + 40px);
+      margin: 0 calc(2vw + 10px);
+      color: $color-white;
+      font-weight: bold;
+
+      i {
+        margin-right: 10px;
+        font-size: 1.5em;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .Header__border {
+    width: 1px;
+    height: 80%;
   }
 
   .Header__text {
     overflow: hidden;
+    transform: translateY(0.1em);
     color: $color-white;
-    font-size: 1vw;
+    font-size: 1em;
     font-family: $font-google;
+
+    span {
+      margin-right: 3px;
+    }
   }
 
-  .Header__for-margin {
-    margin-right: 3px;
+  // ハンバーガーメニュー
+  @include mq($sp) {
+    nav {
+      width: 100px;
+      @extend %header-height;
+      transition: all 0.6s;
+      color: #fff;
+      text-align: center;
+
+      &::before {
+        font-weight: 700;
+        line-height: 1;
+        font-family: 'Font Awesome 5 Free';
+        content: '\f7a4';
+        transition: transform 0.6s ease-in-out, top 0.5s ease, bottom 0.5s ease;
+      }
+
+      &.show::before {
+        font-weight: 700;
+        line-height: 1;
+        content: '×';
+        transition: transform 0.6s ease-in-out, top 0.5s ease, bottom 0.5s ease;
+      }
+    }
+
+    .Header__wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .Header__content {
+      position: absolute;
+      top: 80px;
+      right: 0.5em;
+      width: 40vw;
+      height: 100vw;
+      margin-left: 100px;
+      border-radius: 20px;
+      padding: 0.5em 0 0.5em 1em;
+      background-color: $color-main;
+      // フェードインの設定
+      opacity: 0;
+      transform: translateX(50%);
+      transition: transform 0.5s;
+
+      &.show {
+        opacity: 0.9;
+        transform: translateX(0);
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      visibility: hidden;
+      position: absolute;
+      top: calc(5vw + 40px);
+      right: 0.5em;
+      width: 40vw;
+      height: 200px;
+
+      &.show {
+        visibility: visible;
+      }
+    }
+
+    .Header__border {
+      width: 80%;
+      height: 1px;
+    }
   }
 }

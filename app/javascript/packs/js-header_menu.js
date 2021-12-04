@@ -1,12 +1,12 @@
 document.addEventListener('turbolinks:load', function () {
-  $('.js-HeaderMenu__toggle').on('click', function () {
-    $('.js-HeaderMenu__toggle-icon, .js-HeaderMenu__content').toggleClass('show');
+  $('#js-Header__toggle').on('click', function () {
+    $('#js-Header__toggle, #js-Header__content, #js-Header__list').toggleClass('show');
     return false;
   });
 
   $(document).on('click touchend', function (event) {
-    if (!$(event.target).closest('.js-HeaderMenu__content, .js-HeaderMenu__toggle').length) {
-      $('.js-HeaderMenu__toggle-icon, .js-HeaderMenu__content').removeClass('show');
+    if (!$(event.target).closest('#js-Header__content, #js-Header__toggle').length) {
+      $('#js-Header__toggle, #js-Header__content').removeClass('show');
     }
   });
 });

@@ -1,46 +1,31 @@
 <div class="Header">
   <div class="Header__logo">
-   <%= link_to image_tag('title.png'), "/" %>
+    <%= link_to image_tag('title.png'), "/" %>
   </div>
-  <div class="Header__container">
-    <div class="Header__list">
-      <% if user_signed_in? %>
-        <%= link_to today_tasks_path, class: "Header__list-item" do %>
-          <div class="Header__icon"><i class="far fa-bookmark"></i></div>
-          <div class="Header__text"><span class="Header__for-margin">MY</span>PAGE</div>
-        <% end %>
-        <div class="Header__list-item">
-          <div class="HeaderMenu">
-            <div class="HeaderMenu__toggle js-HeaderMenu__toggle">
-              <div class="HeaderMenu__toggle-icon js-HeaderMenu__toggle-icon"></div>
-              <div class="HeaderMenu__toggle-text">MENU</div>
-            </div>
-            <div class="HeaderMenu__content js-HeaderMenu__content">
-              <ul class="HeaderMenu__list">
-                <div class="HeaderMenu__list-text --head --top">
-                  <%= link_to "TOP", root_path %>
-                </div>
-                <div class="HeaderMenu__list-text --head">ACCOUNT</div>
-                <li class="HeaderMenu__list-text --item">
-                  <%= link_to "変更", edit_user_registration_path %>
-                </li>
-                <li class="HeaderMenu__list-text --item --last">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      <% else %>
-        <%= link_to users_guest_sign_in_path, method: :post, class: "Header__list-item" do %>
-          <div class="Header__icon"><i class="fas fa-sign-in-alt"></i></div>
-          <div class="Header__text">GUEST</div>
-        <% end %>
-        <%= link_to new_user_session_path, class: "Header__list-item" do %>
-          <div class="Header__icon"><i class="fas fa-grip-lines"></i></div>
-          <div class="Header__text">LOGIN</div>
-        <% end %>
-      <% end %>
+
+  <nav id="js-Header__toggle">
+    <!--tab未満の場合-->
+    <div class="Header__wrapper">
+      <div class="Header__content" id="js-Header__content"></div>
     </div>
-  </div>
+    <!-- -->
+    <ul id="js-Header__list">
+      <% if user_signed_in? %>
+        <div class="Header__border"></div>
+        <li> 
+          <%= link_to today_tasks_path do %>
+            <i class="far fa-bookmark"></i>
+            <span class="Header__text">TASK</span>
+          <% end %>
+        </li>
+        <div class="Header__border"></div>
+        <li>
+          <%= link_to today_tasks_path do %>
+            <i class="far fa-user"></i>
+            <span class="Header__text">ACCOUNT</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
 </div>

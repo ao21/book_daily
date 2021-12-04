@@ -4,7 +4,7 @@
 
 .c-container {
   width: calc(61vw + 210px);
-  @include mq($md) {
+  @include mq($sp) {
     width: 100%;
   }
   margin: calc(4vw + 25px) auto;
