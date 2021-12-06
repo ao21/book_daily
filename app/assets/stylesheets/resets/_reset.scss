@@ -5,6 +5,10 @@ a {
 button {
   border-width: 0;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 input::-moz-focus-inner {
