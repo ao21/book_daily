@@ -1,20 +1,21 @@
 .SearchForm {
-  .SearchForm__input {
+  input[type='text'] {
     width: calc(9vw + 100px);
     height: calc(2vw + 20px);
     border: solid 2px $color-gray;
     border-radius: 8px;
+    background-color: $color-white;
     font-size: calc(0.2vw + 12px);
     line-height: calc(0.8vw + 20px);
 
     &:focus {
       border: solid 2px $color-main;
-      border-radius: 10px;
+      border-radius: 8px;
       outline: 0;
     }
   }
 
-  .SearchForm__btn {
+  button[type='submit'] {
     border-radius: 5px;
     outline: none;
 
@@ -26,7 +27,7 @@
     }
   }
 
-  .SearchForm__btn-icon {
+  .fa-search {
     transform: translateY(0.1em);
     width: calc(1vw + 20px);
     height: calc(1vw + 20px);
