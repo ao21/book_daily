@@ -3,29 +3,35 @@
     <%= link_to image_tag('title.png'), "/" %>
   </div>
 
-  <nav id="js-Header__toggle">
-    <!--tab未満の場合-->
-    <div class="Header__wrapper">
-      <div class="Header__content" id="js-Header__content"></div>
-    </div>
-    <!-- -->
+  <nav>
     <ul id="js-Header__list">
       <% if user_signed_in? %>
+        <% unless current_page?(root_path) %>
+          <li class="--search">
+            <%= render 'books/search_form' %>
+          </li>
+        <% end %>
         <div class="Header__border"></div>
         <li> 
-          <%= link_to today_tasks_path do %>
+          <%= link_to(today_tasks_path) do %>
             <i class="far fa-bookmark"></i>
             <span class="Header__text">TASK</span>
           <% end %>
         </li>
         <div class="Header__border"></div>
         <li>
-          <%= link_to today_tasks_path do %>
+          <%= link_to(edit_user_registration_path) do %>
             <i class="far fa-user"></i>
             <span class="Header__text">ACCOUNT</span>
           <% end %>
         </li>
       <% end %>
     </ul>
+
+    <!-- tab以下の場合 -->
+    <button class="Header__toggle" id="js-Header__toggle"></button>
+    <div class="Header__wrapper">
+      <div class="Header__content" id="js-Header__content"></div>
+    </div>
   </nav>
 </div>
