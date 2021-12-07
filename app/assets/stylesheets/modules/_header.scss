@@ -3,6 +3,12 @@
   padding-left: 0;
 
   .Header__logo {
+    width: 325px;
+    height: 80px;
+    @include mq($sp) {
+      width: 250px;
+      height: auto;
+    }
     margin-left: 1%;
 
     a {
@@ -10,13 +16,7 @@
       width: 100%;
 
       img {
-        width: auto;
-        max-width: 325px;
-        height: 80px;
-        @include mq($sp) {
-          width: 250px;
-          height: auto;
-        }
+        width: 100%;
         padding: 20px 10px 0 10px;
         border: none;
       }
@@ -27,17 +27,11 @@
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 100;
+    z-index: 90;
     width: calc(100% - 40vw);
     height: 80px;
     border-radius: 0 0 0 40px;
     background: $color-main;
-  }
-
-  .Header__toggle {
-    visibility: hidden;
-    position: absolute;
-    color: #fff;
   }
 
   ul {
@@ -48,13 +42,6 @@
     width: 95%;
     height: 100%;
     margin: 0 auto;
-  }
-
-  .Header__border {
-    margin: auto 0;
-    width: 1px;
-    height: 80%;
-    background-color: $color-white;
   }
 
   li {
@@ -89,6 +76,13 @@
     }
   }
 
+  .Header__border {
+    margin: auto 0;
+    width: 1px;
+    height: 80%;
+    background-color: $color-white;
+  }
+
   .Header__text {
     transform: translateY(0.1em);
     overflow: hidden;
@@ -108,6 +102,46 @@
       }
       text-align: center;
       transition: all 0.6s;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      visibility: hidden;
+      position: absolute;
+      top: 90px;
+      right: 0.5em;
+      z-index: 90;
+      width: 30vw;
+      height: 30vw;
+      @include mq($sp) {
+        width: 55vw;
+        height: 55vw;
+      }
+      padding-top: 1.5em;
+
+      &.show {
+        visibility: visible;
+      }
+    }
+
+    li {
+      width: 100%;
+
+      &.--search {
+        width: 100%;
+
+        input[type='text'] {
+          width: 70%;
+        }
+      }
+    }
+
+    .Header__border {
+      width: 80%;
+      height: 1px;
+      margin: 0 auto;
     }
 
     .Header__toggle {
@@ -141,9 +175,9 @@
       position: absolute;
       top: 90px;
       right: 0.5em;
-      z-index: 90;
-      width: 40vw;
-      height: 40vw;
+      z-index: 80;
+      width: 30vw;
+      height: 35vw;
       @include mq($sp) {
         width: 55vw;
         height: 60vw;
@@ -161,38 +195,6 @@
         opacity: 0.9;
         transform: translateX(0);
       }
-    }
-
-    ul {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      visibility: hidden;
-      position: absolute;
-      top: 90px;
-      right: 0.5em;
-      z-index: 100;
-      width: 40vw;
-      height: 35vw;
-      @include mq($sp) {
-        width: 55vw;
-        height: 55vw;
-      }
-      padding-top: 1.5em;
-
-      &.show {
-        visibility: visible;
-      }
-    }
-
-    li {
-      width: 40vw;
-    }
-
-    .Header__border {
-      width: 80%;
-      height: 1px;
-      margin: 0 auto;
     }
   }
 }
