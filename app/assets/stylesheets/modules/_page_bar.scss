@@ -1,7 +1,7 @@
 .PageBar {
   font-size: calc(0.1vw + 1.3rem);
 
-  .PageBar__text {
+  h3 {
     margin-bottom: calc(0.8vw + 16px);
     padding: calc(0.2vw + 6px) calc(0.7vw + 12px);
     border-left: 5px solid $color-second;

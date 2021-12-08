@@ -2,8 +2,8 @@
   <div class="Breadcrumbs">
     <%= link_to 'TOP', '/' %>
     <span class="--arrow">></span>
-    <span class="--item <%= ' --now' if controller_name == 'books' %>">本の登録</span>
+    <span class="<%= '--now' if controller_name == 'books' %>">本の登録</span>
     <span class="--arrow">></span>
-    <span class="--item <%= ' --now' if controller_name == 'tasks' %>">目標の設定</span>
+    <span class="<%= '--now' if controller_name == 'tasks' %>">目標の設定</span>
   </div>
 </div>
