@@ -33,7 +33,7 @@
     flex-direction: column;
     height: 20rem;
     @include mq($sp) {
-      height: 18em;
+      height: 18rem;
     }
     padding: 1em;
   }
