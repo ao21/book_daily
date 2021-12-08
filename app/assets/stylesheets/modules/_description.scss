@@ -1,6 +1,10 @@
 //******** トップ サイト説明 ********//
 
 .Description {
+  .c-container {
+    margin: calc(4vw + 25px);
+  }
+
   h2 {
     margin-bottom: calc(1.2vw + 10px);
     font-weight: 700;
