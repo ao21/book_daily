@@ -1,73 +1,81 @@
 .NewsList {
   width: 100%;
-  margin: 0 auto -15px auto;
-  padding: 0;
+  margin-bottom: 10px;
+  padding: calc(1.6vw + 13px) calc(4vw + 1.7px);
+  border-radius: 10px;
+  background-color: $color-white;
+  text-align: left;
 
-  .NewsList__group {
+  ul {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 auto -15px auto;
+    padding: 0;
   }
 
-  .NewsList__item {
+  li {
     display: inline-block;
-    flex-basis: 20%;
-    position: relative;
-    max-width: 20%;
-    @include mq($xl) {
-      flex-basis: 25%;
-      max-width: 25%;
-    }
-    @include mq($md) {
+    flex-basis: 25%;
+    max-width: 25%;
+    @include mq($tab) {
       flex-basis: 33.3%;
       max-width: 33.3%;
     }
-    @include mq($sm) {
+    @include mq($sp) {
       flex-basis: 50%;
       max-width: 50%;
     }
   }
 
-  .NewsList__item-wrap {
+  .NewsList__item {
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    @include mq($sp) {
+      height: 18em;
+    }
+    padding: 1em;
+  }
+
+  .NewsList__book-image {
+    flex-basis: 65%;
+    padding-bottom: 0.1em;
+  }
+
+  span {
+    &.--title {
+      flex-basis: 15%;
+      height: 100%;
+      margin: 0 auto;
+      padding-bottom: 0.1em;
+      overflow: hidden;
+      color: $color-main;
+      font-weight: 700;
+      font-size: 1em;
+      line-height: 100%;
+    }
+
+    &.--date {
+      flex-basis: 10%;
+      max-width: 150px;
+      height: 100%;
+      margin: 0.5em auto;
+      padding: 0 0.2em;
+      overflow: hidden;
+      border: 1px solid $color-gray;
+      border-radius: 4px;
+      background-color: $color-gray;
+      color: $color-white;
+      text-align: center;
+    }
+  }
+
+  p {
+    flex-basis: 10%;
+    height: 100%;
     margin: 0 auto;
-    margin-bottom: calc(1vw + 25px);
-    padding: 0 5px;
-    width: 100%;
-    max-width: calc(2vw + 132px);
-  }
-
-  .NewsList__item-title {
-    position: relative;
-    width: 100%;
-    height: 30px;
-    margin-bottom: 2px;
-    padding-right: 4px;
-    overflow: hidden;
-    background: $color-white;
-    color: $color-main;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
-  }
-
-  .NewsList__item-date {
-    width: 50px;
-    height: 20px;
-    margin-top: calc(0.5vw + 5px);
-    padding-left: 3px;
-    border: 1px solid $color-gray;
-    border-radius: 4px;
-    background-color: $color-gray;
-    color: $color-white;
-    font-size: 11px;
-    line-height: 18px;
-    text-align: center;
-  }
-
-  .NewsList__item-text {
-    width: calc(1vw + 122px);
-    padding-left: calc(0.3vw + 5px);
-    font-size: 14px;
+    font-size: 0.8em;
     text-align: left;
   }
 }

@@ -26,38 +26,35 @@
   </div>
 </section>
 
-  <section class="News">
-    <div class="News__top">
-      <h3 class="News__title">
-        <span class="News__title-text --main">NEWS</span>
-        <small class="News__title-text --sub">新着</small>
-      </h3>
-    </div>
-    <div class="News__content">
-      <div class="News__container">
-        <div class="News__wrapper">
-          <div class="NewsList">
-            <ul class="NewsList__group">
-              <% @reads_new.each do |read| %>
-                <li class="NewsList__item">
-                  <div class="NewsList__item-wrap">
-                    <%= render partial: 'books/book_image', locals: { image_link: read.task.book.image_link } %>
-                    <div class="NewsList__item-title">
-                      <%= read.task.book.title %>
-                    </div>
-                    <div class="NewsList__item-date"><%= read.read_on.strftime('%-m月%-d日') %></div>
-                    <div class="NewsList__item-text">
-                      <%= read.task.user.name %>さんが<br />
-                      <%= read.up_to_page %>ページまで<br />
-                      読みました！
-                    </div>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
+<section class="News">
+  <div class="News__top">
+    <h3>
+      <span>NEWS</span>
+      <small>新着</small>
+    </h3>
+  </div>
+  <div class="News__content">
+    <div class="c-container">
+      <div class="NewsList">
+        <ul>
+          <% @reads_new.each do |read| %>
+            <li>
+              <div class="NewsList__item">
+                <div class="NewsList__book-image">
+                  <%= render partial: 'books/book_image', locals: { image_link: read.task.book.image_link } %>
+                </div>
+                <span class="--title"><%= read.task.book.title %></span>
+                <span class="--date"><%= read.read_on.strftime('%-m月%-d日') %></span>
+                <p>
+                  <%= read.task.user.name %>さんが<br />
+                  <%= read.up_to_page %>ページまで<br />
+                  読みました！
+                </p>
+              </div>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
