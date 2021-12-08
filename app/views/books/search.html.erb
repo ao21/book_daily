@@ -5,23 +5,25 @@
   <%= render partial: 'shared/page_bar', locals: {var: params[:keyword], text: " の検索結果"} %>
 
   <section class="SearchList">
-    <ul class="SearchList__group">
+    <ul>
       <% if @results_data %>
         <% @results_data.each do |result| %>
-          <li class="SearchList__item">
-            <div class="SearchList__item-wrap">
-              <%= link_to(controller: :books, action: :new, title: result[:title], author: result[:author], image_link: result[:image_link], total_pages: result[:total_pages], remote: true) do %>
-                <%= render partial: 'book_image', locals: { image_link: result[:image_link] } %>
-                <div class="SearchList__item-title"><%= result[:title] %></div>
-                <div class="SearchList__item-author"><%= result[:author] %></div>
-                <dl class="SearchList__item-page">
-                  <dt class="SearchList__item-page-title">ページ数</dt>
-                  <dd class="SearchList__item-page-count"><%= result[:total_pages] %></dd>
+          <li>
+            <%= link_to(controller: :books, action: :new, title: result[:title], author: result[:author], image_link: result[:image_link], total_pages: result[:total_pages], remote: true) do %>
+              <div class="SearchList__item">
+                <div class="SearchList__book-image">
+                  <%= render partial: 'book_image', locals: { image_link: result[:image_link] } %>
+                </div>
+                <span class="--title"><%= result[:title] %></span>
+                <span class="--author"><%= result[:author] %></span>
+                <dl>
+                  <dt>ページ数</dt>
+                  <dd><%= result[:total_pages] %></dd>
                 </dl>
                 <div class="book-submit">
                 </div>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
           </li>
         <% end %>
       <% end %>
