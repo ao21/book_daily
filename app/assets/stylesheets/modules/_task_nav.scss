@@ -2,13 +2,14 @@
   font-size: calc(0.2vw + 1rem);
   line-height: 1.4;
 
-  .TaskNav__list {
+  ul {
     display: flex;
     margin-right: -5px;
     margin-left: -5px;
   }
 
-  .TaskNav__item {
+  li {
+    display: block;
     width: 100%;
     padding-right: 5px;
     padding-left: 5px;
