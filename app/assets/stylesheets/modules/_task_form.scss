@@ -1,26 +1,90 @@
 .TaskForm {
+  .TaskForm__wrapper {
+    display: flex;
+    justify-content: center;
+    @include mq($tab) {
+      display: block;
+    }
+  }
+
+  .TaskForm__book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .TaskForm__title {
-    margin: 0 auto 10px auto;
-    width: 70%;
-    max-width: 500px;
+    margin: 0 auto;
+    width: calc(15vw + 40px);
+    max-height: 3.5rem;
+    overflow: auto;
     border-bottom: 1px solid;
+    @include mq($tab) {
+      width: 70%;
+      max-width: 500px;
+    }
   }
 
   .TaskForm__book-image {
-    margin: 5px;
+    margin: 2rem 0;
+
+    .BookImage {
+      width: 10rem;
+      height: 15rem;
+    }
+  }
+
+  .TaskForm__task {
+    text-align: center;
+  }
+
+  .TaskForm__form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: calc(0.2vw + 1rem);
+
+    label {
+      flex: 0 0 calc(8vw + 50px);
+      width: 100%;
+      max-width: calc(12vw + 82px);
+      padding: calc(0.5vw + 15px);
+      border-radius: 20px;
+      background-color: $color-beige;
+      font-weight: 700;
+      text-align: center;
+      @include mq($sp) {
+        font-size: 0.8em;
+      }
+    }
+
+    input[type='date'] {
+      flex-basis: 150px;
+      transform: translateY(0.3vw);
+      width: 100%;
+      height: calc(0.2vw + 50px);
+      margin-left: 10px;
+    }
   }
 
   .TaskForm__result {
     display: flex;
     justify-content: center;
-    width: 90%;
-    @include mq($sm) {
-      width: 100%;
+    width: 45vw;
+    min-width: 500px;
+    max-width: 600px;
+    margin: 1.5rem;
+    @include mq($tab) {
+      width: 90%;
+      min-width: 90%;
+      padding: calc(0.8vw + 16px) calc(3vw + 7px);
+      margin: 0 auto;
     }
-    max-width: 700px;
-    margin: 0 auto;
-    margin-bottom: 1em;
-    padding: calc(0.8vw + 16px) calc(3vw + 7px);
+    @include mq($sp) {
+      width: 100%;
+      min-width: 100%;
+      padding: calc(0.8vw + 16px) 3vw;
+    }
   }
 
   .TaskForm__result-title {
@@ -30,9 +94,6 @@
     align-items: center;
     position: relative;
     min-width: 120px;
-    @include mq($md) {
-      min-width: 80px;
-    }
     margin: 0 20px;
     padding: 0 20px;
     border-radius: 20px;
@@ -40,6 +101,10 @@
     font-weight: 700;
     line-height: 1.5;
     white-space: nowrap;
+    @include mq($sp) {
+      min-width: 40px;
+      margin: 0 20px 0 0;
+    }
 
     &::before {
       position: absolute;
@@ -80,11 +145,18 @@
       flex-basis: calc(3vw + 95px);
       justify-content: center;
       font-weight: 600;
+      @include mq($sp) {
+        flex-basis: calc(3vw + 85px);
+        font-size: 0.5em;
+      }
 
       span {
         padding: 7px 10px;
         border-radius: 10px;
         background-color: rgba(33, 158, 188, 0.6);
+        @include mq($sp) {
+          padding: 5px;
+        }
       }
     }
 
@@ -93,25 +165,37 @@
       padding: 5px 0 5px 5px;
       margin-left: 5px;
       border-bottom: 1px solid;
+      @include mq($sp) {
+        flex-basis: calc(100% - (3vw + 85px));
+        margin: 0;
+        padding: 0;
+      }
     }
   }
 
   .TaskForm__submit {
-    width: 100%;
-    margin-bottom: calc(1.6vw + 13px);
+    width: 65%;
+    @include mq($tab) {
+      width: 90%;
+    }
+    @include mq($sp) {
+      width: 100%;
+    }
+    margin: 13px auto calc(1.6vw + 13px);
     padding: 0 calc(1vw + 40px);
-  }
 
-  .TaskForm__submit-button {
-    position: relative;
-    width: 100%;
-    padding: 1em calc(0.8vw + 16px);
-    border-color: $color-main;
-    border-radius: 20px;
-    background-color: $color-main;
-    color: #fff;
-    font-weight: 700;
-    font-size: calc(0.3vw + 1rem);
-    line-height: 1.5;
+    input[type='submit'] {
+      position: relative;
+      width: 100%;
+      padding: 1em calc(0.8vw + 16px);
+      border-color: $color-main;
+      border-radius: 20px;
+      background-color: $color-main;
+      color: #fff;
+      font-weight: 700;
+      font-size: calc(0.3vw + 1rem);
+      line-height: 1.5;
+      text-align: center;
+    }
   }
 }
