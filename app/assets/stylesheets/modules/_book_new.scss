@@ -1,9 +1,7 @@
 .BookNew {
-  .BookNew__top {
-    position: relative;
-  }
+  position: relative;
 
-  .BookNew__close-button {
+  .BookNew__close {
     position: absolute;
     top: 0;
     right: 0;
@@ -13,21 +11,12 @@
     border-radius: 50%;
     background-color: $color-main;
     text-align: center;
-  }
 
-  .BookNew__close-button-text {
-    color: $color-white;
-    font-weight: 700;
-    line-height: calc(0.5vw + 40px);
-  }
-
-  .BookNew__tittle,
-  .BookNew__data dt,
-  .BookNew__data dd {
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+    span {
+      color: $color-white;
+      font-weight: 700;
+      line-height: calc(0.5vw + 40px);
+    }
   }
 
   .BookNew__title {
@@ -57,7 +46,7 @@
     padding: 0 calc(1.6vw + 13px);
   }
 
-  .BookNew__image {
+  .BookNew__book-image {
     flex-basis: calc(0.2vw + 132px);
     margin-left: 10px;
     overflow: hidden;
@@ -71,6 +60,7 @@
 
     dl {
       display: flex;
+      justify-content: center;
       margin-left: calc(0.5vw + 5px);
       font-size: calc(0.2vw + 11px);
       line-height: 1.4;
@@ -78,11 +68,11 @@
 
     dt {
       flex-basis: calc(3vw + 40px);
-      justify-content: center;
       width: auto;
       padding: 10px 0 10px;
       background-color: $color-beige;
       font-weight: 600;
+      text-align: center;
     }
 
     dd {
@@ -97,18 +87,19 @@
     width: 100%;
     padding: 0 calc(1vw + 40px);
     margin-bottom: calc(1.6vw + 13px);
-  }
 
-  .BookNew__submit-button {
-    position: relative;
-    width: 100%;
-    padding: 1em calc(0.8vw + 16px);
-    border-color: $color-main;
-    border-radius: 20px;
-    background-color: $color-main;
-    color: #fff;
-    font-weight: 700;
-    font-size: calc(0.3vw + 1rem);
-    line-height: 1.5;
+    button,
+    input[type='submit'] {
+      width: 100%;
+      padding: 1em calc(0.8vw + 16px);
+      border-color: $color-main;
+      border-radius: 20px;
+      background-color: $color-main;
+      color: #fff;
+      font-weight: 700;
+      font-size: calc(0.3vw + 1rem);
+      text-align: center;
+      line-height: 1.5;
+    }
   }
 }

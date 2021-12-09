@@ -2,16 +2,16 @@
   <div class="modal-content">
 
     <div class="BookNew">
-      <div class="BookNew__top">
-        <div class="BookNew__close-button">
-          <button type="button" data-dismiss="modal" aria-label="Close">
-            <span class="BookNew__close-button-text" aria-hidden="true">&times;</span>
-          </button>
-        </div>
+      <div class="BookNew__close">
+        <button type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="BookNew__title">書籍の新規登録</div>
         <div class="BookNew__content">
-          <div class="BookNew__image"><%= image_tag @book.image_link if @book.image_link? %></div>
+          <div class="BookNew__book-image">
+            <%= image_tag @book.image_link if @book.image_link? %>
+          </div>
           <div class="BookNew__data">
             <dl>
               <dt>タイトル</dt>
@@ -31,7 +31,7 @@
         <% if @book.persisted? %>
           <div class="BookNew__submit">
             <%= link_to(controller: :tasks, action: :new, book_id: @book.id) do %>
-              <button class="BookNew__submit-button btn">登録</button>
+              <button>登録</button>
             <% end %>
           </div>
         <% else %>
@@ -42,7 +42,7 @@
             <%= f.hidden_field :image_link, value:@book.image_link %>
             <%= f.hidden_field :total_pages, value:@book.total_pages %>
             <div class="BookNew__submit">
-              <%= f.submit "登録", class: "BookNew__submit-button btn" %>
+              <%= f.submit "登録" %>
             </div>
           <% end %>
         <% end %>
