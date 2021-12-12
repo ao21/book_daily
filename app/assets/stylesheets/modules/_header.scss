@@ -1,15 +1,19 @@
 .Header {
-  margin-bottom: 0.5rem;
   padding-left: 0;
 
   .Header__logo {
     width: 325px;
-    height: 80px;
-    @include mq($sp) {
-      width: 250px;
+    height: 4.5rem;
+    margin-left: 1%;
+
+    @include mq($tab) {
+      width: 300px;
       height: auto;
     }
-    margin-left: 1%;
+
+    @include mq($sp) {
+      width: 200px;
+    }
 
     a {
       display: block;
@@ -17,7 +21,7 @@
 
       img {
         width: 100%;
-        padding: 20px 10px 0 10px;
+        padding: 10px 10px 0 10px;
         border: none;
       }
     }
@@ -29,7 +33,7 @@
     right: 0;
     z-index: 90;
     width: calc(100% - 40vw);
-    height: 80px;
+    height: 4rem;
     border-radius: 0 0 0 40px;
     background: $color-main;
   }
@@ -94,14 +98,15 @@
   // ハンバーガーメニュー
   @include mq($tab) {
     nav {
-      width: 90px;
-      height: 80px;
-      @include mq($sp) {
-        width: 75px;
-        height: 70px;
-      }
+      width: 5rem;
+      border-radius: 0 0 0 20px;
       text-align: center;
       transition: all 0.6s;
+
+      @include mq($sp) {
+        width: 4rem;
+        height: 3rem;
+      }
     }
 
     ul {
@@ -110,16 +115,16 @@
       justify-content: space-around;
       visibility: hidden;
       position: absolute;
-      top: 90px;
+      top: 5rem;
       right: 0.5em;
       z-index: 90;
-      width: 30vw;
-      height: 30vw;
-      @include mq($sp) {
-        width: 55vw;
-        height: 55vw;
-      }
+      width: 18rem;
+      height: 16rem;
       padding-top: 1.5em;
+
+      @include mq($sp) {
+        top: 4rem;
+      }
 
       &.show {
         visibility: visible;
@@ -173,19 +178,19 @@
 
     .Header__content {
       position: absolute;
-      top: 90px;
+      top: 5rem;
       right: 0.5em;
       z-index: 80;
-      width: 30vw;
-      height: 35vw;
-      @include mq($sp) {
-        width: 55vw;
-        height: 60vw;
-      }
-      margin-left: 100px;
+      width: 18rem;
+      height: 17rem;
       padding: 0.5em 0 0.5em 1em;
       border-radius: 20px;
       background-color: $color-main;
+
+      @include mq($sp) {
+        top: 4rem;
+      }
+
       // フェードインの設定
       opacity: 0;
       transform: translateX(50%);
