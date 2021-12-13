@@ -1,19 +1,19 @@
 <div class="ReadIndex">
   <div class="ReadIndex__wrapper">
-    <div class="ReadIndex__title">進捗データ</div>
+    <p>進捗データ</p>
     <div class="ReadIndex__border"></div>
     <%= area_chart reads_percentage, min: 0, max: 100 %>
-    <%= link_to "新規登録", new_task_read_path(task), class: "ReadIndex__link-button" %>
+    <%= link_to "新規登録", new_task_read_path(task), class: "--button" %>
   </div>
   <div class="ReadIndex__wrapper">
-    <div class="ReadIndex__title">進捗一覧</div>
+    <p>進捗一覧</p>
     <div class="ReadIndex__border"></div>
     <% if reads.present? %>
-      <table class="ReadIndex__table" id="js-ReadIndex__table">
-        <thead>
+      <table class="--read" id="js-ReadIndex__table">
+        <thead class="--read">
           <tr>
-            <th>読んだ日</th>
-            <th class="number">読み終わった<br />ページ番号</th>
+            <th class="--read">読んだ日</th>
+            <th class="--read">読み終わった<br />ページ</th>
             <th></th>
           </tr>
         </thead>

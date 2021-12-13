@@ -21,15 +21,15 @@
               <div class="TaskShow__book-image">
                 <%= render partial: 'books/book_image', locals: { image_link: @task.book.image_link } %>
               </div>
-              <table>
+              <table class="--task">
                 <tbody>
-                  <tr>
-                    <td class="label">開始日</td>
-                    <td class="data"><%= @task.started_on %></td>
+                  <tr class="--task">
+                    <td class="--label">開始日</td>
+                    <td class="--data"><%= @task.started_on %></td>
                   </tr>
-                  <tr>
-                    <td class="label">終了日</td>
-                    <td class="data"><%= @task.finished_on %></td>
+                  <tr class="--task">
+                    <td class="--label">終了日</td>
+                    <td class="--data"><%= @task.finished_on %></td>
                   </tr>
                 </tbody>
               </table>

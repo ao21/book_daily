@@ -59,25 +59,29 @@
     height: 10rem;
   }
 
-  table {
+  table.--task {
     margin: 0 auto;
   }
 
-  tr {
+  tr.--task {
     display: block;
     margin: calc(1vw + 0.5em) 10px;
     @include mq($sp) {
       margin: 10px;
     }
+  }
 
-    td.label {
-      padding: 10px;
+  td {
+    &.--label {
+      padding: 0.5rem;
       border-radius: 30px;
       background-color: $color-beige;
+      vertical-align: middle;
       font-weight: 700;
     }
 
-    td.data {
+    &.--data {
+      vertical-align: middle;
       padding: 10px 0;
     }
   }
