@@ -27,13 +27,6 @@
         </li>
       <% else %>
         <div class="Header__border"></div>
-        <li>
-          <%= link_to(users_guest_sign_in_path, method: :post) do %>
-            <i class="fas fa-sign-in-alt"></i>
-            <span class="Header__text">GUEST</span>
-          <% end %>
-        </li>
-        <div class="Header__border"></div>
         <li> 
           <%= link_to(new_user_session_path) do %>
             <i class="far fa-user"></i>

@@ -9,6 +9,13 @@
   </div>
 
   <div class="c-container">
+    <div class="SignIn__submit">
+      <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
+    </div>
+    <div class="SignIn__guide">
+      <div class="SignIn__guide-border"></div>
+    </div>
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="SignIn__field">
         <%= f.label :email, "メールアドレス" %>
