@@ -1,4 +1,5 @@
 class ReadsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task
 
   def new
