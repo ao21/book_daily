@@ -9,6 +9,13 @@
   </div>
 
   <div class="c-container">
+    <div class="SignIn__submit">
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+    </div>
+    <div class="SignIn__guide">
+      <div class="SignIn__guide-border"></div>
+    </div>
+
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 

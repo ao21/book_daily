@@ -5,6 +5,11 @@
     margin-bottom: 1.5em;
   }
 
+  form {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
   .SignIn__label-wrapper {
     flex: 0 0 40%;
 
@@ -116,7 +121,8 @@
     text-align: center;
 
     input[type='submit'],
-    button {
+    button,
+    a {
       position: relative;
       width: 50%;
       max-width: 350px;
@@ -145,6 +151,14 @@
         background-color: $color-gray;
         color: #444;
       }
+    }
+
+    a {
+      display: block;
+      margin: 0 auto;
+      border-color: $color-second;
+      background-color: $color-second;
+      color: #444;
     }
   }
 
