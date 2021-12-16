@@ -157,7 +157,7 @@
       font-weight: normal;
 
       @include mq($sp) {
-        width: auto;
+        width: 10rem;
         margin: 0;
         padding: 0.8rem;
         text-align: center;
@@ -171,8 +171,9 @@
       font-weight: 700;
 
       @include mq($sp) {
-        width: 10rem;
+        width: 7rem;
         height: 1rem;
+        margin: 1rem 0.5rem;
         line-height: 1rem;
         text-align: center;
       }
