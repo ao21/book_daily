@@ -1,6 +1,10 @@
 .simple-calendar {
   margin: 0.5em;
 
+  @include mq($sp) {
+    margin: 0;
+  }
+
   .calendar-title {
     font-size: 0.8em;
   }
