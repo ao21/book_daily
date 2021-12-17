@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: encourage_reading_habits_production
-  username: encourage_reading_habits
-  password: <%= ENV['ENCOURAGE_READING_HABITS_DATABASE_PASSWORD'] %>
+  database: book_daily_production
+  username: postgres
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>
