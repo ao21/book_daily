@@ -1,82 +1,107 @@
 .TaskIndexCard {
-  margin: 10px;
+  max-width: 900px;
+  margin: 1rem auto;
   border-radius: 10px;
   background-color: $color-white;
 
-  .TaskIndexCard__link {
-    a:link,
-    a:visited,
-    a:hover,
-    a:active {
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
       color: #444;
     }
 
-    a {
-      display: block;
-      width: 100%;
-      border: 3px solid $color-white;
-      border-radius: 10px;
-      transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+    border: 3px solid $color-white;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 
-      &:hover {
-        opacity: 0.7;
-        border: 3px solid $color-main;
-        background-color: rgba(33, 158, 188, 0.3);
-        transition-duration: 0.3s;
-      }
+    &:hover {
+      opacity: 0.7;
+      border: 3px solid $color-main;
+      background-color: rgba(33, 158, 188, 0.3);
+      transition-duration: 0.3s;
+    }
+  }
+
+  .TaskIndexCard__title {
+    width: 70%;
+    margin: 1rem;
+    overflow: hidden;
+    border-bottom: 2px solid;
+    font-size: calc(0.5vw + 0.7em);
+    white-space: nowrap;
+
+    @include mq($tab) {
+      width: 90%;
     }
   }
 
   .TaskIndexCard__wrapper {
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    padding: 0 1rem 1rem 2rem;
+
+    @include mq($tab) {
+      padding: 0 1rem;
+    }
+
+    @include mq($sp) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .TaskIndexCard__content {
     flex-basis: 70%;
     max-width: 70%;
-  }
 
-  .TaskIndexCard__title {
-    margin: 5px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    border-bottom: solid 2px;
-    font-size: calc(0.5vw + 0.7em);
-    white-space: nowrap;
+    @include mq($tab) {
+      flex-basis: 80%;
+    }
+
+    @include mq($sp) {
+      flex-basis: 0;
+      max-width: 100%;
+    }
   }
 
   .TaskIndexCard__data {
     display: flex;
     align-items: center;
     width: 100%;
+
+    @include mq($sp) {
+      display: block;
+    }
   }
 
   .TaskIndexCard__book-image {
     flex-basis: 20%;
+    height: 10rem;
 
-    .BookImage__cover {
-      width: auto;
-      height: 100px;
+    @include mq($tab) {
+      flex-basis: 40%;
+      height: 9rem;
     }
   }
 
   .TaskIndexCard__finished-on {
+    @include mq($sp) {
+      margin: 1rem auto;
+    }
+
     span.label {
-      margin: 5px;
-      padding: 5px;
+      margin: 0.5rem;
+      padding: 0.3rem;
       border: 1px solid $color-main;
       border-radius: 10px;
       background-color: $color-main;
       color: $color-white;
-      font-size: calc(0.5vw + 0.7em);
+      font-size: calc(0.5vw + 0.7rem);
     }
-  }
-
-  .TaskIndexCard__graph {
-    flex-basis: 15%;
-    max-width: 15%;
   }
 
   .highcharts-background {

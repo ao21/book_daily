@@ -5,11 +5,25 @@
     margin-bottom: 1.5em;
   }
 
-  .SignIn__label-wrapper {
-    flex: 0 0 40%;
+  form {
+    max-width: 900px;
+    margin: 0 auto;
   }
 
-  .SignIn__label {
+  .SignIn__label-wrapper {
+    flex: 0 0 40%;
+
+    span {
+      display: block;
+      padding-left: 1em;
+
+      @include mq($tab) {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  label {
     flex: 0 0 40%;
     width: 100%;
     padding-right: 1.5em;
@@ -17,14 +31,15 @@
     font-size: 1em;
     font-weight: 700;
     line-height: 1.4;
+
+    @include mq($sp) {
+      font-size: 0.8rem;
+    }
   }
 
-  .SignIn__label-caution {
-    display: block;
-    padding-left: 1em;
-  }
-
-  .SignIn__input {
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
     flex: 0 0 60%;
     width: 100%;
     max-width: 60%;
@@ -104,35 +119,45 @@
     margin-bottom: calc(1.6vw + 13px);
     padding: 0 calc(1vw + 40px);
     text-align: center;
-  }
 
-  .SignIn__submit-button {
-    position: relative;
-    width: 50%;
-    max-width: 350px;
-    min-width: 240px;
-    padding: 1em calc(0.8vw + 16px);
-    border-color: $color-main;
-    border-radius: 20px;
-    background-color: $color-main;
-    color: #fff;
-    font-size: calc(0.3vw + 1rem);
-    font-weight: 700;
-    line-height: 1.5;
+    input[type='submit'],
+    button,
+    a {
+      position: relative;
+      width: 50%;
+      max-width: 350px;
+      min-width: 240px;
+      padding: 1em calc(0.8vw + 16px);
+      border-color: $color-main;
+      border-radius: 20px;
+      background-color: $color-main;
+      color: #fff;
+      font-size: calc(0.3vw + 1rem);
+      font-weight: 700;
+      line-height: 1.5;
 
-    &.--signup {
+      &.--signup {
+        display: block;
+        margin: 0 auto;
+        border-color: $color-second;
+        background-color: $color-second;
+        color: #444;
+      }
+
+      &.--delete {
+        display: block;
+        margin: 0 auto;
+        border-color: $color-gray;
+        background-color: $color-gray;
+        color: #444;
+      }
+    }
+
+    a {
       display: block;
       margin: 0 auto;
       border-color: $color-second;
       background-color: $color-second;
-      color: #444;
-    }
-
-    &.--delete {
-      display: block;
-      margin: 0 auto;
-      border-color: $color-gray;
-      background-color: $color-gray;
       color: #444;
     }
   }
@@ -151,15 +176,15 @@
     height: 30px;
     border-top: 1px solid #999;
     box-sizing: border-box;
-  }
 
-  .SignIn__guide-text {
-    width: 17em;
-    height: 30px;
-    margin: -15px auto 0;
-    background: $color-white;
-    color: #999;
-    font-size: 14px;
-    line-height: 30px;
+    p {
+      width: 17em;
+      height: 30px;
+      margin: -15px auto 0;
+      background: $color-white;
+      color: #999;
+      font-size: 14px;
+      line-height: 30px;
+    }
   }
 }

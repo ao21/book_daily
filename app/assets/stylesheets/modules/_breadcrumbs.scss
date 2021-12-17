@@ -1,20 +1,20 @@
 .Breadcrumbs {
   display: flex;
   align-items: center;
-  margin: -50px 0 calc(2vw + 22px);
+  margin: 1em 0 3em;
   overflow-x: scroll;
   color: #444;
   font-size: calc(0.1vw + 0.9rem);
   white-space: nowrap;
 
-  .Breadcrumbs__arrow {
-    display: inline-block;
-    flex: 0 0 auto;
-    margin: 0 calc(1.3vw + 3px);
-    vertical-align: middle;
-  }
+  span {
+    &.--arrow {
+      display: inline-block;
+      flex: 0 0 auto;
+      margin: 0 calc(1.3vw + 3px);
+      vertical-align: middle;
+    }
 
-  .Breadcrumbs__item {
     &.--now {
       border-bottom: solid 3px $color-main;
     }

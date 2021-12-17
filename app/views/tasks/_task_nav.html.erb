@@ -1,12 +1,12 @@
 <nav class="TaskNav">
-  <ul class="TaskNav__list">
-    <li class="TaskNav__item --today<%= ' --now' if controller.action_name == 'today' %>">
+  <ul>
+    <li class="--today<%= ' --now' if controller.action_name == 'today' %>">
       <%= link_to(today_tasks_path) do %>
         <span class="en">Today</span>
         <span class="ja">今日の目標</span>
       <% end %>
     </li>
-    <li class="TaskNav__item --all<%= ' --now' if controller.action_name == 'index' %>">
+    <li class="--all<%= ' --now' if controller.action_name == 'index' %>">
       <%= link_to(tasks_path) do %>
         <span class="en">All</span>
         <span class="ja">タスク一覧</span>

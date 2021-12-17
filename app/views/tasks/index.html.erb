@@ -3,51 +3,47 @@
   <div class="c-container">
     <div class="Breadcrumbs">
       <%= link_to 'TOP', '/' %>
-      <span class="Breadcrumbs__arrow">></span>
-      <span class="Breadcrumbs__item --now">目標の一覧</span>
+      <span class="--arrow">></span>
+      <span class="--now">目標の一覧</span>
     </div>
   </div>
 
   <div class="c-container">
-    <%= render partial: 'shared/task_nav' %>
+    <%= render partial: 'task_nav' %>
 
-    <div class="TaskIndex__wrapper">
-      <div class="TaskHistory">
-        <div class="TaskHistory__calendar">
-          <h2 class="TaskHitory__calendar-title">HISTORY</h2>
-          <div class="TaskHitory__calendar-item" id="calendar">
-            <%= render partial: "calendar", locals: {reads: @reads} %>
-          </div>
+    <div class="TaskIndex__wrapper  --first">
+      <div class="TaskIndex__calendar">
+        <h2>HISTORY</h2>
+        <div id="calendar">
+          <%= render partial: "calendar", locals: {reads: @reads} %>
         </div>
-        <div class="TaskHistory__table">
-          <%= render partial: "history_table", locals: {month_data: @month_data[:this_month], month_name: "今月"} %>
-          <%= render partial: "history_table", locals: {month_data: @month_data[:last_month], month_name: "先月"} %>
-        </div>
+      </div>
+      <div class="TaskIndex__table">
+        <%= render partial: "history_table", locals: {month_data: @month_data[:this_month], month_name: "今月"} %>
+        <%= render partial: "history_table", locals: {month_data: @month_data[:last_month], month_name: "先月"} %>
       </div>
     </div>
 
     <div class="TaskIndex__wrapper --second">
       <% @tasks.zip(@tasks_percentage) do |task, data| %>
         <div class="TaskIndexCard">
-          <div class="TaskIndexCard__link">
-            <%= link_to(task) do %>
-              <div class="TaskIndexCard__wrapper">
-                <div class="TaskIndexCard__content">
-                  <div class="TaskIndexCard__title"><%= task.book.title %></div>
-                  <div class="TaskIndexCard__data">
-                    <div class="TaskIndexCard__book-image">
-                      <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
-                    </div>
-                    <div class="TaskIndexCard__finished-on">
-                      <span class="label">目標日</span>
-                      <span class="date"><%= task.finished_on.strftime("%-m月%-d日") %></span>
-                    </div>
+          <%= link_to(task) do %>
+            <div class="TaskIndexCard__title"><%= task.book.title %></div>
+            <div class="TaskIndexCard__wrapper">
+              <div class="TaskIndexCard__content">
+                <div class="TaskIndexCard__data">
+                  <div class="TaskIndexCard__book-image">
+                    <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+                  </div>
+                  <div class="TaskIndexCard__finished-on">
+                    <span class="label">目標日</span>
+                    <span><%= task.finished_on.strftime("%-m月%-d日") %></span>
                   </div>
                 </div>
-                <%= pie_chart data, class: "TaskIndexCard__graph", width: "10em", height: "10em", library: {title: {text: "#{data[:read]}%", style:{fontSize: "1.5em"} }} %>
               </div>
-            <% end %>
-          </div>
+              <%= pie_chart data, width: "10rem", height: "10rem", library: {title: {text: "#{data[:read]}%", style:{fontSize: "1.5em"} }} %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>

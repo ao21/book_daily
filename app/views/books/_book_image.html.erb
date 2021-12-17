@@ -1,9 +1,7 @@
 <div class="BookImage">
-  <div class="BookImage__cover">
-    <% if image_link.present? %>
-      <%= image_tag image_link, class: "BookImage__image" %>
-    <% else %>
-      <%= image_tag 'book.png', class: "BookImage__image" %>
-    <% end %>
-  </div>
+  <% if image_link.present? %>
+    <%= image_tag image_link %>
+  <% else %>
+    <%= image_tag 'book.png' %>
+  <% end %>
 </div>

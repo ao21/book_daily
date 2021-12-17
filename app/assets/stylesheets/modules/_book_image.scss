@@ -1,15 +1,11 @@
-//******** 書籍サムネイル ********//
-
 .BookImage {
-  .BookImage__cover {
-    position: relative;
-    width: 100%;
-    height: calc(1vw + 145px);
-    margin-bottom: calc(0.2vw + 3px);
-    text-align: center;
-  }
+  position: relative;
+  width: auto;
+  height: 100%;
+  margin-bottom: calc(0.2vw + 3px);
+  text-align: center;
 
-  img.BookImage__image {
+  img {
     position: absolute;
     top: 0;
     right: 0;

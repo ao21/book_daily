@@ -1,6 +1,6 @@
 class ReadsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task
-  before_action :set_read, only: %i[edit update destroy]
 
   def new
     if params
@@ -25,19 +25,8 @@ class ReadsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-    if @read.update(read_params)
-      redirect_to task_path(@task.id), notice: "進捗を更新しました"
-    else
-      flash.now[:alert] = "進捗の更新に失敗しました"
-      render :edit
-    end
-  end
-
   def destroy
+    @read = @task.reads.find(params[:id])
     @read.destroy!
     redirect_to task_path(@task.id), alert: "削除しました"
   end
@@ -46,10 +35,6 @@ class ReadsController < ApplicationController
 
   def set_task
     @task = Task.find(params[:task_id])
-  end
-
-  def set_read
-    @read = @task.reads.find(params[:id])
   end
 
   def read_params

@@ -1,8 +1,7 @@
-<tr>
-  <td><%= read.read_on %></td>
-  <td class="number"><%= read.up_to_page %></td>
-  <td>
-    <%= link_to "編集", edit_task_read_path(task, read) %>
+<tr class="--read">
+  <td class="--read"><%= read.read_on %></td>
+  <td class="--read">p.<%= read.up_to_page %></td>
+  <td class="--read">
     <%= link_to "削除", task_read_path(task, read), method: :delete, data: { confirm: "削除しますか?" } %>
   </td>
 </tr>

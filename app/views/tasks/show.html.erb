@@ -3,10 +3,10 @@
   <div class="c-container">
     <div class="Breadcrumbs">
       <%= link_to 'TOP', '/' %>
-      <span class="Breadcrumbs__arrow">></span>
-      <%= link_to '目標の一覧', tasks_path, class: "Breadcrumbs__item" %>
-      <span class="Breadcrumbs__arrow">></span>
-      <span class="Breadcrumbs__item --now">詳細</span>
+      <span class="--arrow">></span>
+      <%= link_to '目標の一覧', tasks_path %>
+      <span class="--arrow">></span>
+      <span class="--now">詳細</span>
     </div>
   </div>
 
@@ -14,31 +14,29 @@
     <div class="TaskShow__wrapper">
       <div class="TaskShow__container">
         <div class="TaskShow__content">
-          <div class="TaskShow__graph">
-            <%= pie_chart @task_percentage[0], width: "20em", height: "20em", library: {title: {text: "#{@task_percentage[0][:read]}%", style:{fontSize: "2em"} }} %>
-          </div>
+          <%= pie_chart @task_percentage[0], width: "20em", height: "20em", library: {title: {text: "#{@task_percentage[0][:read]}%", style:{fontSize: "2em"} }} %>
           <div class="TaskShow__data">
             <div class="TaskShow__title"><%= @task.book.title %></div>
             <div class="TaskShow__item">
               <div class="TaskShow__book-image">
                 <%= render partial: 'books/book_image', locals: { image_link: @task.book.image_link } %>
               </div>
-              <table class="TaskShow__table">
+              <table class="--task">
                 <tbody>
-                  <tr class="TaskShow__table-row">
-                    <td class="label">開始日</td>
-                    <td class="data"><%= @task.started_on %></td>
+                  <tr class="--task">
+                    <td class="--label">開始日</td>
+                    <td class="--data"><%= @task.started_on %></td>
                   </tr>
-                  <tr class="TaskShow__table-row">
-                    <td class="label">終了日</td>
-                    <td class="data"><%= @task.finished_on %></td>
+                  <tr class="--task">
+                    <td class="--label">終了日</td>
+                    <td class="--data"><%= @task.finished_on %></td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="TaskShow__link">
-              <%= link_to "編集", edit_task_path(@task), class: "TaskShow__link-button --edit" %>
-              <%= link_to "削除", @task, class: "TaskShow__link-button --delete", method: :delete, data: { confirm: "目標を削除しますか?" } %>
+              <%= link_to "編集", edit_task_path(@task) %>
+              <%= link_to "削除", @task, class: "--delete", method: :delete, data: { confirm: "目標を削除しますか?" } %>
             </div>
           </div>
         </div>

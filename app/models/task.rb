@@ -154,7 +154,8 @@ class Task < ApplicationRecord
     return tasks_percentage
   end
 
-  # タスク詳細ページ
+  # TaskShowページ
+
   def self.task_percentage(task)
     task_percentage = []
     self.calculate_tasks_percentage(task, task_percentage)
