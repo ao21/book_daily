@@ -1,0 +1,194 @@
+// Webフォント
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+// 外部読み込み
+@import 'bootstrap/scss/bootstrap';
+@import 'simple_calendar';
+
+// モジュール
+@import 'resets/*';
+@import 'settings/*';
+@import 'mixins/*';
+@import 'bases/*';
+@import 'modules/*';
+
+/* 全体 */
+
+.main-wrapper {
+  border-radius: 4px;
+  background-color: $color-white;
+  border: 1px solid $color-gray;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: left;
+
+  .content-with-header {
+    font-size: 16px;
+  }
+
+  .content-header {
+    height: 50px;
+    position: relative;
+    border-bottom: 1px solid $color-gray;
+    box-sizing: border-box;
+    line-height: 50px;
+  }
+
+  .header-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 50px;
+    position: absolute;
+    padding: 0 15px;
+    border-bottom: 4px solid #4756ca;
+    box-sizing: border-box;
+    font-weight: bold;
+    line-height: 50px;
+  }
+
+  .content-body {
+    padding: 15px;
+    overflow: hidden;
+  }
+}
+
+/* ログイン、サインインページ */
+
+.field-title {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.field-field {
+  appearance: none;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid $color-gray;
+  border-radius: 0;
+  outline: none;
+  background: none;
+  font-size: 16px;
+}
+
+.actions {
+  width: 100%;
+  max-width: 420px;
+  min-width: 120px;
+  margin: 0 auto 16px;
+}
+
+.actions-signup {
+  width: 100%;
+  max-width: 420px;
+  min-width: 120px;
+  margin: 16px auto 16px;
+}
+
+.login-submit-btn {
+  appearance: none;
+  outline: none;
+  width: 100%;
+  display: block;
+  background: #4756ca;
+  border-radius: 100px;
+  border: 1px solid #4756ca;
+  box-sizing: border-box;
+  color: $color-white !important;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.login-btn-wrap {
+  width: 100%;
+  max-width: 420px;
+  min-width: 120px;
+  margin: 0 auto 16px;
+}
+
+.login-btn-link {
+  width: 100%;
+  display: block;
+  background: $color-gray;
+  border-radius: 100px;
+  border: 1px solid $color-gray;
+  box-sizing: border-box;
+  color: #313f52 !important;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+}
+
+/* アカウント編集ページ */
+
+.field-account-edit {
+  padding: 10px 0 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.edit-submit-btn {
+  appearance: none;
+  outline: none;
+  width: 100%;
+  display: block;
+  background: #4756ca;
+  border-radius: 100px;
+  border: 1px solid #4756ca;
+  box-sizing: border-box;
+  color: $color-white !important;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cancel-guide-wrap {
+  text-align: center;
+  padding-top: 15px;
+  margin-top: 15px;
+
+  .cancel-border-wrap {
+    border-top: 1px solid #999;
+    box-sizing: border-box;
+    height: 30px;
+  }
+
+  .cancel-guide-text {
+    font-size: 14px;
+    color: #999;
+    height: 30px;
+    line-height: 30px;
+    margin: -15px auto 0;
+    background: $color-white;
+    width: 17em;
+  }
+}
+
+.cancel-btn-wrap {
+  width: 100%;
+  max-width: 420px;
+  min-width: 120px;
+  margin: 0 auto 16px;
+
+  .cancel-submit-btn {
+    width: 100%;
+    display: block;
+    background: $color-gray;
+    border-radius: 100px;
+    border: 1px solid $color-gray;
+    box-sizing: border-box;
+    color: #313f52 !important;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px;
+  }
+}

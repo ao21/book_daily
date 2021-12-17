@@ -1,0 +1,56 @@
+.TaskIndex {
+  .TaskIndex__wrapper {
+    margin-top: 0.5rem;
+    padding: 2rem;
+    border-radius: 0 0 30px 30px;
+    background-color: $color-beige;
+
+    &.--first {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include mq($sp) {
+        display: block;
+      }
+    }
+
+    &.--second {
+      border-radius: 30px;
+    }
+  }
+
+  .TaskIndex__calendar {
+    flex-basis: 60%;
+    max-width: 600px;
+    padding: 0.5rem 2rem;
+    background-color: $color-white;
+    text-align: center;
+
+    @include mq($sp) {
+      padding: 0;
+    }
+
+    h2 {
+      margin: 0.5em;
+      color: $color-main;
+      font-weight: 700;
+    }
+  }
+
+  .TaskIndex__table {
+    flex-basis: 25%;
+    width: 100%;
+    margin-left: 3rem;
+
+    @include mq($tab) {
+      margin-left: 0.5rem;
+    }
+
+    @include mq($sp) {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1rem;
+    }
+  }
+}

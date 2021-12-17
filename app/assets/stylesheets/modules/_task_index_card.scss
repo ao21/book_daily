@@ -1,0 +1,110 @@
+.TaskIndexCard {
+  max-width: 900px;
+  margin: 1rem auto;
+  border-radius: 10px;
+  background-color: $color-white;
+
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: #444;
+    }
+
+    display: block;
+    width: 100%;
+    border: 3px solid $color-white;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+      border: 3px solid $color-main;
+      background-color: rgba(33, 158, 188, 0.3);
+      transition-duration: 0.3s;
+    }
+  }
+
+  .TaskIndexCard__title {
+    width: 70%;
+    margin: 1rem;
+    overflow: hidden;
+    border-bottom: 2px solid;
+    font-size: calc(0.5vw + 0.7em);
+    white-space: nowrap;
+
+    @include mq($tab) {
+      width: 90%;
+    }
+  }
+
+  .TaskIndexCard__wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem 1rem 2rem;
+
+    @include mq($tab) {
+      padding: 0 1rem;
+    }
+
+    @include mq($sp) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .TaskIndexCard__content {
+    flex-basis: 70%;
+    max-width: 70%;
+
+    @include mq($tab) {
+      flex-basis: 80%;
+    }
+
+    @include mq($sp) {
+      flex-basis: 0;
+      max-width: 100%;
+    }
+  }
+
+  .TaskIndexCard__data {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @include mq($sp) {
+      display: block;
+    }
+  }
+
+  .TaskIndexCard__book-image {
+    flex-basis: 20%;
+    height: 10rem;
+
+    @include mq($tab) {
+      flex-basis: 40%;
+      height: 9rem;
+    }
+  }
+
+  .TaskIndexCard__finished-on {
+    @include mq($sp) {
+      margin: 1rem auto;
+    }
+
+    span.label {
+      margin: 0.5rem;
+      padding: 0.3rem;
+      border: 1px solid $color-main;
+      border-radius: 10px;
+      background-color: $color-main;
+      color: $color-white;
+      font-size: calc(0.5vw + 0.7rem);
+    }
+  }
+
+  .highcharts-background {
+    fill: none;
+  }
+}

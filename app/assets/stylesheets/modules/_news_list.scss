@@ -1,0 +1,81 @@
+.NewsList {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: calc(1.6vw + 13px) calc(4vw + 1.7px);
+  border-radius: 10px;
+  background-color: $color-white;
+  text-align: left;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto -15px auto;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    flex-basis: 25%;
+    max-width: 25%;
+    @include mq($tab) {
+      flex-basis: 33.3%;
+      max-width: 33.3%;
+    }
+    @include mq($sp) {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+  }
+
+  .NewsList__item {
+    display: flex;
+    flex-direction: column;
+    height: 20rem;
+    @include mq($sp) {
+      height: 18rem;
+    }
+    padding: 1em;
+  }
+
+  .NewsList__book-image {
+    flex-basis: 65%;
+    padding-bottom: 0.1em;
+  }
+
+  span {
+    &.--title {
+      flex-basis: 15%;
+      height: 100%;
+      margin: 0 auto;
+      padding-bottom: 0.1em;
+      overflow: hidden;
+      color: $color-main;
+      font-weight: 700;
+      font-size: 1em;
+      line-height: 100%;
+    }
+
+    &.--date {
+      flex-basis: 10%;
+      max-width: 150px;
+      height: 100%;
+      margin: 0.5em auto;
+      padding: 0 0.2em;
+      overflow: hidden;
+      border: 1px solid $color-gray;
+      border-radius: 4px;
+      background-color: $color-gray;
+      color: $color-white;
+      text-align: center;
+    }
+  }
+
+  p {
+    flex-basis: 10%;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 0.8em;
+    text-align: left;
+  }
+}

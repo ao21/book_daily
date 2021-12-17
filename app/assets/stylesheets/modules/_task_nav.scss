@@ -1,0 +1,61 @@
+.TaskNav {
+  font-size: calc(0.2vw + 1rem);
+  line-height: 1.4;
+
+  ul {
+    display: flex;
+    margin: 0 -5px 0.5rem -5px;
+  }
+
+  li {
+    display: block;
+    width: 100%;
+    padding: 0 5px 0 5px;
+    font-weight: 700;
+
+    &.--today {
+      flex: 0 0 65%;
+    }
+
+    &.--all {
+      flex: 0 0 35%;
+    }
+
+    & > a {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      height: 100%;
+      padding: calc(0.8vw + 11px) calc(0.8vw + 6.9px);
+      border: 1px solid $color-main;
+      border-top-right-radius: 0.5em;
+      border-top-left-radius: 0.5em;
+      color: $color-main;
+
+      @include mq($sp) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .en {
+        margin-right: 1em;
+      }
+
+      .ja {
+        transform: translateY(0.2em);
+        font-size: 0.85em;
+      }
+    }
+
+    &.--now > a,
+    &.--now > span {
+      background-color: $color-main;
+      color: #fff;
+    }
+
+    &:not(.--now) > a:hover {
+      background-color: #e8f4f6;
+      transition: 0.5s background-color;
+    }
+  }
+}

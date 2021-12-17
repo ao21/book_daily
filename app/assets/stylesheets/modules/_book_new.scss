@@ -1,0 +1,105 @@
+.BookNew {
+  position: relative;
+
+  .BookNew__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(0.5vw + 40px);
+    height: calc(0.5vw + 40px);
+    margin: calc(0.5vw + 10px);
+    border-radius: 50%;
+    background-color: $color-main;
+    text-align: center;
+
+    span {
+      color: $color-white;
+      font-weight: 700;
+      line-height: calc(0.5vw + 40px);
+    }
+  }
+
+  .BookNew__title {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: calc(0.5vw + 20px);
+    margin-top: calc(0.5vw + 40px);
+    margin-left: calc(1vw + 30px);
+    font-weight: 700;
+    font-size: calc(0.2vw + 1rem);
+    line-height: 1.4;
+
+    &::before {
+      flex: 0 0 1em;
+      width: 1em;
+      height: 2px;
+      margin-right: 0.5em;
+      background-color: $color-second;
+      content: '';
+    }
+  }
+
+  .BookNew__content {
+    display: flex;
+    margin: calc(0.5vw + 25px) auto;
+    padding: 0 calc(1.6vw + 13px);
+  }
+
+  .BookNew__book-image {
+    flex-basis: calc(0.2vw + 132px);
+    margin-left: 10px;
+    overflow: hidden;
+  }
+
+  .BookNew__data {
+    flex-basis: calc(100% - (0.2vw + 132px));
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+
+    dl {
+      display: flex;
+      justify-content: center;
+      margin-left: calc(0.5vw + 5px);
+      font-size: calc(0.2vw + 11px);
+      line-height: 1.4;
+    }
+
+    dt {
+      flex-basis: calc(3vw + 40px);
+      width: auto;
+      padding: 10px 0 10px;
+      background-color: $color-beige;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    dd {
+      flex-basis: calc(90% - (3vw + 40px));
+      padding: 5px 0 5px 5px;
+      margin-left: 5px;
+      border-bottom: 1px solid;
+    }
+  }
+
+  .BookNew__submit {
+    width: 100%;
+    padding: 0 calc(1vw + 40px);
+    margin-bottom: calc(1.6vw + 13px);
+
+    button,
+    input[type='submit'] {
+      width: 100%;
+      padding: 1em calc(0.8vw + 16px);
+      border-color: $color-main;
+      border-radius: 20px;
+      background-color: $color-main;
+      color: #fff;
+      font-weight: 700;
+      font-size: calc(0.3vw + 1rem);
+      text-align: center;
+      line-height: 1.5;
+    }
+  }
+}

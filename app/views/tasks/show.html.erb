@@ -1,0 +1,52 @@
+<div class="TaskShow">
+  <%= render partial: 'shared/page_top', locals: {main: "Show", sub: "目標の詳細"} %>
+  <div class="c-container">
+    <div class="Breadcrumbs">
+      <%= link_to 'TOP', '/' %>
+      <span class="--arrow">></span>
+      <%= link_to '目標の一覧', tasks_path %>
+      <span class="--arrow">></span>
+      <span class="--now">詳細</span>
+    </div>
+  </div>
+
+  <div class="c-container">
+    <div class="TaskShow__wrapper">
+      <div class="TaskShow__container">
+        <div class="TaskShow__content">
+          <%= pie_chart @task_percentage[0], width: "20em", height: "20em", library: {title: {text: "#{@task_percentage[0][:read]}%", style:{fontSize: "2em"} }} %>
+          <div class="TaskShow__data">
+            <div class="TaskShow__title"><%= @task.book.title %></div>
+            <div class="TaskShow__item">
+              <div class="TaskShow__book-image">
+                <%= render partial: 'books/book_image', locals: { image_link: @task.book.image_link } %>
+              </div>
+              <table class="--task">
+                <tbody>
+                  <tr class="--task">
+                    <td class="--label">開始日</td>
+                    <td class="--data"><%= @task.started_on %></td>
+                  </tr>
+                  <tr class="--task">
+                    <td class="--label">終了日</td>
+                    <td class="--data"><%= @task.finished_on %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="TaskShow__link">
+              <%= link_to "編集", edit_task_path(@task) %>
+              <%= link_to "削除", @task, class: "--delete", method: :delete, data: { confirm: "目標を削除しますか?" } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="TaskShow__wrapper">
+      <div class="TaskShow__container">
+        <%= render partial: "reads/index", locals: { task: @task, reads: @reads, reads_percentage: @reads_percentage } %>
+      </div>
+    </div>
+  </div>
+</div>

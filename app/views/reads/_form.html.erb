@@ -1,0 +1,33 @@
+<div class="ReadForm">
+  <div class="c-container">
+    <%= render partial: 'shared/page_bar', locals: {var: "", text: "読んだ日と読み終わったページ番号を設定"} %>
+
+    <div class="ReadForm__title"><%= task.book.title %></div>
+    <div class="ReadForm__wrapper">
+      <div class="ReadForm__data">
+        <div class="ReadForm__book-image">
+          <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+        </div>
+        <dl>
+          <dt>ページ数</dt>
+          <dd><%= task.book.total_pages %></dd>
+        </dl>
+      </div>
+
+      <%= form_with model: [task, read], local: true do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
+        <div class="ReadForm__form">
+          <%= f.label :read_on %>
+          <%= f.date_field :read_on %>
+        </div>
+        <div class="ReadForm__form">
+          <%= f.label :up_to_page, "読み終わった<br>ページ番号".html_safe %>
+          <%= f.text_field :up_to_page %>
+        </div>
+    </div>
+
+    <div class="ReadForm__submit">
+      <%= f.submit button_value %>
+    </div>
+  <% end %>
+</div>

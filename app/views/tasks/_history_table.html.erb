@@ -1,0 +1,19 @@
+<div class="TaskHistoryTable">
+  <div class="TaskHistoryTable__title"><%= month_name %>の読書量</div>
+  <table>
+    <tbody>
+      <tr>
+        <td class="number"><%= month_data[:month_page] %></td>
+        <td class="unit">ページ</td>
+      </tr>
+      <tr>
+        <td class="number"><%= month_data[:month_book] %></td>
+        <td class="unit">冊</td>
+      </tr>
+      <tr>
+        <td class="number"><%= month_data[:day_page] %></td>
+        <td class="unit">ページ/日</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

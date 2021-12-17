@@ -1,0 +1,33 @@
+.PageTop {
+  width: 100%;
+  height: 30vw;
+  min-height: 150px;
+  padding: 2%;
+  border-radius: 30px;
+  background-clip: content-box;
+  background-color: $color-beige;
+
+  h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    span.--main {
+      transform: translateY(0.2em);
+      margin-bottom: calc(1.2vw + 1rem);
+      font-weight: 700;
+      font-size: calc(2.4vw + 0.8em);
+      line-height: 1;
+      font-family: $font-google;
+      letter-spacing: 0.1em;
+    }
+
+    small.--sub {
+      color: $color-main;
+      font-size: calc(1.4vw + 0.2em);
+      font-weight: 700;
+    }
+  }
+}

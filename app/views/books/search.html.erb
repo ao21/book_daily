@@ -1,0 +1,34 @@
+<%= render partial: 'shared/page_top', locals: {main: "Books", sub: "読みたい本を選んでください。"} %>
+<%= render 'shared/breadcrumbs' %>
+
+<div class="c-container">
+  <%= render partial: 'shared/page_bar', locals: {var: params[:keyword], text: " の検索結果"} %>
+
+  <section class="SearchList">
+    <ul>
+      <% if @results_data %>
+        <% @results_data.each do |result| %>
+          <li>
+            <%= link_to(controller: :books, action: :new, title: result[:title], author: result[:author], image_link: result[:image_link], total_pages: result[:total_pages], remote: true) do %>
+              <div class="SearchList__item">
+                <div class="SearchList__book-image">
+                  <%= render partial: 'book_image', locals: { image_link: result[:image_link] } %>
+                </div>
+                <span class="--title"><%= result[:title] %></span>
+                <span class="--author"><%= result[:author] %></span>
+                <dl>
+                  <dt>ページ数</dt>
+                  <dd><%= result[:total_pages] %></dd>
+                </dl>
+                <div class="book-submit">
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+</div>
+
+<div id="book-new-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

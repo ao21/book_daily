@@ -1,0 +1,52 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+
+    <div class="BookNew">
+      <div class="BookNew__close">
+        <button type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="BookNew__title">書籍の新規登録</div>
+        <div class="BookNew__content">
+          <div class="BookNew__book-image">
+            <%= image_tag @book.image_link if @book.image_link? %>
+          </div>
+          <div class="BookNew__data">
+            <dl>
+              <dt>タイトル</dt>
+              <dd><%= @book.title %></dd>
+            </dl>
+            <dl>
+              <dt>著者</dt>
+              <dd><%= @book.author %></dd>
+            </dl>
+            <dl>
+              <dt>ページ数</dt>
+              <dd><%= @book.total_pages %>ページ</dd>
+            </dl>
+          </div>
+        </div>
+
+        <% if @book.persisted? %>
+          <div class="BookNew__submit">
+            <%= link_to(controller: :tasks, action: :new, book_id: @book.id) do %>
+              <button>登録</button>
+            <% end %>
+          </div>
+        <% else %>
+          <%= form_with model: @book, remote: true do |f| %>
+            <%= render 'shared/error_messages', model: f.object %>
+            <%= f.hidden_field :title, value:@book.title %>
+            <%= f.hidden_field :author, value:@book.author %>
+            <%= f.hidden_field :image_link, value:@book.image_link %>
+            <%= f.hidden_field :total_pages, value:@book.total_pages %>
+            <div class="BookNew__submit">
+              <%= f.submit "登録" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

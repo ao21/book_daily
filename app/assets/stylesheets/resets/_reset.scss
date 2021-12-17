@@ -1,0 +1,50 @@
+a {
+  cursor: pointer;
+}
+
+button {
+  border-width: 0;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  display: inherit;
+  text-align: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+cite {
+  font-style: normal;
+}
+
+fieldset {
+  border-width: 0;
+}

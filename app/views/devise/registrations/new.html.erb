@@ -1,0 +1,49 @@
+<div class="SignIn">
+  <%= render partial: 'shared/page_top', locals: {main: "SignUp", sub: "アカウント登録"} %>
+  <div class="c-container">
+    <div class="Breadcrumbs">
+      <%= link_to 'TOP', '/' %>
+      <span class="--arrow">></span>
+      <span class="--now">アカウント登録</span>
+    </div>
+  </div>
+
+  <div class="c-container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="SignIn__field">
+        <%= f.label :name, "ユーザーネーム" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+
+      <div class="SignIn__field">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "半角のみ" %>
+      </div>
+
+      <div class="SignIn__field">
+        <div class="SignIn__label-wrapper">
+          <%= f.label :password, "パスワード" %>
+          <% if @minimum_password_length %>
+            <span><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></span>
+          <% end %>
+        </div>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "半角英数のみ" %>
+      </div>
+
+      <div class="SignIn__field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "半角英数のみ" %>
+      </div>
+
+      <div class="SignIn__submit">
+        <%= f.submit t('.sign_up') %>
+      </div>
+    <% end %>
+
+    <div class="SignIn__links">
+      <%=  render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

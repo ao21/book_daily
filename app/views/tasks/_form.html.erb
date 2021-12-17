@@ -1,0 +1,55 @@
+<div class="TaskForm">
+  <div class="c-container">
+    <%= render partial: 'shared/page_bar', locals: {var: "", text: "開始日と終了日を設定"} %>
+
+    <div class="TaskForm__wrapper">
+      <section class="TaskForm__book">
+        <div class="TaskForm__title"><%= book.title %></div>
+        <div class="TaskForm__book-image">
+          <% if controller.action_name == 'new' %>
+            <%= render partial: 'books/book_image', locals: { image_link: book.image_link } %>
+          <% elsif controller.action_name == 'edit' %>
+            <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+          <% end %>
+        </div>
+      </section>
+
+      <section class="TaskForm__task">
+        <%= form_with model: task, local: true do |f| %>
+          <%= render 'shared/error_messages', model: f.object %>
+          <%= hidden_field_tag :book_id, book.id %>
+          <div class="TaskForm__form">
+            <%= f.label :started_on %>
+            <%= f.date_field :started_on, id: "started_on" %>
+          </div>
+          <div class="TaskForm__form">
+            <%= f.label :finished_on %>
+            <%= f.date_field :finished_on, id: "finished_on" %>
+          </div>
+
+          <div class="TaskForm__result">
+            <div class="TaskForm__result-title">
+              <i class="fas fa-flag-checkered"></i>
+              <span>目標</span>
+            </div>
+            <div class="TaskForm__result-content">
+              <dl>
+                <i class="fas fa-check"></i>
+                <dt><span>読み終わる日数</span></dt>
+                <dd><span id="days"></span></dd>
+              </dl>
+              <dl>
+                <i class="fas fa-check"></i>
+                <dt><span>1日のページ数</span></dt>
+                <dd><span id="page", data-page-id="<%= book.total_pages %>"></span></dd>
+              </dl>
+            </div>
+          </div>
+      </section>
+    </div>
+
+    <div class="TaskForm__submit">
+      <%= f.submit button_value %>
+    </div>
+  <% end %>
+</div>

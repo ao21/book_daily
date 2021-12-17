@@ -1,0 +1,53 @@
+<div class="TaskToday">
+  <%= render partial: 'shared/page_top', locals: {main: "Today", sub: "今日の目標"} %>
+  <div class="c-container">
+    <div class="Breadcrumbs">
+      <%= link_to 'TOP', '/' %>
+      <span class="--arrow">></span>
+      <span class="--now">今日の目標</span>
+    </div>
+
+    <%= render partial: 'task_nav' %>
+    <div class="TaskToday__wrapper">
+      <% @tasks.each_with_index do |task, i| %>
+        <% val = "@target#{i}" %>
+        <%= link_to task, class: "TaskToday__link" do %>
+
+          <div class="TaskToday__card">
+            <div class="TaskToday__border --<%= eval("#{val}[:status][:color]") %>"></div>
+            <div class="TaskToday__item">
+              <div class="TaskToday__status --<%= eval("#{val}[:status][:color]") %>">
+                <span><%= eval("#{val}[:status][:status]") %></span>
+              </div>
+              <div class="TaskToday__title"><%= task.book.title %></div>
+              <div class="TaskToday__content">
+                <div class="TaskToday__book-image">
+                  <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+                </div>
+
+                <div class="TaskToday__goal">
+                  <dl>
+                    <dt>今日の目標</dt>
+                    <dd>p.<%= eval("#{val}[:up_to_page]") %>まで</dd>
+                  </dl>
+                  <div class="TaskToday__read">
+                    <% eval("#{val}[:read_data]").each do |date, val| %>
+                      <span class="--circle <%= val %>">
+                        <object>
+                          <%= link_to new_task_read_path(task_id: task.id, read_on: date) do %>
+                            <span class="--date <%= val %>"><%= date.mday %></span>
+                          <% end %>
+                        </object>
+                      </span>
+                    <% end %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+//******** サイト共通定義 **********//
+
+//******** 全体 **********//
+
+.c-container {
+  width: calc(61vw + 210px);
+  @include mq($sp) {
+    width: 100%;
+  }
+  margin: 0 auto;
+  padding: 0 calc(1.6vw + 13px);
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: $color-main;
+}
+
+input {
+  border: solid 1.5px $color-gray;
+  border-radius: 10px;
+  &:focus {
+    border: solid 2px $color-main;
+    border-radius: 10px;
+    outline: 0;
+  }
+}
+
+//******** フラッシュ **********//
+
+.alert-notice {
+  @extend .alert-success !optional;
+}
+
+.alert-alert {
+  @extend .alert-danger !optional;
+}
+
+//******** エラーメッセージ **********//
+
+div.field_with_errors {
+  display: contents;
+
+  input {
+    border: 2px solid red;
+  }
+}
