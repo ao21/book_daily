@@ -1,0 +1,20 @@
+.Footer {
+  width: 100%;
+  padding: 1rem 0 0.8rem;
+  margin-top: 1.5rem;
+  background-color: $color-main;
+
+  .Footer__wrapper {
+    display: flex;
+    justify-content: space-between;
+    color: $color-white;
+  }
+
+  a {
+    color: $color-white;
+  }
+
+  p {
+    font-size: 0.8em;
+  }
+}
