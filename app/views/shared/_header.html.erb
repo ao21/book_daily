@@ -4,12 +4,12 @@
   </div>
 
   <nav>
+    <%# unless current_page?(root_path) %>
+      <div class="Header__search">
+        <%= render 'books/search_form' %>
+      </div>
+    <%# end %>
     <ul id="js-Header__list">
-      <% unless current_page?(root_path) %>
-        <li class="--search">
-          <%= render 'books/search_form' %>
-        </li>
-      <% end %>
       <% if user_signed_in? %>
         <div class="Header__border"></div>
         <li>
@@ -25,6 +25,7 @@
             <span class="Header__text">ACCOUNT</span>
           <% end %>
         </li>
+        <div id="js-Header__border"></div>
       <% else %>
         <div class="Header__border"></div>
         <li> 
@@ -33,6 +34,7 @@
             <span class="Header__text">LOGIN</span>
           <% end %>
         </li>
+        <div id="js-Header__border"></div>
       <% end %>
     </ul>
 
