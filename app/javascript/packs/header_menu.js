@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', function () {
   $('#js-Header__toggle').on('click', function () {
-    $('#js-Header__toggle, #js-Header__content, #js-Header__list').toggleClass('show');
+    $('#js-Header__toggle, #js-Header__content, #js-Header__list, #js-Header__border').toggleClass('show');
     return false;
   });
 
@@ -9,7 +9,7 @@ document.addEventListener('turbolinks:load', function () {
       return;
     } else {
       if (!$(event.target).closest('#js-Header__list, #js-Header__toggle').length) {
-        $('#js-Header__toggle, #js-Header__content, #js-Header__list').removeClass('show');
+        $('#js-Header__toggle, #js-Header__content, #js-Header__list, #js-Header__border').removeClass('show');
         return false;
       }
     }
