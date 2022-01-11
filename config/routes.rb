@@ -16,6 +16,6 @@ Rails.application.routes.draw do
       get 'today'
     end
 
-    resources :reads, except: [:index, :show]
+    resources :reads, only: [:new, :create, :destroy]
   end
 end
