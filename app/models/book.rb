@@ -16,7 +16,7 @@ class Book < ApplicationRecord
 
       # 総ページ数のデータがない場合は検索結果に表示しない
       if total_pages.blank?
-        next 
+        next
       end
 
       # 著者が複数名の場合の表記

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: %i[show edit update destroy]
+  before_action :set_task, only: %i[show edit update destroy]
 
   def today
     @tasks = Task.array_tasks_in_progress(current_user)
@@ -60,11 +60,8 @@ class TasksController < ApplicationController
 
   private
 
-  def correct_user
-    @task = Task.find(params[:id])
-    unless @task.user.id == current_user.id
-      redirect_to tasks_path
-    end
+  def set_task
+    @task = current_user.tasks.find(params[:id])
   end
 
   def task_params

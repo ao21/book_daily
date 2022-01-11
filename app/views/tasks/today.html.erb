@@ -1,5 +1,5 @@
 <div class="TaskToday">
-  <%= render partial: 'shared/page_top', locals: {main: "Today", sub: "今日の目標"} %>
+  <%= render 'shared/page_top', main: "Today", sub: "今日の目標" %>
   <div class="c-container">
     <div class="Breadcrumbs">
       <%= link_to 'TOP', '/' %>
@@ -7,7 +7,7 @@
       <span class="--now">今日の目標</span>
     </div>
 
-    <%= render partial: 'task_nav' %>
+    <%= render 'task_nav' %>
     <div class="TaskToday__wrapper">
       <% @tasks.each_with_index do |task, i| %>
         <% val = "@target#{i}" %>
@@ -22,7 +22,7 @@
               <div class="TaskToday__title"><%= task.book.title %></div>
               <div class="TaskToday__content">
                 <div class="TaskToday__book-image">
-                  <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+                  <%= render 'books/book_image', image_link: task.book.image_link %>
                 </div>
 
                 <div class="TaskToday__goal">

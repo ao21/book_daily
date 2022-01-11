@@ -34,7 +34,6 @@ class Read < ApplicationRecord
     end
   end
 
-
   # タスク一覧ページの SimpleCalendar で使用
   def start_time
     self.read_on

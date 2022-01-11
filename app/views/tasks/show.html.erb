@@ -1,5 +1,5 @@
 <div class="TaskShow">
-  <%= render partial: 'shared/page_top', locals: {main: "Show", sub: "目標の詳細"} %>
+  <%= render 'shared/page_top', main: "Show", sub: "目標の詳細" %>
   <div class="c-container">
     <div class="Breadcrumbs">
       <%= link_to 'TOP', '/' %>
@@ -19,7 +19,7 @@
             <div class="TaskShow__title"><%= @task.book.title %></div>
             <div class="TaskShow__item">
               <div class="TaskShow__book-image">
-                <%= render partial: 'books/book_image', locals: { image_link: @task.book.image_link } %>
+                <%= render 'books/book_image', image_link: @task.book.image_link %>
               </div>
               <table class="--task">
                 <tbody>
@@ -45,7 +45,7 @@
 
     <div class="TaskShow__wrapper">
       <div class="TaskShow__container">
-        <%= render partial: "reads/index", locals: { task: @task, reads: @reads, reads_percentage: @reads_percentage } %>
+        <%= render "reads/index", task: @task, reads: @reads, reads_percentage: @reads_percentage %>
       </div>
     </div>
   </div>
