@@ -41,7 +41,7 @@
             <li>
               <div class="NewsList__item">
                 <div class="NewsList__book-image">
-                  <%= render partial: 'books/book_image', locals: { image_link: read.task.book.image_link } %>
+                  <%= render 'books/book_image', image_link: read.task.book.image_link %>
                 </div>
                 <span class="--title"><%= read.task.book.title %></span>
                 <span class="--date"><%= read.read_on.strftime('%-m月%-d日') %></span>

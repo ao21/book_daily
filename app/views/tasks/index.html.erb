@@ -1,5 +1,5 @@
 <div class="TaskIndex">
-  <%= render partial: 'shared/page_top', locals: {main: "All", sub: "目標の一覧"} %>
+  <%= render 'shared/page_top', main: "All", sub: "目標の一覧" %>
   <div class="c-container">
     <div class="Breadcrumbs">
       <%= link_to 'TOP', '/' %>
@@ -9,18 +9,18 @@
   </div>
 
   <div class="c-container">
-    <%= render partial: 'task_nav' %>
+    <%= render 'task_nav' %>
 
     <div class="TaskIndex__wrapper  --first">
       <div class="TaskIndex__calendar">
         <h2>HISTORY</h2>
         <div id="calendar">
-          <%= render partial: "calendar", locals: {reads: @reads} %>
+          <%= render "calendar", reads: @reads %>
         </div>
       </div>
       <div class="TaskIndex__table">
-        <%= render partial: "history_table", locals: {month_data: @month_data[:this_month], month_name: "今月"} %>
-        <%= render partial: "history_table", locals: {month_data: @month_data[:last_month], month_name: "先月"} %>
+        <%= render "history_table", month_data: @month_data[:this_month], month_name: "今月" %>
+        <%= render "history_table", month_data: @month_data[:last_month], month_name: "先月" %>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
               <div class="TaskIndexCard__content">
                 <div class="TaskIndexCard__data">
                   <div class="TaskIndexCard__book-image">
-                    <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+                    <%= render 'books/book_image', image_link: task.book.image_link %>
                   </div>
                   <div class="TaskIndexCard__finished-on">
                     <span class="label">目標日</span>
