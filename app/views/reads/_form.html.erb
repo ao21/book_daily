@@ -24,10 +24,10 @@
           <%= f.label :up_to_page, "読み終わった<br>ページ番号".html_safe %>
           <%= f.text_field :up_to_page %>
         </div>
+        <div class="ReadForm__submit">
+          <%= f.submit button_value %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="ReadForm__submit">
-      <%= f.submit button_value %>
-    </div>
-  <% end %>
+  </div>
 </div>
