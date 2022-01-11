@@ -9,12 +9,12 @@
     font-size: 0.8em;
   }
 
-  .has-events {
-    background-color: $color-second;
-  }
-
   .today {
     background-color: transparent;
+  }
+
+  .has-events {
+    background-color: $color-second;
   }
 
   table {

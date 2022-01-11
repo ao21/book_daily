@@ -1,24 +1,86 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 📖Book Daily
 
-Things you may want to cover:
+**読書を習慣化するサービスです。読む本を登録すると、毎日何ページまで読むかの目標が設定され、管理できます。**
 
-* Ruby version
+## 🌐 URL
 
-* System dependencies
+https://book-daily.com/
+ヘッダーの「LOGIN」-> 「ゲストログイン」ボタンからログインをお願いいたします。
 
-* Configuration
+開発の経緯や工夫した点などを Qiita の記事にアウトプットいたしました。
+(作成中)
 
-* Database creation
+## 💡 どんなアプリ？
 
-* Database initialization
+- 読む本を登録
+- 読み終わる日を設定
+- 毎日何ページまで読めばいいのか、目標がひと目で確認できます
+- 進捗や達成率を視覚化し、モチベーションアップ
 
-* How to run the test suite
+## 🐾 制作背景
 
-* Services (job queues, cache servers, search engines, etc.)
+アプリを制作するにあたって、誰かの課題を解決するものを作りたいと考えました。
+そこで、仕事で読む本があるのに中々読み終えられないとこぼしていた友人に連絡を取りました。
+試験や会議に合わせた期日までに本を読み終えたい、電車通勤の時間に読みたいがつい YouTube を見てしまうという課題を聞き出し、本ごとに期日管理ができ、かつ毎日目標を意識できるサービスが必要と考え、本アプリの制作を決めました。
+制作にあたり、自身が習慣化するときの継続や目標達成を視覚化する工夫を取り入れました。
+また、定期的に友人からフィードバックをもらい、ユーザーの使いやすさを特に意識しながら制作しました。
 
-* Deployment instructions
+## 🍀 機能一覧
 
-* ...
+| 実装内容             | gem 等          |
+| -------------------- | --------------- |
+| ログイン・ログアウト | devise          |
+| アカウント登録・編集 |                 |
+| ゲストログイン       |                 |
+| 書籍検索             | GoogleBooksAPI  |
+| 書籍登録機能         |                 |
+| タスク登録機能(CRUD) |                 |
+| 進捗登録機能(CRUD)   |                 |
+| カレンダー機能       | Simple Calendar |
+| グラフ表示           | Chartkick       |
+
+## 💻 使用技術
+
+### フロントサイド
+
+- HTML (erb)
+- CSS (Scss)
+- JavaScript (JQuery,erb)
+- Bootstrap
+
+### バックエンド
+
+- Ruby (2.7.2)
+- Ruby on Rails (6.1.3)
+
+### サーバー
+
+- Nginx(WEB サーバー)
+- Puma(アプリケーションサーバー)
+
+### DB
+
+- PostgreSQL (13.2)
+
+### インフラ
+
+- AWS(VPC,RDS,EC2,S3,Route 53,ACM,ALB,IAM）
+
+### 解析ツール
+
+- Rails_best_practice (1.20)
+
+### テスト
+
+- RSpec (3.1.0)
+- factory_bot (6.2.0)
+
+## ER 図
+
+## 今後追加を予定している機能
+
+- ユーザーフォロー機能
+- CI/CD パイプラインの構築
+- Docker の導入
