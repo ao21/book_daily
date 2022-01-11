@@ -1,12 +1,12 @@
 <div class="ReadForm">
   <div class="c-container">
-    <%= render partial: 'shared/page_bar', locals: {var: "", text: "読んだ日と読み終わったページ番号を設定"} %>
+    <%= render 'shared/page_bar', var: "", text: "読んだ日と読み終わったページ番号を設定" %>
 
     <div class="ReadForm__title"><%= task.book.title %></div>
     <div class="ReadForm__wrapper">
       <div class="ReadForm__data">
         <div class="ReadForm__book-image">
-          <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+          <%= render 'books/book_image', image_link: task.book.image_link %>
         </div>
         <dl>
           <dt>ページ数</dt>

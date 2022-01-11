@@ -1,15 +1,15 @@
 <div class="TaskForm">
   <div class="c-container">
-    <%= render partial: 'shared/page_bar', locals: {var: "", text: "開始日と終了日を設定"} %>
+    <%= render 'shared/page_bar', locals: var: "", text: "開始日と終了日を設定" %>
 
     <div class="TaskForm__wrapper">
       <section class="TaskForm__book">
         <div class="TaskForm__title"><%= book.title %></div>
         <div class="TaskForm__book-image">
           <% if controller.action_name == 'new' %>
-            <%= render partial: 'books/book_image', locals: { image_link: book.image_link } %>
+            <%= render 'books/book_image', image_link: book.image_link %>
           <% elsif controller.action_name == 'edit' %>
-            <%= render partial: 'books/book_image', locals: { image_link: task.book.image_link } %>
+            <%= render 'books/book_image', image_link: task.book.image_link %>
           <% end %>
         </div>
       </section>

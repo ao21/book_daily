@@ -1,5 +1,5 @@
 <div class="TaskNew">
-  <%= render partial: 'shared/page_top', locals: {main: "Task", sub: "目標を設定しましょう。"} %>
+  <%= render 'shared/page_top', main: "Task", sub: "目標を設定しましょう。" %>
   <%= render 'shared/breadcrumbs' %>
 
   <%= render 'form', task: @task, book: @book, button_value: "登録" %>
