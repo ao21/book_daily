@@ -11,7 +11,7 @@ https://book-daily.com/
 ヘッダーの「LOGIN」-> 「ゲストログイン」ボタンからログインをお願いいたします。
 
 開発の経緯や工夫した点などを Qiita の記事にアウトプットいたしました。  
-(作成中)
+https://qiita.com/ao_21/items/1e00df0460dc1bf24a00
 
 ## 💡 どんなアプリ？
 
