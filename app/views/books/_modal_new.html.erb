@@ -10,7 +10,7 @@
       <div class="BookNew__title">書籍の新規登録</div>
         <div class="BookNew__content">
           <div class="BookNew__book-image">
-            <%= image_tag book.image_link if book.image_link? %>
+            <%= render 'book_image', image_link: book.image_link %>
           </div>
           <div class="BookNew__data">
             <dl>
