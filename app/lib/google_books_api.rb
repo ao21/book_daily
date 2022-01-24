@@ -5,6 +5,7 @@ module GoogleBooksApi
   end
 
   def url_from_keyword(keyword)
-    "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&country=JP&maxResults=20"
+    limit = 20
+    "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&country=JP&maxResults=#{limit}"
   end
 end
