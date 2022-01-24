@@ -3,6 +3,7 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :total_pages, presence: true, numericality: true
+  validates :google_id, presence: true, uniqueness: true
 
   # GoogleBooksAPIでの検索結果を配列に整形
   def self.results_data(results)
@@ -10,10 +11,11 @@ class Book < ApplicationRecord
 
     results["items"].each do |result|
       google_id = result.dig("id")
-      title = result.dig("volumeInfo", "title")
-      authors = result.dig("volumeInfo", "authors")
-      image_link = result.dig("volumeInfo", "imageLinks", "smallThumbnail")
-      total_pages = result.dig("volumeInfo", "pageCount")
+      info = result.dig("volumeInfo")
+      title = info.dig("title")
+      authors = info.dig("authors")
+      image_link = info.dig("imageLinks", "smallThumbnail")
+      total_pages = info.dig("pageCount")
 
       # 総ページ数のデータがない書籍は検索結果に表示しない
       if total_pages.blank?

@@ -11,7 +11,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.find_or_initialize_by(title: params[:title])
+    @book = Book.find_or_initialize_by(google_id: params[:google_id])
 
     unless @book.persisted?
       @book = Book.new(book_data)
@@ -32,6 +32,7 @@ class BooksController < ApplicationController
 
   def book_data
     {
+      google_id: params[:google_id],
       title: params[:title],
       author: params[:author],
       image_link: params[:image_link],
@@ -40,6 +41,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :author, :image_link, :total_pages)
+    params.require(:book).permit(:google_id, :title, :author, :image_link, :total_pages)
   end
 end
