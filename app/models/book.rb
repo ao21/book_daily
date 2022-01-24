@@ -9,12 +9,13 @@ class Book < ApplicationRecord
     results_data = []
 
     results["items"].each do |result|
+      google_id = result.dig("id")
       title = result.dig("volumeInfo", "title")
       authors = result.dig("volumeInfo", "authors")
       image_link = result.dig("volumeInfo", "imageLinks", "smallThumbnail")
       total_pages = result.dig("volumeInfo", "pageCount")
 
-      # 総ページ数のデータがない場合は検索結果に表示しない
+      # 総ページ数のデータがない書籍は検索結果に表示しない
       if total_pages.blank?
         next
       end
@@ -26,6 +27,7 @@ class Book < ApplicationRecord
 
       results_data.push(
         {
+          google_id: google_id,
           title: title,
           author: author,
           image_link: image_link,
