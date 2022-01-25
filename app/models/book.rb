@@ -1,31 +1,36 @@
 class Book < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
+  # バリデーション
   validates :title, presence: true
   validates :total_pages, presence: true, numericality: true
+  validates :google_id, presence: true, uniqueness: true
 
   # GoogleBooksAPIでの検索結果を配列に整形
-  def self.results_data(results)
-    results_data = []
+  def self.results_array(results_json)
+    results = []
 
-    results["items"].each do |result|
-      title = result.dig("volumeInfo", "title")
-      authors = result.dig("volumeInfo", "authors")
-      image_link = result.dig("volumeInfo", "imageLinks", "smallThumbnail")
-      total_pages = result.dig("volumeInfo", "pageCount")
+    results_json["items"].each do |result|
+      google_id = result.dig("id")
+      info = result.dig("volumeInfo")
+      title = info.dig("title")
+      authors = info.dig("authors")
+      image_link = info.dig("imageLinks", "smallThumbnail")
+      total_pages = info.dig("pageCount")
 
-      # 総ページ数のデータがない場合は検索結果に表示しない
+      # 総ページ数のデータがない書籍は検索結果に表示しない
       if total_pages.blank?
         next
       end
 
-      # 著者が複数名の場合の表記
+      # 著者が複数名の表記
       if authors
         author = authors.join(', ')
       end
 
-      results_data.push(
+      results.push(
         {
+          google_id: google_id,
           title: title,
           author: author,
           image_link: image_link,
@@ -33,6 +38,6 @@ class Book < ApplicationRecord
         }
       )
     end
-    return results_data
+    return results
   end
 end

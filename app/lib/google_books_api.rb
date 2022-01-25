@@ -1,10 +1,13 @@
 module GoogleBooksApi
 
-  def get_json_from_url(url)
-    JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(url))))
+  # キーワード検索
+  def url_from_keyword(keyword)
+    limit = 20
+    "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&country=JP&maxResults=#{limit}"
   end
 
-  def url_from_keyword(keyword)
-    "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&country=JP&maxResults=20"
+  # 検索結果のJSONを取得
+  def get_json_from_url(url)
+    JSON.parse(Net::HTTP.get(URI.parse(Addressable::URI.encode(url))))
   end
 end

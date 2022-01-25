@@ -1,15 +1,17 @@
+<!-- トップ-->
 <%= render 'shared/page_top', main: "Books", sub: "読みたい本を選んでください。" %>
 <%= render 'shared/breadcrumbs' %>
 
+<!-- 検索結果 -->
 <div class="c-container">
   <%= render 'shared/page_bar', var: params[:keyword], text: " の検索結果" %>
 
   <section class="SearchList">
     <ul>
-      <% if @results_data %>
-        <% @results_data.each do |result| %>
+      <% if @results %>
+        <% @results.each do |result| %>
           <li>
-            <%= link_to(controller: :books, action: :new, title: result[:title], author: result[:author], image_link: result[:image_link], total_pages: result[:total_pages], remote: true) do %>
+            <%= link_to(controller: :books, action: :new, google_id: result[:google_id], title: result[:title], author: result[:author], image_link: result[:image_link], total_pages: result[:total_pages], remote: true) do %>
               <div class="SearchList__item">
                 <div class="SearchList__book-image">
                   <%= render 'book_image', image_link: result[:image_link] %>
@@ -26,9 +28,12 @@
             <% end %>
           </li>
         <% end %>
+      <% else %>
+        <p>検索結果がありません。<br>他のキーワードで検索してみてください。</p>
       <% end %>
     </ul>
   </section>
 </div>
 
+<!-- 新規登録用モーダル -->
 <div id="book-new-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
