@@ -1,9 +1,11 @@
 module GoogleBooksApi
 
+  # 定数
+  MAX_RESULTS = 20
+
   # キーワード検索
   def url_from_keyword(keyword)
-    limit = 20
-    "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&country=JP&maxResults=#{limit}"
+    "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&country=JP&maxResults=#{MAX_RESULTS}"
   end
 
   # 検索結果のJSONを取得
