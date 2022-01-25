@@ -5,8 +5,8 @@ class BooksController < ApplicationController
   def search
     if params[:keyword].present?
       url= url_from_keyword(params[:keyword])
-      results = get_json_from_url(url)
-      @results_data = Book.results_data(results)
+      results_json = get_json_from_url(url)
+      @results = Book.results_array(results_json)
     end
   end
 
