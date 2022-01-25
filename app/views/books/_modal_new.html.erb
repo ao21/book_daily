@@ -29,12 +29,14 @@
         </div>
 
         <% if book.persisted? %>
+          <!-- 登録がある場合のリンク -->
           <div class="BookNew__submit">
             <%= link_to(controller: :tasks, action: :new, book_id: book.id) do %>
               <button>登録</button>
             <% end %>
           </div>
         <% else %>
+          <!-- 登録がない場合のフォーム -->
           <%= form_with model: book, remote: true do |f| %>
             <%= render 'shared/error_messages', model: f.object %>
             <%= f.hidden_field :google_id, value:book.google_id %>
