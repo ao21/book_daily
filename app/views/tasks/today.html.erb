@@ -28,14 +28,14 @@
                 <div class="TaskToday__goal">
                   <dl>
                     <dt>今日の目標</dt>
-                    <dd>p.<%= eval("#{val}[:up_to_page]") %>まで</dd>
+                    <dd>p.<%= eval("#{val}[:today_goal_page]") %>まで</dd>
                   </dl>
                   <div class="TaskToday__read">
-                    <% eval("#{val}[:read_data]").each do |date, val| %>
+                    <% eval("#{val}[:status_week]").each do |date, val| %>
                       <span class="--circle <%= val %>">
                         <object>
                           <%= link_to new_task_read_path(task_id: task.id, read_on: date) do %>
-                            <span class="--date <%= val %>"><%= date.mday %></span>
+                            <span class="--date <%= val %>"><%= date %></span>
                           <% end %>
                         </object>
                       </span>

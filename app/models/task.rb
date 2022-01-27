@@ -5,19 +5,89 @@ class Task < ApplicationRecord
 
   # バリデーション
 
-  with_options presence: true do
-    validates :started_on
-    validates :finished_on
-  end
-  validate :finished_on_cannot_be_before_started_on
+  validates :started_on, presence: true
+  validates :finished_on, presence: true
+  validate :validate_finished_on
 
-  def finished_on_cannot_be_before_started_on
+  def validate_finished_on
     if finished_on.present? && finished_on < started_on
       errors.add(:finished_on, ": 開始日より前の日付は使えません")
     end
   end
 
-  # TaskTodayページ
+  # 残りページ数、今日の最大ページ数、最大ページ数
+  def self.task_data(task)
+    max_page_yesterday = task.reads.where("read_on < ?", Date.today).maximum(:up_to_page) || 0
+    max_page_today = task.reads.where("read_on = ?", Date.today).maximum(:up_to_page) || 0
+    max_page = [max_page_yesterday, max_page_today].max
+    read_pages = task.book.total_pages - max_page_yesterday
+
+    task_data = {
+      read_pages: read_pages,
+      max_page_today: max_page_today,
+      max_page: max_page
+    }
+  end
+
+  # 今日の目標ページ番号( 残りページ数/残り日数 )
+  def self.today_goal_page(task, task_data)
+    left_days = (task.finished_on - Date.today + 1).to_i
+    left_days <= 0? left_days=0 : left_days
+
+    left_days == 0? task_data[:read_pages] : (task_data[:read_pages] / left_days.to_f).ceil
+  end
+
+  # 今週の進捗登録がある日とない日
+  def self.status_week(task)
+    today = Date.today
+    from = today.prev_occurring(:monday)
+    to = today.next_occurring(:sunday)
+    if today.wday == 1
+      from = today
+    elsif today.wday == 0
+      to = today
+    end
+
+    reads = task.reads.select(:read_on).where(read_on: from..to)
+
+    status_week = {}
+    (from..to).each do |date|
+      reads_date = reads.select{ |read|read.read_on == date}
+      if reads_date.present?
+        per = "--main"
+      else
+        per = nil
+      end
+      status_week.store(date.day, per)
+    end
+    return status_week
+  end
+
+  # tasks.controller.rb で呼び出すもの
+  def self.today_data(task)
+    task_data = self.task_data(task)
+    today_goal_page = self.today_goal_page(task, task_data)
+    status_week = self.status_week(task)
+
+    # 今日の目標達成ステータス
+    if today_goal_page <= task_data[:max_page_today]
+      status = { color: "main", status: "DONE"}
+    else
+      today_left_pages = today_goal_page - task_data[:max_page]
+      status = { color: "second", status: "あと#{today_left_pages}ページ"}
+    end
+
+    today_data = {
+      today_goal_page: today_goal_page,
+      status: status,
+      status_week: status_week
+    }
+    return today_data
+  end
+
+
+
+   # TaskTodayページ
 
   def self.array_tasks_in_progress(user)
     array_tasks_in_progress = []
@@ -32,15 +102,6 @@ class Task < ApplicationRecord
     return array_tasks_in_progress
   end
 
-  def self.calculate_days_left_until_finished_on(task)
-    days_left_until_finished_on = (task.finished_on - Date.today + 1).to_i
-
-    if days_left_until_finished_on <= 0
-      days_left_until_finished_on = 0
-    else
-      days_left_until_finished_on
-    end
-  end
 
   def self.calculate_target_pages_per_a_day(task, days_left_until_finished_on, max_read_up_to_page_until_yesterday)
     book_total_pages = task.book.total_pages

@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @tasks = Task.array_tasks_in_progress(current_user)
     @tasks.each_with_index do |task, i|
       val = "@target#{i}"
-      eval("#{val} = Task.todays_page_data(task)")
+      eval("#{val} = Task.today_data(task)")
     end
   end
 
