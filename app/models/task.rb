@@ -17,10 +17,11 @@ class Task < ApplicationRecord
   # 進行中のタスク一覧(TaskTodayページ)
   def self.tasks_in_progress(tasks)
     tasks_in_progress = []
+    max_reads = Task.includes(:reads).group(:task_id).maximum(:up_to_page)
     tasks.each do |task|
-      book_total_pages = task.book.total_pages
-      max_read_up_to_page = task.reads.select(:up_to_page).maximum(:up_to_page) || 0
-      if book_total_pages > max_read_up_to_page
+      max_reads[task.id].present? ? max_page = max_reads[task.id] : max_page = 0
+      total_pages = task.book.total_pages
+      if total_pages > max_page
         tasks_in_progress.push(task)
       end
     end
@@ -75,7 +76,7 @@ class Task < ApplicationRecord
     return status_week
   end
 
-  # tasks.controller.rb で呼び出すもの
+  # 今日の目標のデータ(TaskTodayページ)
   def self.today_data(task)
     task_data = self.task_data(task)
     today_goal_page = self.today_goal_page(task, task_data)
@@ -97,18 +98,11 @@ class Task < ApplicationRecord
     return today_data
   end
 
-  # タスクの進捗パーセンテージ計算
-  def self.cal_tasks_percentage(task, tasks_percentage)
-    max_read_up_to_page = task.reads.select(:up_to_page).maximum(:up_to_page) || 0
-    total_pages = task.book.total_pages
+  # タスク進捗パーセンテージの計算
+  def self.cal_percentage(task_percentage, max_page, total_pages)
+    percentage = 100 * max_page / total_pages
 
-    if max_read_up_to_page
-      percentage = 100 * max_read_up_to_page / total_pages
-    else
-      percentage = 0
-    end
-
-    tasks_percentage.push(
+    task_percentage.push(
       {
         read: percentage, unread: 100 - percentage
       }
@@ -118,18 +112,22 @@ class Task < ApplicationRecord
   # タスクの進捗パーセンテージ(TaskIndaxページ)
   def self.tasks_percentage(tasks)
     tasks_percentage = []
-    tasks.includes(:book)
-    tasks.includes(:reads)
+    max_reads = Task.includes(:reads).group(:task_id).maximum(:up_to_page)
 
     tasks.each do |task|
-      self.cal_tasks_percentage(task, tasks_percentage)
+      max_reads[task.id].present? ? max_page = max_reads[task.id] : max_page = 0
+      total_pages = task.book.total_pages
+      self.cal_percentage(tasks_percentage, max_page, total_pages)
     end
     return tasks_percentage
   end
 
-  # タスクの進捗パーセンテージ(TaskShowページ)
+  # タスク個別の進捗パーセンテージ(TaskShowページ)
   def self.task_percentage(task)
     task_percentage = []
-    self.cal_tasks_percentage(task, task_percentage)
+    max_page = task.reads.select(:up_to_page).maximum(:up_to_page) || 0
+    total_pages = task.book.total_pages
+    self.cal_percentage(task_percentage, max_page, total_pages)
+    return task_percentage
   end
 end
