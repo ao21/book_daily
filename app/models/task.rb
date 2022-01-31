@@ -46,7 +46,6 @@ class Task < ApplicationRecord
   def self.today_goal_page(task, task_data)
     left_days = (task.finished_on - Date.today + 1).to_i
     left_days <= 0? left_days=0 : left_days
-
     left_days == 0? task_data[:read_pages] : (task_data[:read_pages] / left_days.to_f).ceil
   end
 
