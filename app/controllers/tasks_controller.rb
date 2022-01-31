@@ -3,7 +3,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def today
-    @tasks = Task.array_tasks_in_progress(current_user)
+    tasks = current_user.tasks.includes(:book).all
+    @tasks = Task.tasks_in_progress(tasks)
     @tasks.each_with_index do |task, i|
       val = "@target#{i}"
       eval("#{val} = Task.today_data(task)")
@@ -12,8 +13,8 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks.all.order(finished_on: :desc)
-    @reads = current_user.reads
     @tasks_percentage = Task.tasks_percentage(@tasks)
+    @reads = current_user.reads
     @month_data = Read.month_data(current_user)
   end
 
